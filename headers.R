@@ -1,7 +1,7 @@
 require(ape)
 require(geiger)
 
-simulate_trees<-function(species)
+simulate_trees<-function(species=100)
 {
   tree <- sim.bdtree(n = species)
   tree$edge.length <- tree$edge.length / (max(branching.times(tree)) * 10)
@@ -9,25 +9,23 @@ simulate_trees<-function(species)
   return(tree)
 }
 
-tree_files <- function(trees, species)
+tree_files <- function(trees=10, species=100)
 {
-  number_of_trees <- c(rep(1:trees))
-  for (i in number_of_trees)
+  for (i in seq_len(trees))
   {
     tree <- simulate_trees(species)
     write.tree(tree, file = paste(i,"simulatedTree.tre", sep = "_"))
   }
 }
 
-run_dawg<-function(trees, species, seq_length, model, format)
+run_dawg<-function(trees=10, species=100, seq_length=1000, model="JC", format="Fasta")
 {
   tree_files(trees, species)
   user_length <- paste("Length =", seq_length)
   alt_model<- paste('"',model,'"', sep = "")
   user_model <- paste("Model =", noquote(alt_model))
   user_format <- paste("Format =", paste('"', format, '"', sep = ""))
-  number_of_trees <- c(rep(1:trees))
-  for (i in number_of_trees)
+  for (i in seq_len(trees))
   {
     user_file <- paste("File =", paste('"',i,"simulatedSeqs.fasta",'"',sep = ""))
     tree <- readLines(paste(i,"simulatedTree.tre", sep = "_"))
