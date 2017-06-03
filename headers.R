@@ -34,6 +34,6 @@ run_dawg<-function(trees=10, species=100, seq_length=1000, model="JC", format="F
                "simulationParams.dawg")
     system("dawg simulationParams.dawg")
   }
-  
+  system(paste("python runPhyloGen.py ",'"',trees,'"'))
 }
 
