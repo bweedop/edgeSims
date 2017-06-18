@@ -1,5 +1,6 @@
 require(ape)
 require(geiger)
+require(picante)
 
 simulate_trees<-function(species=100)
 {
@@ -35,5 +36,11 @@ run_dawg<-function(trees=10, species=100, seq_length=1000, model="JC", format="F
     system("dawg simulationParams.dawg")
   }
   system(paste("python runPhyloGen.py ",'"',trees,'"'))
+}
+
+calculate_ed <-function(file)
+{
+  tree<-read.tree(paste('"',i,"simulatedSeqs.fasta",'"',sep = ""))
+  evo_dist<-evol.distinct(tree)
 }
 
