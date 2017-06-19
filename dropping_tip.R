@@ -38,16 +38,10 @@ drop_clustered_tips<-function(spp)
   write.table(ed, file = "original_clustered_tree_data.txt")
   
   imputed_tree<-tree
-  brown_evol<-sim.char(tree, 0.05, 1, model = "BM")
-  brown_evol_topQ<-summary(brown_evol)[5]
-  i_list<-numeric()
-  for(i in brown_evol[,,1])
-  {
-    if(i > brown_evol_topQ)
-    {
-      imputed_tree<-drop.tip(imputed_tree, paste("s",grep(i, brown_evol[,,1]), sep = ""))
-    }
-  }
+  brown_evol<-sim.char(tree, 0.05, 1, model = "BM")[,,1]
+  quantile <- quantile(brown_evol, 0.9)
+  to.drop <- which(brown_evol >= quantile)
+  imputed_tree <- drop.tip(tree, to.drop)
   write.tree(imputed_tree, file = "imputed_clustered_tree.tre")
   
   imputed_ed<-ed.calc(imputed_tree)$spp
@@ -57,8 +51,8 @@ drop_clustered_tips<-function(spp)
 }
 
 
+data <- expand.grid(n.spp=c(50,100,500,1000), fraction.dropped=c(.01,.05,.1,.2), edge.corr=NA)
 
-
-
-
+for(i in seq_len(nrow(data)))
+    data$edge.corr <- with(data, n.spp[i] * fraction.dropped[i]) #...or something more useful...
 
