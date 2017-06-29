@@ -44,16 +44,20 @@ drop_clustered_tips<-function(spp, dropped_fraction)
   
   imputed_tree<-tree
   brown_evol<-sim.char(tree, 0.05, 1, model = "BM")[,,1]
-  quantile <- quantile(brown_evol, 1-0.1)
+  quantile <- quantile(brown_evol, 1-dropped_fraction)
   to.drop <- which(brown_evol >= quantile)
-  ed<-ed[-to.drop,]
-  imputed_tree <- drop.tip(tree, to.drop)
+  if (dropped_fraction != 0){
+    ed<-ed[-to.drop,]
+    imputed_tree <- drop.tip(tree, to.drop)
+  }else{
+
+  }
   write.tree(imputed_tree, file = "imputed_clustered_tree.tre")
   
   imputed_ed<-ed.calc(imputed_tree)$spp
-  imputed_ed<-imputed_ed[order(imputed_ed$ED, decreasing = TRUE),]
-  rownames(imputed_ed)<-1:nrow(imputed_ed)
-  write.table(imputed_ed, file = "imputed_clustered_tree_data.txt")
+  ordered_imputed_ed<-imputed_ed[order(imputed_ed$ED, decreasing = TRUE),]
+  rownames(ordered_imputed_ed)<-1:nrow(ordered_imputed_ed)
+  write.table(ordered_imputed_ed, file = "imputed_clustered_tree_data.txt")
   
   ed_corr<-cor(ed[2], imputed_ed[2])
   return(ed_corr)
@@ -61,7 +65,7 @@ drop_clustered_tips<-function(spp, dropped_fraction)
 
 data_wrapper<-function(method)
 {
-  data <- expand.grid(n.spp=c(200,400,800,1000,1200), fraction.dropped=c(.01,.05,.1,.2), edge.corr=NA)
+  data <- expand.grid(n.spp=rep(seq(600,1200,by=200),5), fraction.dropped=rep(seq(0,0.2,by=0.01),5), edge.corr=NA)
   if (method == "clustered")
   {
     for(i in seq_len(nrow(data)))
