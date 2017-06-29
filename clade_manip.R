@@ -2,6 +2,8 @@ library(geiger)
 library(caper)
 library(pez)
 library(phytools)
+
+
 get.clades <- function(spp, size)
 {
   tree <- sim.bdtree(n = spp)
@@ -17,12 +19,5 @@ get.clades <- function(spp, size)
   gamma <- gammatest(gammatree)$gamma
   print(nasty.bl)
   print(node.age)
-}
-
-replace<-function(x, y)
-{
-  p<-y$tip.label
-  for (i in p){
-    pez:::bind.replace(x, y, i)
-  }
+  print(gamma)
 }
