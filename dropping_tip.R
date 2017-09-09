@@ -1,5 +1,7 @@
 library(caper)
 library(geiger)
+library(plyr)
+library(ggplot2)
 
 
 drop_random_tips<-function(spp, dropped_fraction)
@@ -63,24 +65,51 @@ drop_clustered_tips<-function(spp, dropped_fraction)
   return(ed_corr)
 }
 
-data_wrapper<-function(method)
+data_wrapper<-function(method, reps)
 {
-  data <- expand.grid(n.spp=rep(seq(600,1200,by=200),5), fraction.dropped=rep(seq(0,0.2,by=0.01),5), edge.corr=NA)
+  data <- expand.grid(n.spp=seq(600,1200,by=200), fraction.dropped=seq(0,0.2,by=0.01), edge.corr=0)
   if (method == "clustered")
   {
-    for(i in seq_len(nrow(data)))
+    for (i in seq_len(reps))
     {
-      data$edge.corr[i] <- drop_clustered_tips(data$n.spp[i], data$fraction.dropped[i])
+      for(j in seq_len(nrow(data)))
+      {
+        data$edge.corr[j] <- data$edge.corr[j] + drop_clustered_tips(data$n.spp[j], data$fraction.dropped[j])
+      }
     }
   }else if(method == "random"){
-    for(i in seq_len(nrow(data)))
+    for (i in seq_len(reps))
     {
-      data$edge.corr[i] <- drop_random_tips(data$n.spp[i], data$fraction.dropped[i])
+      for(j in seq_len(nrow(data)))
+      {
+        data$edge.corr[j] <- data$edge.corr[j] + drop_random_tips(data$n.spp[j], data$fraction.dropped[j])
+      }
     }
   }else{
     print("Invalid method entry")
   }
-
-  return(data)
+  data[,3]<-data[,3]/reps
+  graph<-ggplot(data, aes(fraction.dropped, edge.corr, colour=factor(n.spp))) + geom_line()
+  graph+labs(x = "Fraction Dropped", y = "Correlation of ED", colour = "No. of Spp")
+  return(c(data, graph))
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
