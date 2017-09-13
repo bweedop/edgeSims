@@ -106,6 +106,9 @@ get.ed <- function(spp, size)
     clade.number<-sample(selected.clades, 1)
   }
   random.clade <- extract.clade(tree, clade.number)
+  focal.clade.spp <- unique(na.omit(as.numeric(unlist(strsplit(unlist(random.clade$tip.label), "[^0-9]+")))))
+  #Getting the spp of the focal clade so that the ED values of these spp can be selected out of 
+    #original.ed and imputed.ed.
   original.ed<-ed.calc(tree)$spp[,2]
   node.name <- which(names(branching.times(tree)) == clade.number)
   node.age <- branching.times(tree)[node.name]
@@ -116,12 +119,10 @@ get.ed <- function(spp, size)
   dropped.tree<-drop.tip(tree, sample(random.clade$tip.label, length(random.clade$tip.label)-1))
   
   r<-NULL
-  attempt<-0
   while(is.null(r)){
-    attempt<-attempt+1
     try({
       donor.clade<-sim.bdtree(n = size)
-      donor.clade$tip.label <- letters[seq_along(donor.clade$tip.label)]
+      donor.clade$tip.label <- random.clade$tip.label#letters[seq_along(donor.clade$tip.label)]
       for (i in dropped.tree$tip.label){
         if(any(random.clade$tip.label==i)){
           tip<-i
@@ -131,22 +132,28 @@ get.ed <- function(spp, size)
       dropped.tree<-r})
   }
   imputed.ed<-ed.calc(dropped.tree)$spp[,2]
-  ed.corr<-cor(original.ed, imputed.ed)
-  return(ed.corr)
+  full.ed.corr <- cor(original.ed, imputed.ed)
+  focal.ed.corr<-cor(original.ed[focal.clade.spp], imputed.ed[focal.clade.spp])
+  return(full.ed.corr)
 }
 
 
-multiple.wrapper<-function(n.spp=seq(600, 1200, by = 200), clade.size=seq(2, 10,by=1)){
+multiple.wrapper<-function(n.spp= c(64, 128, 256, 512, 1024), clade.size=c(4, 8, 16, 32), reps = 10){
   params <- expand.grid(n.spp=n.spp, clade.size=clade.size)
-  data <- matrix(nrow=nrow(params), ncol=5)
+  data <- matrix(nrow=nrow(params), ncol=reps)
   for(i in seq_len(nrow(params))){
     for (j in seq_len(ncol(data))){
       data[i,j] <- get.ed(params$n.spp[i], params$clade.size[i])
     }
   }
   data <- cbind(params, data)
-  colnames(data)<-c("n.spp","clade.size","trial.1","trial.2", "trial.3", "trial.4", "trial.5")
+  colnames(data)<-c("n.spp","clade.size","trial.1","trial.2", "trial.3", "trial.4", "trial.5",
+                    "trial.6", "trial.7", "trial.8", "trial.9", "trial.10")
   
+  graph<-ggplot(data, aes(clade.size, edge.corr, colour=factor(n.spp))) + geom_line()
+  graph+labs(x = "Size of Dropped Clade", y = "Correlation of ED Values", colour = "No. of Total Spp")
   return(data)
 }
+
+
 
