@@ -1,20 +1,16 @@
 library(caper)
 library(geiger)
-library(plyr)
-library(ggplot2)
 
 
 drop_random_tips<-function(spp, dropped_fraction)
 {
-  #Simulate phylogeny and write phylogeny data to file.
+  #Simulate phylogeny.
   tree<-sim.bdtree(n = spp)
-  write.tree(tree, file = "original_random_tree.tre")
   
-  #Calculate ED values for the original tree and record to .txt file.
+  #Calculate ED values for the original tree.
   ed<-ed.calc(tree)$spp
   ed<-ed[order(ed$ED, decreasing = TRUE),]
   rownames(ed)<-1:nrow(ed)
-  write.table(ed, file = "original_random_tree_data.txt")
   
   #Use the original tree for the tree which will have a determined fraction of random tips dropped from it. 
   imputed_tree<-tree
@@ -25,14 +21,11 @@ drop_random_tips<-function(spp, dropped_fraction)
     ed<-ed[-delete_row,]
     imputed_tree<-drop.tip(imputed_tree, spp_to_be_dropped)
   }
-  #Write the manipulated tree to a file for documentation.
-  write.tree(imputed_tree, file = "imputed_random_tree.tre")
   
-  #Calculate ED values for the manipulated tree and write them to a .txt file for documentation.
+  #Calculate ED values for the manipulated tree.
   imputed_ed<-ed.calc(imputed_tree)$spp
   imputed_ed<-imputed_ed[order(imputed_ed$ED, decreasing = TRUE),]
   rownames(imputed_ed)<-1:nrow(imputed_ed)
-  write.table(imputed_ed, file = "imputed_random_tree_data.txt")
   
   #Calculate the correlation between the ED values of the original tree and the manipulated tree.
   ed_corr<-cor(ed[2], imputed_ed[2])
@@ -42,15 +35,13 @@ drop_random_tips<-function(spp, dropped_fraction)
 
 drop_clustered_tips<-function(spp, dropped_fraction)
 {
-  #Simulate phylogeny and write phylogeny data to file.
+  #Simulate phylogeny.
   tree<-sim.bdtree(n = spp)
-  write.tree(tree, file = "original_clustered_tree.tre")
   
-  #Calculate ED values for the original tree and record to .txt file.
+  #Calculate ED values for the original tree.
   ed<-ed.calc(tree)$spp
   ordered_ed<-ed[order(ed$ED, decreasing = TRUE),]
   rownames(ordered_ed)<-1:nrow(ordered_ed)
-  write.table(ordered_ed, file = "original_clustered_tree_data.txt")
   
   #Use the original tree for the tree which will have a determined fraction of clustered tips dropped from it.
   imputed_tree<-tree
@@ -66,55 +57,32 @@ drop_clustered_tips<-function(spp, dropped_fraction)
   }else{
 
   }
-  write.tree(imputed_tree, file = "imputed_clustered_tree.tre")
   
-  #Calculate the ED values for the manipulated tree and record the data.
+  #Calculate the ED values for the manipulated tree.
   imputed_ed<-ed.calc(imputed_tree)$spp
   ordered_imputed_ed<-imputed_ed[order(imputed_ed$ED, decreasing = TRUE),]
   rownames(ordered_imputed_ed)<-1:nrow(ordered_imputed_ed)
-  write.table(ordered_imputed_ed, file = "imputed_clustered_tree_data.txt")
   
   #Calculate the correlation between the original ED values and the manipulated trees' ED values.
   ed_corr<-cor(ed[2], imputed_ed[2])
   return(ed_corr)
 }
 
-data_wrapper<-function(method, reps)
+data_wrapper<-function(n.spp = c(64, 128, 256, 512, 1024, 2048, 4096), fraction.dropped = c(0,0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1,0.11,0.12,0.13,0.14,0.15, 0.16, 0.17, 0.18, 0.19, 0.20), reps = 100)
 {
   #Wrapper that can run either of the methods (random or clustered) and then returns the data and graphs for the
-  # amount of repititions set by the user.
-  data <- expand.grid(n.spp = c(64, 128, 256, 512, 1024), fraction.dropped = seq(0,0.2,by=0.01), edge.corr=0)
-  if (method == "clustered")
-  {
-    for (i in seq_len(reps))
-    {
-      for(j in seq_len(nrow(data)))
-      {
-        data$edge.corr[j] <- data$edge.corr[j] + drop_clustered_tips(data$n.spp[j], data$fraction.dropped[j])
-      }
+  # amount of repititions.
+  data <- expand.grid(n.spp = n.spp, fraction.dropped = fraction.dropped, reps = 0:reps, clustered.corr= NA, random.corr = NA)
+  for(i in seq_len(nrow(data))){
+        random.temp.vec <- drop_random_tips(data$n.spp[i], data$fraction.dropped[i])
+	clustered.temp.vec <- drop_clustered_tips(data$n.spp[i], data$fraction.dropped[i])
+        
+        data$clustered.corr[i] <- clustered.temp.vec
+	data$random.corr[i] <- random.temp.vec
     }
-  }else if(method == "random"){
-    for (i in seq_len(reps))
-    {
-      for(j in seq_len(nrow(data)))
-      {
-        data$edge.corr[j] <- data$edge.corr[j] + drop_random_tips(data$n.spp[j], data$fraction.dropped[j])
-      }
-    }
-  }else{
-    print("Invalid method entry")
-  }
+  write.table(data, "dropCorrelations.txt")
   
-  data[,3]<-data[,3]/reps
-  graph<-ggplot(data, aes(fraction.dropped, edge.corr, colour=factor(n.spp))) + geom_line()
-  graph+labs(x = "Fraction Dropped", y = "Correlation of ED", colour = "No. of Spp")
-  return(c(data, graph))
 }
-
-
-
-
-
 
 
 

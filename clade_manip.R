@@ -125,7 +125,7 @@ get.ed <- function(spp, size)
   while(is.null(r)){
     try({
       donor.clade<-sim.bdtree(n = size)
-      donor.clade$tip.label <- random.clade$tip.label#letters[seq_along(donor.clade$tip.label)]
+      donor.clade$tip.label <- random.clade$tip.label
       for (i in dropped.tree$tip.label){
         if(any(random.clade$tip.label==i)){
           tip<-i
