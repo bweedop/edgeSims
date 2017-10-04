@@ -153,5 +153,5 @@ multiple.wrapper<-function(n.spp= c(64, 128, 256, 512, 1024), clade.size=c(3, 4,
     write.table(data, "correlations.txt")
 }
 
-
+multiple.wrapper()
 
