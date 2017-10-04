@@ -111,10 +111,9 @@ get.ed <- function(spp, size)
   focal.clade.spp <- unique(na.omit(as.numeric(unlist(strsplit(unlist(random.clade$tip.label), "[^0-9]+")))))
   #Getting the spp of the focal clade so that the ED values of these spp can be selected out of 
     #original.ed and imputed.ed.
-  original.ed<-ed.calc(tree)$spp
-  excluding.clade.original <- original.ed[-which(original.ed == random.clade$tip.label),]
-  original.ed <- setNames(original.ed[,2], original.ed[,1])
-  excluding.clade.original <- setNames(excluding.clade.original[,2], excluding.clade.original[,1])
+    original.ed<-ed.calc(tree)$spp
+    original.ed <- setNames(original.ed[,2], original.ed[,1])
+  excluding.clade.original <- original.ed[!names(original.ed) %in% random.clade$tip.label]
   node.name <- which(names(branching.times(tree)) == clade.number)
   node.age <- branching.times(tree)[node.name]
   nasty.bl <- dist.nodes(tree)[clade.number,][clade.number-1]
@@ -138,7 +137,7 @@ get.ed <- function(spp, size)
   imputed.ed<-ed.calc(dropped.tree)$spp
   excluding.clade.imputed <- imputed.ed[-which(imputed.ed == random.clade$tip.label),]  
   imputed.ed <- setNames(imputed.ed[,2], imputed.ed[,1])
-  excluding.clade.imputed <- setNames(excluding.clade.imputed[,2], excluding.clade.imputed[,1])
+    excluding.clade.imputed <- setNames(excluding.clade.imputed[,2], excluding.clade.imputed[,1])
   full.ed.corr <- cor(excluding.clade.original, excluding.clade.imputed)
   focal.ed.corr<-cor(original.ed[random.clade$tip.label], imputed.ed[random.clade$tip.label])
   return(c(full.ed.corr,focal.ed.corr))
