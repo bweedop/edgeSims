@@ -45,7 +45,7 @@ get.clades <- function(spp, size)
     clade.number<-sample(selected.clades, 1)
   }
   random.clade <- extract.clade(tree, clade.number)
-  original.ed<-ed.calc(tree)$spp[,2]
+  original.ed<-ed.calc(tree)$spp
   node.name <- which(names(branching.times(tree)) == clade.number)
   node.age <- branching.times(tree)[node.name]
   nasty.bl <- dist.nodes(tree)[clade.number,][clade.number-1]
@@ -69,8 +69,8 @@ get.clades <- function(spp, size)
       r<-bind.replace(dropped.tree, donor.clade, tip)
       dropped.tree<-r})
 }
-  imputed.ed<-ed.calc(dropped.tree)$spp[,2]
-  ed.corr<-cor(original.ed, imputed.ed)
+  imputed.ed<-ed.calc(dropped.tree)$spp
+  ed.corr<-cor(original.ed[2], imputed.ed[2])
   return(c(nasty.bl,node.age,gamma,ed.corr))
 }
 
@@ -112,12 +112,12 @@ get.ed <- function(spp, size)
   #Getting the spp of the focal clade so that the ED values of these spp can be selected out of 
     #original.ed and imputed.ed.
   original.ed<-ed.calc(tree)$spp
+  excluding.clade.original <- original.ed[-which(original.ed == random.clade$tip.label),]
   original.ed <- setNames(original.ed[,2], original.ed[,1])
+  excluding.clade.original <- setNames(excluding.clade.original[,2], excluding.clade.original[,1])
   node.name <- which(names(branching.times(tree)) == clade.number)
   node.age <- branching.times(tree)[node.name]
   nasty.bl <- dist.nodes(tree)[clade.number,][clade.number-1]
-  gammatree<-ltt(tree, plot = FALSE, gamma = FALSE)
-  gamma <- gammatest(gammatree)$gamma
   
   dropped.tree<-drop.tip(tree, sample(random.clade$tip.label, length(random.clade$tip.label)-1))
   
@@ -134,15 +134,18 @@ get.ed <- function(spp, size)
       r<-bind.replace(dropped.tree, donor.clade, tip)
       dropped.tree<-r})
   }
+
   imputed.ed<-ed.calc(dropped.tree)$spp
+  excluding.clade.imputed <- imputed.ed[-which(imputed.ed == random.clade$tip.label),]  
   imputed.ed <- setNames(imputed.ed[,2], imputed.ed[,1])
-  full.ed.corr <- cor(original.ed[tree$tip.label], imputed.ed[tree$tip.label])
-  focal.ed.corr<-cor(original.ed[focal.clade.spp], imputed.ed[focal.clade.spp])
+  excluding.clade.imputed <- setNames(excluding.clade.imputed[,2], excluding.clade.imputed[,1])
+  full.ed.corr <- cor(excluding.clade.original, excluding.clade.imputed)
+  focal.ed.corr<-cor(original.ed[random.clade$tip.label], imputed.ed[random.clade$tip.label])
   return(c(full.ed.corr,focal.ed.corr))
 }
 
 
-multiple.wrapper<-function(n.spp= c(64, 128, 256, 512, 1024), clade.size=c(2, 3, 4, 8, 16), reps = 100){
+multiple.wrapper<-function(n.spp= c(64, 128, 256, 512, 1024), clade.size=c(3, 4, 8, 16), reps = 100){
     data <- expand.grid(n.spp=n.spp, clade.size=clade.size, reps=1:reps, full.ed=NA, focal.ed=NA)
     for(i in seq_len(nrow(data))){
         temp.vec <- get.ed(data$n.spp[i], data$clade.size[i])
