@@ -135,9 +135,8 @@ get.ed <- function(spp, size)
   }
 
   imputed.ed<-ed.calc(dropped.tree)$spp
-  excluding.clade.imputed <- imputed.ed[-which(imputed.ed == random.clade$tip.label),]  
   imputed.ed <- setNames(imputed.ed[,2], imputed.ed[,1])
-    excluding.clade.imputed <- setNames(excluding.clade.imputed[,2], excluding.clade.imputed[,1])
+  excluding.clade.imputed <- imputed.ed[!names(imputed.ed) %in% random.clade$tip.label]
   full.ed.corr <- cor(excluding.clade.original, excluding.clade.imputed)
   focal.ed.corr<-cor(original.ed[random.clade$tip.label], imputed.ed[random.clade$tip.label])
   return(c(full.ed.corr,focal.ed.corr))
