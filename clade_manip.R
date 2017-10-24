@@ -122,7 +122,7 @@ get.ed <- function(spp, size)
             original.clade.branches, imputed.clade.branches, error.rate, ranking.error))
 }
 
-wrapper<-function(n.spp=c(64, 128, 256, 512, 1024), clade.size=c(3, 4, 8, 16), reps = 100)
+wrapper<-function(n.spp=c(64, 128, 256, 512, 1024), clade.size=c(3, 4, 8, 12, 16), reps = 100)
 {
     data <- expand.grid(n.spp = n.spp, clade.size = clade.size, reps=1:reps)
     sim.wrap <- function(x)
