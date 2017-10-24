@@ -15,7 +15,6 @@ find.clade <- function(tree, tips)
   return(unname(which.min(sums)))
 }
 
-
 bind.replace <- function(backbone, donor, replacing.tip.label)
 {
   size <- max(branching.times(donor))
@@ -106,7 +105,7 @@ get.ed <- function(spp, size)
   imputed.clade.branches <- sum(donor.clade$edge.length)
   original.clade.branches <- sum(random.clade$edge.length)
 
-  full.ranking.compare <- sum(abs(original.ed.ranking$ED - imputed.ed.ranking$ED))/((spp-size)/size)
+  ranking.error <- sum(abs(original.ed.ranking$ED - imputed.ed.ranking$ED))/(size)
   error.params <- c(50,100,200,0.05*spp,0.1*spp,0.2*spp)
   error.rate <- NA
   for (i in error.params){
@@ -120,7 +119,7 @@ get.ed <- function(spp, size)
   return(c(full.ed.corr, focal.ed.corr, original.gamma, imputed.gamma, original.lambda, imputed.lambda, 
             original.colless, imputed.colless, original.kurtosis, imputed.kurtosis, original.skew, imputed.skew, 
             original.sd, imputed.sd, imputed.clade.lambda, original.clade.lambda, original.branches, imputed.branches,
-            original.clade.branches, imputed.clade.branches, error.rate))
+            original.clade.branches, imputed.clade.branches, error.rate, ranking.error))
 }
 
 wrapper<-function(n.spp=c(64, 128, 256, 512, 1024), clade.size=c(3, 4, 8, 16), reps = 100)
@@ -131,7 +130,12 @@ wrapper<-function(n.spp=c(64, 128, 256, 512, 1024), clade.size=c(3, 4, 8, 16), r
     
     output <- do.call(rbind, mcMap(sim.wrap, seq_len(nrow(data)), mc.cores=12))
     data <- cbind(data, output)
-    names(data)[-1:-3] <- c("full.ed", "focal.ed", " original.gamma", "imputed.gamma", "original.lambda", "imputed.lambda", " original.colless", "imputed.colless", "original.kurtosis", "imputed.kurtosis", "original.skew", "imputed.skew", "original.sd", "imputed.sd", "original.branches", "imputed.branches", "error.rate.50", "error.rate.100 ,error.rate.200", "error.rate.5pct", "error.rate.10pct", "error.rate.20pct")
+    names(data)[-1:-3] <- c("full.ed", "focal.ed", " original.gamma", "imputed.gamma", "original.lambda", "imputed.lambda", 
+                            "original.colless", "imputed.colless", "original.kurtosis", "imputed.kurtosis", "original.skew", 
+                            "imputed.skew", "original.sd", "imputed.sd", "imputed.clade.lambda","original.clade.lambda",
+                            "original.branches", "imputed.branches", "original.clade.branches", "imputed.clade.branches", 
+                            "error.rate.50", "error.rate.100" ,"error.rate.200", "error.rate.5pct", "error.rate.10pct", 
+                            "error.rate.20pct", "ranking.error")
     
     write.table(data, "correlations.txt")
 }
