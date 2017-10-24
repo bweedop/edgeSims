@@ -4,6 +4,7 @@ library(pez)
 library(phytools)
 library(moments)
 library(apTreeshape)
+library(parallel)
 
 find.clade <- function(tree, tips)
 {
@@ -124,41 +125,14 @@ get.ed <- function(spp, size)
 
 wrapper<-function(n.spp=c(64, 128, 256, 512, 1024), clade.size=c(3, 4, 8, 16), reps = 100)
 {
-    data <- expand.grid(n.spp = n.spp, clade.size = clade.size, reps=1:reps, full.ed=NA, focal.ed=NA, 
-    original.gamma = NA, imputed.gamma = NA, original.lambda = NA, imputed.lambda = NA,  original.colless = NA, 
-    imputed.colless = NA, original.kurtosis = NA, imputed.kurtosis = NA, original.skew = NA, imputed.skew = NA, 
-    original.sd = NA, imputed.sd = NA, original.branches = NA, imputed.branches = NA, error.rate.50 = NA, 
-    error.rate.100 = NA ,error.rate.200 = NA, error.rate.5pct = NA, error.rate.10pct = NA, error.rate.20pct = NA)
-    for(i in seq_len(nrow(data))){
-        temp.vec <- get.ed(data$n.spp[i], data$clade.size[i])
-        data$full.ed[i] <- temp.vec[1]
-        data$focal.ed[i] <- temp.vec[2]
-        data$original.gamma[i] <- temp.vec[3]
-        data$imputed.gamma[i] <- temp.vec[4]
-        data$original.lambda[i] <- temp.vec[5]
-        data$imputed.lambda[i] <- temp.vec[6]
-        data$original.colless[i] <- temp.vec[7]
-        data$imputed.colless[i] <- temp.vec[8]
-        data$original.kurtosis[i] <- temp.vec[9]
-        data$imputed.kurtosis[i] <- temp.vec[10]
-        data$original.skew[i] <- temp.vec[11]
-        data$imputed.skew[i] <- temp.vec[12]
-        data$original.sd[i] <- temp.vec[13]
-        data$imputed.sd[i] <- temp.vec[14]
-        data$imputed.clade.lambda[i] <- temp.vec[15]
-        data$original.clade.lambda[i] <- temp.vec[16]
-        data$original.branches[i] <- temp.vec[17]
-        data$imputed.branches[i] <- temp.vec[18]
-        data$original.clade.branches[i] <- temp.vec[19]
-        data$imputed.clade.branches[i] <- temp.vec[20]
-        data$error.rate.50[i] <- temp.vec[21]
-        data$error.rate.100[i] <- temp.vec[22]
-        data$error.rate.200[i] <- temp.vec[23]
-        data$error.rate.5pct[i] <- temp.vec[24]
-        data$error.rate.10pct[i] <- temp.vec[25]
-        data$error.rate.20pct[i] <- temp.vec[26]
-    }
-
+    data <- expand.grid(n.spp = n.spp, clade.size = clade.size, reps=1:reps)
+    sim.wrap <- function(x)
+        return(get.ed(data$n.spp[x], data$clade.size[x]))
+    
+    output <- do.call(rbind, mcMap(sim.wrap, seq_len(nrow(data)), mc.cores=12))
+    data <- cbind(data, output)
+    names(data)[-1:-3] <- c("full.ed", "focal.ed", " original.gamma", "imputed.gamma", "original.lambda", "imputed.lambda", " original.colless", "imputed.colless", "original.kurtosis", "imputed.kurtosis", "original.skew", "imputed.skew", "original.sd", "imputed.sd", "original.branches", "imputed.branches", "error.rate.50", "error.rate.100 ,error.rate.200", "error.rate.5pct", "error.rate.10pct", "error.rate.20pct")
+    
     write.table(data, "correlations.txt")
 }
 
