@@ -130,7 +130,7 @@ wrapper<-function(n.spp=floor(2^seq(7,10,0.2)), clade.size=seq(3,16), reps = 100
     
     output <- do.call(rbind, mcMap(sim.wrap, seq_len(nrow(data)), mc.cores=12))
     data <- cbind(data, output)
-    names(data)[-1:-3] <- c("full.ed", "focal.ed", " original.gamma", "imputed.gamma", "original.lambda", "imputed.lambda", 
+    names(data)[-1:-3] <- c("full.ed", "focal.ed", "original.gamma", "imputed.gamma", "original.lambda", "imputed.lambda", 
                             "original.colless", "imputed.colless", "original.kurtosis", "imputed.kurtosis", "original.skew", 
                             "imputed.skew", "original.sd", "imputed.sd", "imputed.clade.lambda","original.clade.lambda",
                             "original.branches", "imputed.branches", "original.clade.branches", "imputed.clade.branches", 
