@@ -108,8 +108,8 @@ get.ed <- function(spp, size)
   ranking.error <- sum(abs(original.ed.ranking$ED - imputed.ed.ranking$ED))/(size)
   error.params <- c(50,100,200,0.05*spp,0.1*spp,0.2*spp)
   error.rate <- NA
-  for (i in error.params){
-    error.rate[which(error.params == i)] <- sum(!(imputed.ed.ranking$species[1:i] %in% original.ed.ranking$species[1:i]))/i
+  for (param in error.params){
+    error.rate[which(error.params == param)] <- sum(!(imputed.ed.ranking$species[1:param] %in% original.ed.ranking$species[1:param]))/param
   }
 
   excluding.clade.imputed <- imputed.ed[!names(imputed.ed) %in% random.clade$tip.label]
@@ -122,7 +122,7 @@ get.ed <- function(spp, size)
             original.clade.branches, imputed.clade.branches, error.rate, ranking.error))
 }
 
-wrapper<-function(n.spp=c(64, 128, 256, 512, 1024), clade.size=c(3, 4, 8, 12, 16), reps = 100)
+wrapper<-function(n.spp=floor(2^seq(7,10,0.2)), clade.size=seq(3,16), reps = 100)
 {
     data <- expand.grid(n.spp = n.spp, clade.size = clade.size, reps=1:reps)
     sim.wrap <- function(x)
