@@ -51,7 +51,7 @@ get.ed <- function(spp, size)
   focal.clade.spp <- unique(na.omit(as.numeric(unlist(strsplit(unlist(random.clade$tip.label), "[^0-9]+")))))
   
   original.ed<-ed.calc(tree)$spp
-  original.ed.ranking <- original.ed[order(original.ed$ED),]
+  original.ed.ranking <- rank(original.ed$ED)
   original.ed <- setNames(original.ed[,2], original.ed[,1])
   excluding.clade.original <- original.ed[!names(original.ed) %in% random.clade$tip.label]
   node.name <- which(names(branching.times(tree)) == clade.number)
@@ -92,7 +92,7 @@ get.ed <- function(spp, size)
   imputed.gammatree<-ltt(dropped.tree, plot = FALSE, gamma = FALSE)
   imputed.gamma <- gammatest(imputed.gammatree)$gamma
   imputed.ed <- ed.calc(dropped.tree)$spp
-  imputed.ed.ranking <- imputed.ed[order(imputed.ed$ED),]
+  imputed.ed.ranking <- rank(imputed.ed$ED)
   imputed.ed <- setNames(imputed.ed[,2], imputed.ed[,1])
   imputed.kurtosis <- kurtosis(imputed.ed)
   imputed.skew <- skewness(imputed.ed)
@@ -105,7 +105,7 @@ get.ed <- function(spp, size)
   imputed.clade.branches <- sum(donor.clade$edge.length)
   original.clade.branches <- sum(random.clade$edge.length)
 
-  ranking.error <- sum(abs(original.ed.ranking$ED - imputed.ed.ranking$ED))/(size)
+  ranking.error <- sum(abs(original.ed.ranking - imputed.ed.ranking))/(size)
   error.params <- c(50,100,200,0.05*spp,0.1*spp,0.2*spp)
   error.rate <- NA
   for (param in error.params){
@@ -122,13 +122,13 @@ get.ed <- function(spp, size)
             original.clade.branches, imputed.clade.branches, error.rate, ranking.error))
 }
 
-wrapper<-function(n.spp=floor(2^seq(7,10,0.2)), clade.size=seq(3,16), reps = 100)
+wrapper<-function(n.spp=floor(2^seq(7,10,0.2)), clade.size=seq(3,32), reps = 100)
 {
     data <- expand.grid(n.spp = n.spp, clade.size = clade.size, reps=1:reps)
     sim.wrap <- function(x)
         return(get.ed(data$n.spp[x], data$clade.size[x]))
     
-    output <- do.call(rbind, mcMap(sim.wrap, seq_len(nrow(data)), mc.cores=12))
+    output <- do.call(rbind, mcMap(sim.wrap, seq_len(nrow(data)), mc.cores=24))
     data <- cbind(data, output)
     names(data)[-1:-3] <- c("full.ed", "focal.ed", "original.gamma", "imputed.gamma", "original.lambda", "imputed.lambda", 
                             "original.colless", "imputed.colless", "original.kurtosis", "imputed.kurtosis", "original.skew", 
