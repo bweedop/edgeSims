@@ -51,8 +51,8 @@ get.ed <- function(spp, size)
   focal.clade.spp <- unique(na.omit(as.numeric(unlist(strsplit(unlist(random.clade$tip.label), "[^0-9]+")))))
   
   original.ed<-ed.calc(tree)$spp
-  original.ed.ranking <- rank(original.ed$ED)
   original.ed <- setNames(original.ed[,2], original.ed[,1])
+  original.ranking <- sort(rank(original.ed), decreasing = TRUE)
   excluding.clade.original <- original.ed[!names(original.ed) %in% random.clade$tip.label]
   node.name <- which(names(branching.times(tree)) == clade.number)
   
@@ -92,8 +92,8 @@ get.ed <- function(spp, size)
   imputed.gammatree<-ltt(dropped.tree, plot = FALSE, gamma = FALSE)
   imputed.gamma <- gammatest(imputed.gammatree)$gamma
   imputed.ed <- ed.calc(dropped.tree)$spp
-  imputed.ed.ranking <- rank(imputed.ed$ED)
   imputed.ed <- setNames(imputed.ed[,2], imputed.ed[,1])
+  imputed.ranking <- sort(rank(imputed.ed), decreasing = TRUE)
   imputed.kurtosis <- kurtosis(imputed.ed)
   imputed.skew <- skewness(imputed.ed)
   imputed.sd <- sd(imputed.ed)
@@ -105,11 +105,13 @@ get.ed <- function(spp, size)
   imputed.clade.branches <- sum(donor.clade$edge.length)
   original.clade.branches <- sum(random.clade$edge.length)
 
-  ranking.error <- sum(abs(original.ed.ranking - imputed.ed.ranking))/(size)
+  ranking.error <- sum(abs(original.ranking[random.clade$tip.label]-imputed.ranking[random.clade$tip.label]))/size
+  ranking.error.sd <- sd(abs(original.ranking[random.clade$tip.label]-imputed.ranking[random.clade$tip.label]))
+
   error.params <- c(50,100,200,0.05*spp,0.1*spp,0.2*spp)
   error.rate <- NA
   for (param in error.params){
-    error.rate[which(error.params == param)] <- sum(!(imputed.ed.ranking$species[1:param] %in% original.ed.ranking$species[1:param]))/param
+    error.rate[which(error.params == param)] <- sum(!(imputed.ranking[1:param] %in% original.ranking[1:param]))/param
   }
 
   excluding.clade.imputed <- imputed.ed[!names(imputed.ed) %in% random.clade$tip.label]
@@ -119,7 +121,7 @@ get.ed <- function(spp, size)
   return(c(full.ed.corr, focal.ed.corr, original.gamma, imputed.gamma, original.lambda, imputed.lambda, 
             original.colless, imputed.colless, original.kurtosis, imputed.kurtosis, original.skew, imputed.skew, 
             original.sd, imputed.sd, imputed.clade.lambda, original.clade.lambda, original.branches, imputed.branches,
-            original.clade.branches, imputed.clade.branches, error.rate, ranking.error))
+            original.clade.branches, imputed.clade.branches, error.rate, ranking.error, ranking.error.sd))
 }
 
 wrapper<-function(n.spp=floor(2^seq(7,10,0.2)), clade.size=seq(3,32), reps = 100)
@@ -135,7 +137,7 @@ wrapper<-function(n.spp=floor(2^seq(7,10,0.2)), clade.size=seq(3,32), reps = 100
                             "imputed.skew", "original.sd", "imputed.sd", "imputed.clade.lambda","original.clade.lambda",
                             "original.branches", "imputed.branches", "original.clade.branches", "imputed.clade.branches", 
                             "error.rate.50", "error.rate.100" ,"error.rate.200", "error.rate.5pct", "error.rate.10pct", 
-                            "error.rate.20pct", "ranking.error")
+                            "error.rate.20pct", "ranking.error", "ranking.error.sd")
     
     write.table(data, "correlations.txt")
 }
