@@ -1,0 +1,323 @@
+\documentclass[12pt,english]{article}
+\usepackage[utf8]{inputenc}
+\markright{Pearse et al.\hfill Building up biogeography: pattern to process\hfill}
+\usepackage{geometry}
+\geometry{verbose,letterpaper,tmargin=2.54cm,bmargin=2.54cm,lmargin=2.54cm,rmargin=2.54cm}
+%\geometry{verbose,letterpaper,tmargin=.1cm,bmargin=.1cm,lmargin=.1cm,rmargin=.1cm}
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage{amssymb,amsmath}
+\usepackage{epstopdf}
+\usepackage{supertabular}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\usepackage{url}
+\usepackage{subcaption}
+\usepackage[super]{nth}
+\usepackage{lineno} \linenumbers
+\usepackage[doublespacing]{setspace}
+\usepackage[parfill]{parskip}
+\setlength{\parindent}{0pt}
+\usepackage[citestyle=authoryear,bibstyle=authoryear,sorting=nyt,maxcitenames=2,maxbibnames=10,minbibnames=6,doi=false,url=false,isbn=false,firstinits=true,uniquename=false,uniquelist=false]{biblatex}
+\addbibresource{edge_sims.bib}
+\renewbibmacro*{name:andothers}{% Based on name:andothers from biblatex.def
+  \ifboolexpr{
+    test {\ifnumequal{\value{listcount}}{\value{liststop}}}
+    and
+    test \ifmorenames
+  }
+    {\ifnumgreater{\value{liststop}}{1}
+       {\finalandcomma}
+       {}%
+     \andothersdelim\bibstring[]{andothers}}
+    {}}
+\renewcommand*{\finalnamedelim}{%
+  \ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}%
+  \addspace\&\space}
+\renewbibmacro{in:}{}
+\AtEveryBibitem{%
+  \clearfield{day}%
+  \clearfield{month}%
+  \clearfield{endday}%
+  \clearfield{endmonth}%
+}
+\DeclareFieldFormat[article]{citetitle}{#1}
+\DeclareFieldFormat[article]{title}{#1}
+\DeclareFieldFormat[article]{pages}{#1}
+\DeclareNameAlias{sortname}{last-first}
+
+\usepackage{changes}
+\setdeletedmarkup{\textcolor{red}{\sout{#1}}}
+
+\begin{document}
+\setlength{\parindent}{0pt}
+\section*{Title page}
+\textbf{Article type}: Perspectives
+
+\textbf{Article title}: Building up biogeography: pattern to process
+
+\textbf{Running head}: Building up biogeography: pattern to process
+
+\textbf{Authors:} William D.\ Pearse$^{1*}$, A. M\'{a}rcia
+Barbosa$^2$, Susanne A. Fritz$^3$, Sally A.\ Keith$^4$, Luke J.
+Harmon$^5$, John Harte$^6$, Daniele Silvestro$^7$, Xiao Xiao$^8$, \&
+T.\ Jonathan Davies$^{9*}$\
+
+$^1$ Department of Biology \& Ecology Center, Utah State University,
+5305 Old Main Hill, Logan UT, 84322
+
+$^2$CIBIO/InBIO, Universidade de \'{E}vora, 7004-516 \'{E}vora,
+Portugal
+
+$^3$Senckenberg Biodiversity and Climate Research Centre (BiK-F),
+Senckenberg Gesellschaft f\"{u}r Naturforschung, Senckenberganlage 25,
+60325 Frankfurt, Germany \\Institute of Ecology, Evolution and
+Diversity, Goethe University, Max-von-Laue-Str. 13, 60438 Frankfurt
+(Main), Germany
+
+$^4$Center for Macroecology, Evolution \& Climate, Natural History
+Museum of Denmark, University of Copenhagen, Copenhagen 2100, Denmark.
+\\Lancaster Environment Centre, Lancaster University, Lancaster, LA1
+4YQ, UK
+
+$^5$Department of Biological Sciences, University of Idaho, 875
+Perimeter Lane, MS 3051, Moscow, ID 83843 USA
+
+$^6$The Energy and Resources Group, The University of California at
+Berkeley, Berkeley, CA 94720
+
+$^7$Department of Biological and Environmental Sciences, University of
+Gothenburg, Carl Skottsbergs gata 22B, Gothenburg 413 19, Sweden
+\\Gothenburg Global Biodiversity Centre, Box 461, SE-405 30
+Gothenburg, Sweden \\Department of Computational Biology, University
+of Lausanne, 1015 Lausanne, Switzerland
+
+$^8$School of Biology and Ecology, and Senator George J. Mitchell
+Center for Sustainability Solutions, University of Maine, Orono ME
+04469
+
+$^9$ Department of Biology, McGill University, Montr\'{e}al, QC,
+Canada
+
+$^*$To whom correspondence should be addressed:
+\url{will.pearse@usu.edu} and \url{j.davies@mcgill.ca}
+
+\textbf{Word-count}: 5680 (abstract, main text, acknowledgements, and references)
+
+\clearpage
+\section*{Abstract}
+
+Some text here.
+
+\textbf{Keywords}: 
+
+\clearpage
+\section*{Introduction}
+Evidence from the fossil record and present-day studies argue we are
+in the midst of, or entering, a sixth mass extinction (Barnosky et
+al. 2011; Ceballos et al. 2015), such that more species than ever are
+declining and/or in danger of extinction across a range of
+environments \autocite{Wake2008,Thomas2004}. Habitat destruction
+\autocite{Brooks2002}, invasive species
+\autocite{Miller1989,Molnar2008}, climate change
+\autocite{Pounds2006}, and disease \autocite{Lips2006} are some of
+the leading causes of species declines globally. Conservation
+biologists seeks to overcome these declines and their detrimental
+effects on species populations. Even still, such researchers and
+conservationists are confronted with ``Noah's Ark problem''
+\autocite{Weitzman1998}, or an unfortunate reality of insufficient,
+finite resources to confront the increasing amount species requiring
+conservation effort.
+
+Conservation triage has provided an efficient decision making process
+for allocating finite resources to obtain the greatest return
+\autocite{Bottrill2008}. One of these triage strategies which have been
+introduced and used most widely is EDGE \autocite{Isaac2006}. This
+method prioritizes species according to two metrics: evolutionary
+distinctiveness (ED) and global endangerment (GE). ED measures
+relative contributions to phylogenetic diversity made by each species
+within a particular clade \autocite{Isaac2006}. Such contributions are
+assessed by quantifying the amount of branch length which is unique to
+each species within the overall phylogeny. GE values are assessed by
+assigning numerical values to each of the World Conservation Union
+(IUCN) Red List Categories. As species become increasingly threatened
+and are placed into more concerning categories (e.g. from Vulnerable
+to Endangered), the GE numerical value increases. Increases in either
+ED or GE place a particular species at a higher priority for
+conservation effort.
+
+In the event of missing DNA or trait data, species are often difficult
+or not able to be placed onto a phylogeny. Even in the face of such
+uncertainty and missing data, it is understandable that conservation
+biologists want to make prioritizations. However, if we are using a
+quantitative method for prioritizing species, we should remain
+consistent even when uncertainty arises. To our knowledge, a proper
+and efficient method for prioritizing species where there is missing
+data is still untested. This issue pertains mainly to the calculation
+of ED than GE. The IUCN has collected data on most major clades, and
+has a strategy for assigning Red Listing values these species which we
+know little information and are considered Data Deficient (DD). IUCN
+and other conservation organizations support focus on DD species just
+the same as Critically Endangered and Endangered species to ensure
+consistency \autocite{Rodrigues2006}. The major area of uncertainty in
+phylogenetic prioritisation is phylogenetic data. In the past, missing
+species data and poorly resolved trees have been addressed using
+imputation (Collen et al. 2011; Isaac et al. 2012; Jetz et
+al. 2014). However, to our knowledge, there has been no systematic
+investigation of the efficacy of such imputation, both in terms of the
+accuracy with which imputed ED values are estimated, and the effect on
+other known species’ scores. Indeed, it is unclear whether any
+significant information on ED is gained by imputing species which
+cannot be placed on the phylogeny. It is also not well understood how
+simply removing missing species, compared to performing imputation,
+would effect ED values. It may be that simply excluding missing
+species may be less intrusive than imputation. In searching for a
+solution for missing species, we may be negatively affecting correct
+ED values and disrupting EDGE rankings in the process. As the desire
+to use ED and phylogenies for conservation triage grows, the
+importance of such tests and a consensus on how to resolve cases of
+phylogenetic uncertainty becomes more urgent.
+
+Here, we assess and compare the impact that missing species versus
+phylogenetic imputation has upon ED values. In doing so, we hope to
+understand the effect that both methods have on ED values and offer a
+viable solution for dealing with missing data species. Missing species
+were simulated and removed from trees in two ways: randomly and in a
+phylogenetically biased manner. Additionally, we tested how ED values
+were affected by resolving and imputing polytomies of varying sizes on
+a phylogeny. We found that ED values are by removing missing
+species. Here is a reference to figure \ref{conceptual}.
+
+\begin{figure}
+  \center
+  \includegraphics[width=\textwidth]{danger will robinson.png}
+  \caption{\textbf{Conceptual overview of the processes involved in
+      the assembly of biogeographical patterns.} Some other stuff.}
+  \label{conceptual}
+\end{figure}
+
+\section*{Methods}
+We attempted to demonstrate the effects of removing or imputing
+species which cannot be placed onto a phylogeny. While assessing the
+impact of dropping species and phylogenetic imputations, we were
+primarily focused on ED values. In testing the effects on these
+values, we remain focused upon ED as a single variable. We exclude GE
+because it would only add complexity while not providing any
+additional information to our particular investigation.
+
+In each test, we simulated 100 phylogenetic trees and manipulated each
+tree’s tips or clade. All simulations, calculations, and analyses were
+performed using R (version 3.4.0). Original and manipulated trees were
+simulated under a pure-birth Yule model using the sim.bdtree function
+‘geiger’ R package (Harmon et al. 2008). This particular model was
+chosen to maintain simplicity. Results from this simple model should
+be applicable to other more complex scenarios. Also, to reduce
+uncertainty, we used the same model throughout each of the
+simulations. In reality, we would be estimating the parameters of the
+model which the phylogeny is built upon. The function ed.calc within
+the R package ‘caper’ was used to calculate ED values for each tree
+(Orne et al. 2015).
+
+We assessed the impact that removing missing species has upon ED
+values using the correlation of all ED values for the tips remaining
+within both trees. To evaluate the effect that imputation has upon ED
+values, we calculated ED for all tips in both the original and
+manipulated trees while excluding the focal clade where imputation has
+occurred. These ED values were compared using a
+correlation. Additionally, we did the same calculations and comparison
+using only the original focal clade and its’ simulated replacement. If
+missing species have no effect upon ED values, we expect a high,
+positive correlation coefficient between the original tree and its’
+manipulated counterpart.
+
+\subsection*{Assessing the impact of missing species on EDGE-listing}
+If missing species has a negative effect on ED values, then the
+correlation between the ED of the species in the original tree and the
+same tree with a fraction of tips removed in some manner should be
+significantly different from 1. To investigate the degree of this
+effect, we removed tips from simulated trees (Number of taxa = 64,
+128, 256, 512, 1024, 2048, 4096) at random and by phylogenetic
+clusters. To assess the effect under varying amounts of uncertainty,
+fractions of tips dropped ranged from 0 to 0.2 of total tree tips.
+
+Missing species at random was simulated by selecting species at random
+without replacing, and removing those species from the tree. This
+randomization had no regard for phylogenetic structure. Missing
+species related by some character trait was tested by simulating
+character trait values for each tip. These simulations were all
+performed under a constant rate Brownian-motion model (par = 0.5,
+starting root value = 1). Tips were dropped if their character trait
+values place them into the upper quantile which had been selected to
+be dropped. More specifically, if the fraction to be dropped was 0.1,
+species within the 90th quantile of character trait values are
+dropped. This is equivalent to Felsenstein’s threshold model
+(Felsenstein 2004).
+
+\subsection*{Assessing the impact of phylogenetic imputations}
+We tested the impact of imputing missing species onto a clade of a
+particular size (Number of taxa = 2, 3, 4, 8, 16) which originated
+from a tree of a particular size (Number of taxa = 64, 128, 256, 512,
+1024). To simulate the effect that phylogenetic imputation has upon
+these simulated trees, we randomly chose clades within each tree and
+treated it as a polytomy to be resolved. The clade selected was
+removed from the original tree and a new separate tree of the same
+size was simulated under the pure-birth model used before and placed
+back where the original clade was removed. By doing this , we
+replicated the process of imputation of a clade which has been
+resolved. To ensure that this is representative of cases where
+imputation is used, 100 repetitions of this simulation were performed
+across different parameter settings.
+
+\section*{Results}
+\subsection*{Assessing the impact of missing species on EDGE-listing}
+
+ED values for remaining species were significantly affected by the
+fraction of species which were removed (Table 1). However, different
+effects are seen when dropping species at random and in clustered
+manner (Figure 1). Dropping species at random has a reduced effect
+when compared to the effect which dropping species in a clustered
+manner has on remaining ED values.
+
+\subsection*{Assessing the impact of phylogenetic imputations}
+
+ED values for the full tree while excluding the focal clade remain at
+1 and unaffected. However, ED values for the imputed clades are
+significantly affected by the use of imputation. As the size of the
+focal clade increases, the effect which imputation has on ED values
+within the clade increases (Table 2). Two regression models were ran
+on both the positive and negative r-values to show the trend toward an
+r-value of 0 (Figure 2). A full regression model of r-values against
+the number of species at the focal clade shows no relationship (Table
+S1).
+
+
+
+\section*{Discussion}
+Some text here.
+
+\section*{Acknowledgments}
+We are grateful to the International Biogeography Society for funding
+and organizing the 2017 symposium at their annual meeting that this
+article summarizes, and to the editor (Peter Linder) for encouraging
+us to submit this summary. We are grateful to all who attended the
+symposium, and in particular James Albert. BG Waring provided useful
+feedback, as did two anonymous reviewers and Juliano Sarmento
+Cabral. AMB is supported by FCT (Portugal) and by FEDER/COMPETE 2020
+through contract IF/00266/2013, exploratory project CP1168/CT0001, and
+funds POCI-01-0145-FEDER-006821 to research unit UID/BIA/50027.  SAK
+is supported by the VILLUM Foundation (grant number 10114) and the
+Danish National Research Foundation through support to the Center for
+Macroecology, Evolution and Climate (grant number DNRF96).  LJH is
+supported under a grant from the National Science Foundation (NSF DEB
+1208912).  DS is supported by a grant from the Swedish Research
+Council (2015-04748). SF is supported by the German Research
+Foundation (DFG Emmy Noether grant FR 3246/2-1). TJD is funded by
+\emph{Fonds de Recherche Nature et Technologies} grant number 168004.
+\clearpage
+\printbibliography
+
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
