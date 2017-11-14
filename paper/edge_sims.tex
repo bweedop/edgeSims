@@ -1,6 +1,6 @@
-\documentclass[12pt,english]{article}
+ \documentclass[12pt,english]{article}
 \usepackage[utf8]{inputenc}
-\markright{Pearse et al.\hfill Building up biogeography: pattern to process\hfill}
+\markright{Pearse et al.\hfill Assessing the Effects Imputation on ED Values\hfill}
 \usepackage{geometry}
 \geometry{verbose,letterpaper,tmargin=2.54cm,bmargin=2.54cm,lmargin=2.54cm,rmargin=2.54cm}
 %\geometry{verbose,letterpaper,tmargin=.1cm,bmargin=.1cm,lmargin=.1cm,rmargin=.1cm}
@@ -53,53 +53,17 @@
 \section*{Title page}
 \textbf{Article type}: Perspectives
 
-\textbf{Article title}: Building up biogeography: pattern to process
+\textbf{Article title}: Assessing the Effects Imputation on ED Values
 
-\textbf{Running head}: Building up biogeography: pattern to process
+\textbf{Running head}: Assessing the Effects Imputation on ED Values
 
-\textbf{Authors:} William D.\ Pearse$^{1*}$, A. M\'{a}rcia
-Barbosa$^2$, Susanne A. Fritz$^3$, Sally A.\ Keith$^4$, Luke J.
-Harmon$^5$, John Harte$^6$, Daniele Silvestro$^7$, Xiao Xiao$^8$, \&
-T.\ Jonathan Davies$^{9*}$\
+\textbf{Authors:} K.\ Bodie Weedop$^{1*}$, William D.\ Pearse$^{1*}$\
 
 $^1$ Department of Biology \& Ecology Center, Utah State University,
 5305 Old Main Hill, Logan UT, 84322
 
-$^2$CIBIO/InBIO, Universidade de \'{E}vora, 7004-516 \'{E}vora,
-Portugal
-
-$^3$Senckenberg Biodiversity and Climate Research Centre (BiK-F),
-Senckenberg Gesellschaft f\"{u}r Naturforschung, Senckenberganlage 25,
-60325 Frankfurt, Germany \\Institute of Ecology, Evolution and
-Diversity, Goethe University, Max-von-Laue-Str. 13, 60438 Frankfurt
-(Main), Germany
-
-$^4$Center for Macroecology, Evolution \& Climate, Natural History
-Museum of Denmark, University of Copenhagen, Copenhagen 2100, Denmark.
-\\Lancaster Environment Centre, Lancaster University, Lancaster, LA1
-4YQ, UK
-
-$^5$Department of Biological Sciences, University of Idaho, 875
-Perimeter Lane, MS 3051, Moscow, ID 83843 USA
-
-$^6$The Energy and Resources Group, The University of California at
-Berkeley, Berkeley, CA 94720
-
-$^7$Department of Biological and Environmental Sciences, University of
-Gothenburg, Carl Skottsbergs gata 22B, Gothenburg 413 19, Sweden
-\\Gothenburg Global Biodiversity Centre, Box 461, SE-405 30
-Gothenburg, Sweden \\Department of Computational Biology, University
-of Lausanne, 1015 Lausanne, Switzerland
-
-$^8$School of Biology and Ecology, and Senator George J. Mitchell
-Center for Sustainability Solutions, University of Maine, Orono ME
-04469
-
-$^9$ Department of Biology, McGill University, Montr\'{e}al, QC,
-Canada
-
 $^*$To whom correspondence should be addressed:
-\url{will.pearse@usu.edu} and \url{j.davies@mcgill.ca}
+\url{will.pearse@usu.edu} and \url{bodie.weedop@aggiemail.usu.edu}
 
 \textbf{Word-count}: 5680 (abstract, main text, acknowledgements, and references)
 
@@ -113,12 +77,11 @@ Some text here.
 \clearpage
 \section*{Introduction}
 Evidence from the fossil record and present-day studies argue we are
-in the midst of, or entering, a sixth mass extinction (Barnosky et
-al. 2011; Ceballos et al. 2015), such that more species than ever are
+in the midst of, or entering, a sixth mass extinction \autocite{Barnosky2011; ceballos2015accelerated}, such that more species than ever are
 declining and/or in danger of extinction across a range of
-environments \autocite{Wake2008,Thomas2004}. Habitat destruction
+environments \autocite{wake2008we,thomas2004extinction}. Habitat destruction
 \autocite{Brooks2002}, invasive species
-\autocite{Miller1989,Molnar2008}, climate change
+\autocite{Molnar2008}, climate change
 \autocite{Pounds2006}, and disease \autocite{Lips2006} are some of
 the leading causes of species declines globally. Conservation
 biologists seeks to overcome these declines and their detrimental
@@ -131,11 +94,11 @@ conservation effort.
 Conservation triage has provided an efficient decision making process
 for allocating finite resources to obtain the greatest return
 \autocite{Bottrill2008}. One of these triage strategies which have been
-introduced and used most widely is EDGE \autocite{Isaac2006}. This
+introduced and used most widely is EDGE \autocite{isaac2007mammals}. This
 method prioritizes species according to two metrics: evolutionary
 distinctiveness (ED) and global endangerment (GE). ED measures
 relative contributions to phylogenetic diversity made by each species
-within a particular clade \autocite{Isaac2006}. Such contributions are
+within a particular clade \autocite{isaac2007mammals}. Such contributions are
 assessed by quantifying the amount of branch length which is unique to
 each species within the overall phylogeny. GE values are assessed by
 assigning numerical values to each of the World Conservation Union
@@ -161,8 +124,7 @@ the same as Critically Endangered and Endangered species to ensure
 consistency \autocite{Rodrigues2006}. The major area of uncertainty in
 phylogenetic prioritisation is phylogenetic data. In the past, missing
 species data and poorly resolved trees have been addressed using
-imputation (Collen et al. 2011; Isaac et al. 2012; Jetz et
-al. 2014). However, to our knowledge, there has been no systematic
+imputation \autocite{collen2011investing, isaac2012phylogenetically, jetz2014global}. However, to our knowledge, there has been no systematic
 investigation of the efficacy of such imputation, both in terms of the
 accuracy with which imputed ED values are estimated, and the effect on
 other known species’ scores. Indeed, it is unclear whether any
@@ -208,14 +170,14 @@ In each test, we simulated 100 phylogenetic trees and manipulated each
 tree’s tips or clade. All simulations, calculations, and analyses were
 performed using R (version 3.4.0). Original and manipulated trees were
 simulated under a pure-birth Yule model using the sim.bdtree function
-‘geiger’ R package (Harmon et al. 2008). This particular model was
+‘geiger’ R package \autocite{harmon2007geiger}. This particular model was
 chosen to maintain simplicity. Results from this simple model should
 be applicable to other more complex scenarios. Also, to reduce
 uncertainty, we used the same model throughout each of the
 simulations. In reality, we would be estimating the parameters of the
 model which the phylogeny is built upon. The function ed.calc within
 the R package ‘caper’ was used to calculate ED values for each tree
-(Orne et al. 2015).
+\autocite{orme2013caper}.
 
 We assessed the impact that removing missing species has upon ED
 values using the correlation of all ED values for the tips remaining
@@ -250,7 +212,7 @@ values place them into the upper quantile which had been selected to
 be dropped. More specifically, if the fraction to be dropped was 0.1,
 species within the 90th quantile of character trait values are
 dropped. This is equivalent to Felsenstein’s threshold model
-(Felsenstein 2004).
+\autocite{Felsenstein2004}.
 
 \subsection*{Assessing the impact of phylogenetic imputations}
 We tested the impact of imputing missing species onto a clade of a
@@ -289,28 +251,10 @@ r-value of 0 (Figure 2). A full regression model of r-values against
 the number of species at the focal clade shows no relationship (Table
 S1).
 
-
-
 \section*{Discussion}
 Some text here.
 
 \section*{Acknowledgments}
-We are grateful to the International Biogeography Society for funding
-and organizing the 2017 symposium at their annual meeting that this
-article summarizes, and to the editor (Peter Linder) for encouraging
-us to submit this summary. We are grateful to all who attended the
-symposium, and in particular James Albert. BG Waring provided useful
-feedback, as did two anonymous reviewers and Juliano Sarmento
-Cabral. AMB is supported by FCT (Portugal) and by FEDER/COMPETE 2020
-through contract IF/00266/2013, exploratory project CP1168/CT0001, and
-funds POCI-01-0145-FEDER-006821 to research unit UID/BIA/50027.  SAK
-is supported by the VILLUM Foundation (grant number 10114) and the
-Danish National Research Foundation through support to the Center for
-Macroecology, Evolution and Climate (grant number DNRF96).  LJH is
-supported under a grant from the National Science Foundation (NSF DEB
-1208912).  DS is supported by a grant from the Swedish Research
-Council (2015-04748). SF is supported by the German Research
-Foundation (DFG Emmy Noether grant FR 3246/2-1). TJD is funded by
 \emph{Fonds de Recherche Nature et Technologies} grant number 168004.
 \clearpage
 \printbibliography
