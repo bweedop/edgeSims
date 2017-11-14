@@ -12,13 +12,14 @@
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 \usepackage{url}
 \usepackage{subcaption}
+\usepackage{caption}
 \usepackage[super]{nth}
 \usepackage{lineno} \linenumbers
 \usepackage[doublespacing]{setspace}
 \usepackage[parfill]{parskip}
 \setlength{\parindent}{0pt}
 \usepackage[citestyle=authoryear,bibstyle=authoryear,sorting=nyt,maxcitenames=2,maxbibnames=10,minbibnames=6,doi=false,url=false,isbn=false,firstinits=true,uniquename=false,uniquelist=false]{biblatex}
-\addbibresource{edge_sims.bib}
+\bibliography{edge_sims}
 \renewbibmacro*{name:andothers}{% Based on name:andothers from biblatex.def
   \ifboolexpr{
     test {\ifnumequal{\value{listcount}}{\value{liststop}}}
@@ -77,9 +78,9 @@ Some text here.
 \clearpage
 \section*{Introduction}
 Evidence from the fossil record and present-day studies argue we are
-in the midst of, or entering, a sixth mass extinction \autocite{Barnosky2011; ceballos2015accelerated}, such that more species than ever are
+in the midst of, or entering, a sixth mass extinction \autocite{Barnosky2011; Ceballos2015}, such that more species than ever are
 declining and/or in danger of extinction across a range of
-environments \autocite{wake2008we,thomas2004extinction}. Habitat destruction
+environments \autocite{Wake2008,Thomas2004}. Habitat destruction
 \autocite{Brooks2002}, invasive species
 \autocite{Molnar2008}, climate change
 \autocite{Pounds2006}, and disease \autocite{Lips2006} are some of
@@ -94,11 +95,11 @@ conservation effort.
 Conservation triage has provided an efficient decision making process
 for allocating finite resources to obtain the greatest return
 \autocite{Bottrill2008}. One of these triage strategies which have been
-introduced and used most widely is EDGE \autocite{isaac2007mammals}. This
+introduced and used most widely is EDGE \autocite{Isaac2007}. This
 method prioritizes species according to two metrics: evolutionary
 distinctiveness (ED) and global endangerment (GE). ED measures
 relative contributions to phylogenetic diversity made by each species
-within a particular clade \autocite{isaac2007mammals}. Such contributions are
+within a particular clade \autocite{Isaac2007}. Such contributions are
 assessed by quantifying the amount of branch length which is unique to
 each species within the overall phylogeny. GE values are assessed by
 assigning numerical values to each of the World Conservation Union
@@ -124,7 +125,7 @@ the same as Critically Endangered and Endangered species to ensure
 consistency \autocite{Rodrigues2006}. The major area of uncertainty in
 phylogenetic prioritisation is phylogenetic data. In the past, missing
 species data and poorly resolved trees have been addressed using
-imputation \autocite{collen2011investing, isaac2012phylogenetically, jetz2014global}. However, to our knowledge, there has been no systematic
+imputation \autocite{Collen2011, Isaac2012, Jetz2014}. However, to our knowledge, there has been no systematic
 investigation of the efficacy of such imputation, both in terms of the
 accuracy with which imputed ED values are estimated, and the effect on
 other known species’ scores. Indeed, it is unclear whether any
@@ -147,15 +148,7 @@ were simulated and removed from trees in two ways: randomly and in a
 phylogenetically biased manner. Additionally, we tested how ED values
 were affected by resolving and imputing polytomies of varying sizes on
 a phylogeny. We found that ED values are by removing missing
-species. Here is a reference to figure \ref{conceptual}.
-
-\begin{figure}
-  \center
-  \includegraphics[width=\textwidth]{danger will robinson.png}
-  \caption{\textbf{Conceptual overview of the processes involved in
-      the assembly of biogeographical patterns.} Some other stuff.}
-  \label{conceptual}
-\end{figure}
+species. Here is a reference to figure.
 
 \section*{Methods}
 We attempted to demonstrate the effects of removing or imputing
@@ -170,14 +163,14 @@ In each test, we simulated 100 phylogenetic trees and manipulated each
 tree’s tips or clade. All simulations, calculations, and analyses were
 performed using R (version 3.4.0). Original and manipulated trees were
 simulated under a pure-birth Yule model using the sim.bdtree function
-‘geiger’ R package \autocite{harmon2007geiger}. This particular model was
+‘geiger’ R package \autocite{Harmon2007}. This particular model was
 chosen to maintain simplicity. Results from this simple model should
 be applicable to other more complex scenarios. Also, to reduce
 uncertainty, we used the same model throughout each of the
 simulations. In reality, we would be estimating the parameters of the
 model which the phylogeny is built upon. The function ed.calc within
 the R package ‘caper’ was used to calculate ED values for each tree
-\autocite{orme2013caper}.
+\autocite{Orme2013}.
 
 We assessed the impact that removing missing species has upon ED
 values using the correlation of all ED values for the tips remaining
@@ -229,6 +222,39 @@ resolved. To ensure that this is representative of cases where
 imputation is used, 100 repetitions of this simulation were performed
 across different parameter settings.
 
+\begin{figure}[!ht]
+  \center
+  \includegraphics[width=\textwidth]{randomVsCluster.png}
+  \caption{\textbf{R-values plotted against the fraction of species 
+  dropped at random versus clustered manner.} The color of data points denote 
+  whether species were dropped at random (black; n = 100) or in clustered manner 
+  (red; n = 100). The regression lines are demonstrating the relationship when 
+  species are dropped at random (red) and in a clustered manner (black).}
+  \label{randomVsClustered}
+\end{figure}
+
+\begin{figure}[!ht]
+  \center
+  \includegraphics[width=\textwidth]{edModel.png}
+  \caption{\textbf{R-values plotted against the number of species at focal clade.} 
+  Each data point denotes a correlative comparison between ED values within the focal 
+  clades where imputation has occurred. The regression line (red) and trend even closer to zero 
+  demonstrates the decrease in informative value of the imputed ED values. This is reinforced 
+  by the visual narrowing of r-values around zero.}
+  \label{imputationTrend}
+\end{figure}
+
+\begin{figure}[!ht]
+  \center
+  \includegraphics[width=\textwidth]{rankingError.png}
+  \caption{\textbf{Mean ranking error of species within the focal clade.} The 
+  gradient on the right demonstrates average number of posistions within the 
+  full ranking that focal clade species shifted from their true rank.
+  While controlling for the size of the full phylogeny and focal clade, species 
+  within the focal clade were, on average, ranked far from the true rank. }
+  \label{rankingError}
+\end{figure}
+
 \section*{Results}
 \subsection*{Assessing the impact of missing species on EDGE-listing}
 
@@ -237,25 +263,51 @@ fraction of species which were removed (Table 1). However, different
 effects are seen when dropping species at random and in clustered
 manner (Figure 1). Dropping species at random has a reduced effect
 when compared to the effect which dropping species in a clustered
-manner has on remaining ED values.
+manner has on remaining ED values\ref{randomVsClustered}.
 
 \subsection*{Assessing the impact of phylogenetic imputations}
 
 ED values for the full tree while excluding the focal clade remain at
 1 and unaffected. However, ED values for the imputed clades are
 significantly affected by the use of imputation. As the size of the
-focal clade increases, the effect which imputation has on ED values
-within the clade increases (Table 2). Two regression models were ran
-on both the positive and negative r-values to show the trend toward an
-r-value of 0 (Figure 2). A full regression model of r-values against
-the number of species at the focal clade shows no relationship (Table
-S1).
+focal clade increases, the informative value of the ED values within the clade 
+decreases (Fig. 2)\ref{imputationTrend}. However, even when imputing smaller 
+clades, ED values did not regularly reflect the true ED values (Table 2)\ref{imputationModel}.
+Additionally, just as imputed ED values did not reflect true ED values, the rankings
+of species within the focal clade were altered significantly (Fig. 3)\ref{rankingError}.
+ED values outside of the focal clade were not affected by imputation.
+While ED values within the focal clades were affected exclusively by imputation, 
+a notable error rate in ranking crucial species correctly is present 
+(Fig. 1-6S).  
+
+
+\begin{table}[ht] 
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
+  \hline
+ (Intercept) & 0.1914 & 0.0040 & 48.32 & 0.0000 \\
+   clade.size & -0.0036 & 0.0002 & -17.67 & 0.0000 \\
+  \hline
+  R$^{2}$ & 0.006 \\
+  Residual Std. Error & 0.385 (df = 47998) \\
+  F Statistic & 312.170$^{***}$ (df = 1; 47998) \\
+  \hline
+  \hline
+\textit{Note:}  & \multicolumn{1}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+\end{tabular}
+\caption*{\textbf{Table 2: Effect of Clade Size on Imputed ED Values.} The 
+intercept describes that the correlation between the true and imputed values 
+begins quite low. As the clade size increases, this correlation only tends
+toward zero.}
+\end{table}
 
 \section*{Discussion}
 Some text here.
 
 \section*{Acknowledgments}
-\emph{Fonds de Recherche Nature et Technologies} grant number 168004.
+\emph{Some text here if needed}.
 \clearpage
 \printbibliography
 
