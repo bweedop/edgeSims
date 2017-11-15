@@ -8,6 +8,8 @@
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 \usepackage{amssymb,amsmath}
 \usepackage{epstopdf}
+\usepackage{tocbibind}
+\usepackage[toc,page]{appendix}
 \usepackage{supertabular}
 \DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
 \usepackage{url}
@@ -52,13 +54,12 @@
 \begin{document}
 \setlength{\parindent}{0pt}
 \section*{Title page}
-\textbf{Article type}: Perspectives
 
 \textbf{Article title}: Assessing the Effects Imputation on ED Values
 
 \textbf{Running head}: Assessing the Effects Imputation on ED Values
 
-\textbf{Authors:} K.\ Bodie Weedop$^{1*}$, William D.\ Pearse$^{1*}$\
+\textbf{Authors:} K.\ Bodie Weedop$^{1}$, William D.\ Pearse$^{1}$\
 
 $^1$ Department of Biology \& Ecology Center, Utah State University,
 5305 Old Main Hill, Logan UT, 84322
@@ -71,14 +72,13 @@ $^*$To whom correspondence should be addressed:
 \clearpage
 \section*{Abstract}
 
-Some text here.
 
 \textbf{Keywords}: 
 
 \clearpage
 \section*{Introduction}
 Evidence from the fossil record and present-day studies argue we are
-in the midst of, or entering, a sixth mass extinction \autocite{Barnosky2011; Ceballos2015}, such that more species than ever are
+in the midst of, or entering, a sixth mass extinction \autocite{Barnosky2011, Ceballos2015}, such that more species than ever are
 declining and/or in danger of extinction across a range of
 environments \autocite{Wake2008,Thomas2004}. Habitat destruction
 \autocite{Brooks2002}, invasive species
@@ -86,7 +86,7 @@ environments \autocite{Wake2008,Thomas2004}. Habitat destruction
 \autocite{Pounds2006}, and disease \autocite{Lips2006} are some of
 the leading causes of species declines globally. Conservation
 biologists seeks to overcome these declines and their detrimental
-effects on species populations. Even still, such researchers and
+effects on species populations. Even still, researchers and
 conservationists are confronted with ``Noah's Ark problem''
 \autocite{Weitzman1998}, or an unfortunate reality of insufficient,
 finite resources to confront the increasing amount species requiring
@@ -209,7 +209,7 @@ dropped. This is equivalent to Felsenstein’s threshold model
 
 \subsection*{Assessing the impact of phylogenetic imputations}
 We tested the impact of imputing missing species onto a clade of a
-particular size (Number of taxa = 2, 3, 4, 8, 16) which originated
+particular size (sizes 3 through 32) which originated
 from a tree of a particular size (Number of taxa = 64, 128, 256, 512,
 1024). To simulate the effect that phylogenetic imputation has upon
 these simulated trees, we randomly chose clades within each tree and
@@ -222,20 +222,69 @@ resolved. To ensure that this is representative of cases where
 imputation is used, 100 repetitions of this simulation were performed
 across different parameter settings.
 
-\begin{figure}[!ht]
-  \center
-  \includegraphics[width=\textwidth]{randomVsCluster.png}
-  \caption{\textbf{R-values plotted against the fraction of species 
-  dropped at random versus clustered manner.} The color of data points denote 
-  whether species were dropped at random (black; n = 100) or in clustered manner 
-  (red; n = 100). The regression lines are demonstrating the relationship when 
-  species are dropped at random (red) and in a clustered manner (black).}
-  \label{randomVsClustered}
-\end{figure}
+\section*{Results}
+\subsection*{Assessing the impact of missing species on EDGE-listing}
+
+ED values for remaining species were significantly affected by the
+fraction of species which were removed (Table 1). However, different
+effects are seen when dropping species at random and in clustered
+manner (Fig. \ref{randomVsClustered}). Dropping species at random has a reduced effect
+when compared to the effect which dropping species in a clustered
+manner has on remaining ED values (Fig. \ref{randomVsClustered}).
 
 \begin{figure}[!ht]
   \center
-  \includegraphics[width=\textwidth]{edModel.png}
+  \includegraphics[width=.5\textwidth]{randomVsCluster.png}
+  \caption{\textbf{R-values plotted against the fraction of species 
+  dropped at random versus clustered manner.} The color of data points denote 
+  whether species were dropped at random (orange; n = 100) or in clustered 
+  manner (grey; n = 100). The regression lines are demonstrating the relationship 
+  when species are dropped at random (black) and in a clustered manner (red).}
+  \label{randomVsClustered}
+\end{figure}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{rrrrr}
+    \hline
+   & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
+    \hline
+  (Intercept) & 0.9991 & 0.0003 & 3752.33 & 0.0000 \\
+    Fraction of Species Dropped & -0.3434 & 0.0021 & -164.89 & 0.0000 \\
+    Random Treatment & -0.0004 & 0.0004 & -0.96 & 0.3360 \\
+    Number of Species Overall & 0.0000 & 0.0000 & 0.13 & 0.8932 \\
+    Fraction of Species Dropped:Random Treatment & 0.3129 & 0.0029 & 106.25 & 0.0000 \\
+    Random Treatment:Number of Species Overall & 0.0000 & 0.0000 & 9.20 & 0.0000 \\
+     \hline
+     \hline
+  \end{tabular}
+  \caption*{\textbf{Table 1: ANCOVA model summary describing the effect of 
+  dropping species on remaining species ED Values.} The fraction of species 
+  dropped significantly affects the the remaining ED values. Dropping the 
+  fraction at random had a reduced compared to dropping species in a clustered 
+  manner ($F_{29688, 5}$ = 12090, $R^{2}$ = 0.6706, p$<$0.0001).}
+  \end{table}
+
+\subsection*{Assessing the impact of phylogenetic imputations}
+
+ED values for the full tree while excluding the focal clade remain at
+1 and unaffected. However, ED values for the imputed clades are
+significantly affected by the use of imputation. As the size of the
+focal clade increases, the informative value of the ED values within the clade 
+decreases (Fig. \ref{imputationTrend}). However, even when imputing smaller 
+clades, ED values did not regularly reflect the true ED values (Table 2). 
+Our analysis demonstrates that measures of the original phylogeny such as 
+phylogentic diversity (PD), lambda, Colless' Index, skew, and kurtosis do not provide any 
+indication that imputation would negatively affect ED values (Appendix A). Additionally, just as imputed 
+ED values did not reflect true ED values, the rankings of species within the 
+focal clade were altered significantly (Fig. \ref{rankingError}). ED values 
+outside of the focal clade were not affected by imputation. While ED values 
+within the focal clades were affected exclusively by imputation, a notable 
+error rate in ranking crucial species correctly is present (Appendix B). 
+
+\begin{figure}[!ht]
+  \center
+  \includegraphics[width=.5\textwidth]{edModel.png}
   \caption{\textbf{R-values plotted against the number of species at focal clade.} 
   Each data point denotes a correlative comparison between ED values within the focal 
   clades where imputation has occurred. The regression line (red) and trend even closer to zero 
@@ -246,7 +295,7 @@ across different parameter settings.
 
 \begin{figure}[!ht]
   \center
-  \includegraphics[width=\textwidth]{rankingError.png}
+  \includegraphics[width=.5\textwidth]{rankingError.png}
   \caption{\textbf{Mean ranking error of species within the focal clade.} The 
   gradient on the right demonstrates average number of posistions within the 
   full ranking that focal clade species shifted from their true rank.
@@ -255,62 +304,113 @@ across different parameter settings.
   \label{rankingError}
 \end{figure}
 
-\section*{Results}
-\subsection*{Assessing the impact of missing species on EDGE-listing}
-
-ED values for remaining species were significantly affected by the
-fraction of species which were removed (Table 1). However, different
-effects are seen when dropping species at random and in clustered
-manner (Figure 1). Dropping species at random has a reduced effect
-when compared to the effect which dropping species in a clustered
-manner has on remaining ED values\ref{randomVsClustered}.
-
-\subsection*{Assessing the impact of phylogenetic imputations}
-
-ED values for the full tree while excluding the focal clade remain at
-1 and unaffected. However, ED values for the imputed clades are
-significantly affected by the use of imputation. As the size of the
-focal clade increases, the informative value of the ED values within the clade 
-decreases (Fig. 2)\ref{imputationTrend}. However, even when imputing smaller 
-clades, ED values did not regularly reflect the true ED values (Table 2)\ref{imputationModel}.
-Additionally, just as imputed ED values did not reflect true ED values, the rankings
-of species within the focal clade were altered significantly (Fig. 3)\ref{rankingError}.
-ED values outside of the focal clade were not affected by imputation.
-While ED values within the focal clades were affected exclusively by imputation, 
-a notable error rate in ranking crucial species correctly is present 
-(Fig. 1-6S).  
-
-
 \begin{table}[ht] 
 \centering
 \begin{tabular}{rrrrr}
   \hline
- & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
-  \hline
- (Intercept) & 0.1914 & 0.0040 & 48.32 & 0.0000 \\
-   clade.size & -0.0036 & 0.0002 & -17.67 & 0.0000 \\
-  \hline
-  R$^{2}$ & 0.006 \\
-  Residual Std. Error & 0.385 (df = 47998) \\
-  F Statistic & 312.170$^{***}$ (df = 1; 47998) \\
-  \hline
-  \hline
-\textit{Note:}  & \multicolumn{1}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\
+  & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
+   \hline
+ (Intercept) & 0.1852 & 0.0533 & 3.47 & 0.0005 \\
+   Size of Focal Clade& -0.0034 & 0.0002 & -16.56 & 0.0000 \\
+   Size of Phylogeny& -0.0001 & 0.0001 & -0.41 & 0.6855 \\
+   PD & 0.0001 & 0.0001 & 0.37 & 0.7108 \\
+   Lambda & -0.0012 & 0.0524 & -0.02 & 0.9812 \\
+   Colless' Index & 0.0016 & 0.0022 & 0.72 & 0.4687 \\
+   Skew & 0.0043 & 0.0088 & 0.48 & 0.6288 \\
+   Kurtosis & -0.0005 & 0.0009 & -0.63 & 0.5269 \\
+   \hline
+   \hline
 \end{tabular}
 \caption*{\textbf{Table 2: Effect of Clade Size on Imputed ED Values.} The 
 intercept describes that the correlation between the true and imputed values 
 begins quite low. As the clade size increases, this correlation only tends
-toward zero.}
+toward zero. The total number of species in the full phylogeny along with 
+measures of the true phylogenetic diversity, lambda, Colless' Index, skew, and kurtosis
+show no significant effect. ($F_{47992, 7}$ = 39.57, $R^{2}$ = 0.006, p$<$0.0001).}
+\label{imputationModel}
 \end{table}
 
+\clearpage
 \section*{Discussion}
-Some text here.
 
 \section*{Acknowledgments}
-\emph{Some text here if needed}.
+
 \clearpage
 \printbibliography
 
+\clearpage
+\appendix
+\section*{A. Effect of Measures of the True, Full Phylogenies}
+
+\begin{figure}[!ht]
+  \center
+  \includegraphics[width=.5\textwidth]{trueColless.png}
+  \caption{\textbf{Effect of the True Colless Index of FullPhylogeny.}}
+\end{figure}
+
+\begin{figure}[!ht]
+  \center
+  \includegraphics[width=.5\textwidth]{trueLambda.png}
+  \caption{\textbf{Effect of the True Lambda of Full Phylogeny.}}
+\end{figure}
+
+\begin{figure}[!ht]
+  \center
+  \includegraphics[width=.5\textwidth]{PD.png}
+  \caption{\textbf{Effect of True PD of Full Phylogeny.}}
+\end{figure}
+
+\begin{figure}[!ht]
+  \center
+  \includegraphics[width=.5\textwidth]{originalKurtosis.png}
+  \caption{\textbf{Effect of the True Kurtosis of Full Phylogeny.}}
+\end{figure}
+
+\begin{figure}[!ht]
+  \center
+  \includegraphics[width=.5\textwidth]{originalSkew.png}
+  \caption{\textbf{Effect of the True Skew of Full Phylogeny.}}
+\end{figure}
+
+\clearpage
+\clearpage
+\section*{B. Error Rate in Top Rankings}
+
+\begin{figure}[!ht]
+  \center
+  \includegraphics[width=.5\textwidth]{errorRate50.png}
+  \caption{\textbf{Mean error rate in the ranking of top 50 species.}}
+\end{figure}
+
+\begin{figure}[!ht]
+  \center
+  \includegraphics[width=.5\textwidth]{errorRate100.png}
+  \caption{\textbf{Mean error rate in the ranking of top 100 species.} }
+\end{figure}
+
+\begin{figure}[!ht]
+  \center
+  \includegraphics[width=.5\textwidth]{errorRate200.png}
+  \caption{\textbf{Mean error rate in the ranking of top 200 species.} }
+\end{figure}
+
+\begin{figure}[!ht]
+  \center
+  \includegraphics[width=.5\textwidth]{errorRate5pct.png}
+  \caption{\textbf{Mean error rate in the ranking of top 5\% of species.} }
+\end{figure}
+
+\begin{figure}[!ht]
+  \center
+  \includegraphics[width=.5\textwidth]{errorRate10pct.png}
+  \caption{\textbf{Mean error rate in the ranking of top 10\% of species.} }
+\end{figure}
+
+\begin{figure}[!ht]
+  \center
+  \includegraphics[width=.5\textwidth]{errorRate20pct.png}
+  \caption{\textbf{Mean error rate in the ranking of top 20\% of species.}}
+\end{figure}
 
 \end{document}
 %%% Local Variables:
