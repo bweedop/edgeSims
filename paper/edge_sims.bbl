@@ -1,0 +1,957 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.6 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist[entry]{nyt/global}
+    \entry{Barnosky2011}{article}{}
+      \true{moreauthor}
+      \name{author}{10}{}{%
+        {{hash=0300a4537b53d0bdeff6f035ad26b2d8}{%
+           family={Barnosky},
+           family_i={B\bibinitperiod},
+           given={Anthony\bibnamedelima D},
+           given_i={A\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=b3ee539e285dc0389395133f45269620}{%
+           family={Matzke},
+           family_i={M\bibinitperiod},
+           given={Nicholas},
+           given_i={N\bibinitperiod}}}%
+        {{hash=4bbcd74fb126a8776324f593e55306ac}{%
+           family={Tomiya},
+           family_i={T\bibinitperiod},
+           given={Susumu},
+           given_i={S\bibinitperiod}}}%
+        {{hash=5fc1ce8975e51540a1994fb03d010a57}{%
+           family={Wogan},
+           family_i={W\bibinitperiod},
+           given={Guinevere\bibnamedelima OU},
+           given_i={G\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+        {{hash=3809dcbffc6f5bab063465e34cce3f0b}{%
+           family={Swartz},
+           family_i={S\bibinitperiod},
+           given={Brian},
+           given_i={B\bibinitperiod}}}%
+        {{hash=4697050685f791af7029dc961cfa883b}{%
+           family={Quental},
+           family_i={Q\bibinitperiod},
+           given={Tiago\bibnamedelima B},
+           given_i={T\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=5e5fbe53a906a3757dbb0a4337082509}{%
+           family={Marshall},
+           family_i={M\bibinitperiod},
+           given={Charles},
+           given_i={C\bibinitperiod}}}%
+        {{hash=8465dc0996ff18141ba3cb6ef935115a}{%
+           family={McGuire},
+           family_i={M\bibinitperiod},
+           given={Jenny\bibnamedelima L},
+           given_i={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=8a6779116515835d5181ad3f7a499c9e}{%
+           family={Lindsey},
+           family_i={L\bibinitperiod},
+           given={Emily\bibnamedelima L},
+           given_i={E\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=0ea2ebee756bc5f6fa055d40f18ad4ec}{%
+           family={Maguire},
+           family_i={M\bibinitperiod},
+           given={Kaitlin\bibnamedelima C},
+           given_i={K\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Research}%
+      }
+      \strng{namehash}{3eacbea040f5f1eebd4f042f3a1ac548}
+      \strng{fullhash}{b5225d53ef5526d7392e31e36893784a}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelyear}{2011}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature}
+      \field{number}{7336}
+      \field{title}{Has the Earth/'s sixth mass extinction already arrived?}
+      \field{volume}{471}
+      \field{year}{2011}
+      \field{pages}{51\bibrangedash 57}
+      \range{pages}{7}
+    \endentry
+    \entry{Bottrill2008}{article}{}
+      \true{moreauthor}
+      \name{author}{10}{}{%
+        {{hash=b0abe19197f25b0b6878f3957e197eb4}{%
+           family={Bottrill},
+           family_i={B\bibinitperiod},
+           given={Madeleine\bibnamedelima C},
+           given_i={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=35ef3f462ef04338ca82deb78daa757c}{%
+           family={Joseph},
+           family_i={J\bibinitperiod},
+           given={Liana\bibnamedelima N},
+           given_i={L\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=fdd18d507351ee0a5af3a4eeeb2600a2}{%
+           family={Carwardine},
+           family_i={C\bibinitperiod},
+           given={Josie},
+           given_i={J\bibinitperiod}}}%
+        {{hash=119efa5945ae80e28a641827afbcd1c0}{%
+           family={Bode},
+           family_i={B\bibinitperiod},
+           given={Michael},
+           given_i={M\bibinitperiod}}}%
+        {{hash=e557ced07cc3a4f3e90e36c579bb46f6}{%
+           family={Cook},
+           family_i={C\bibinitperiod},
+           given={Carly},
+           given_i={C\bibinitperiod}}}%
+        {{hash=45135beffdc6c4f5bb3365bd201f7949}{%
+           family={Game},
+           family_i={G\bibinitperiod},
+           given={Edward\bibnamedelima T},
+           given_i={E\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=47d965fa63ac45b81160b7ce641fa25c}{%
+           family={Grantham},
+           family_i={G\bibinitperiod},
+           given={Hedley},
+           given_i={H\bibinitperiod}}}%
+        {{hash=de1f53219aad849a278838771813f1b9}{%
+           family={Kark},
+           family_i={K\bibinitperiod},
+           given={Salit},
+           given_i={S\bibinitperiod}}}%
+        {{hash=60590bac7c66913d4c1468208dbed2f7}{%
+           family={Linke},
+           family_i={L\bibinitperiod},
+           given={Simon},
+           given_i={S\bibinitperiod}}}%
+        {{hash=32a08ec75b81c18b8485f10b9017e650}{%
+           family={McDonald-Madden},
+           family_i={M\bibinithyphendelim M\bibinitperiod},
+           given={Eve},
+           given_i={E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{9b204f21bee0837039af6c7bee2727a9}
+      \strng{fullhash}{c052a5584d2f341761070380ee78e177}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelyear}{2008}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Trends in Ecology \& Evolution}
+      \field{number}{12}
+      \field{title}{Is conservation triage just smart decision making?}
+      \field{volume}{23}
+      \field{year}{2008}
+      \field{pages}{649\bibrangedash 654}
+      \range{pages}{6}
+    \endentry
+    \entry{Brooks2002}{article}{}
+      \true{moreauthor}
+      \name{author}{10}{}{%
+        {{hash=b44faa83d3eeb119d0f3496471c929c3}{%
+           family={Brooks},
+           family_i={B\bibinitperiod},
+           given={Thomas\bibnamedelima M},
+           given_i={T\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=d756f9622e8af1e5c9f19a9121917fa7}{%
+           family={Mittermeier},
+           family_i={M\bibinitperiod},
+           given={Russell\bibnamedelima A},
+           given_i={R\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=5c09c24ed2c1c73d9939bfcf548ff7cd}{%
+           family={Mittermeier},
+           family_i={M\bibinitperiod},
+           given={Cristina\bibnamedelima G},
+           given_i={C\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=ab1e15468586f7e685d3ba02d598335b}{%
+           family={Da\bibnamedelima Fonseca},
+           family_i={D\bibinitperiod\bibinitdelim F\bibinitperiod},
+           given={Gustavo\bibnamedelima AB},
+           given_i={G\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=2ebb35d74b9b88d56ef159e0e3e45771}{%
+           family={Rylands},
+           family_i={R\bibinitperiod},
+           given={Anthony\bibnamedelima B},
+           given_i={A\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=18888c4130a57f9d7d4e6c7a80af67f8}{%
+           family={Konstant},
+           family_i={K\bibinitperiod},
+           given={William\bibnamedelima R},
+           given_i={W\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=c1c6497222384da1ae19fdc35d76aecf}{%
+           family={Flick},
+           family_i={F\bibinitperiod},
+           given={Penny},
+           given_i={P\bibinitperiod}}}%
+        {{hash=828eb472baf471782a46920a1ad93240}{%
+           family={Pilgrim},
+           family_i={P\bibinitperiod},
+           given={John},
+           given_i={J\bibinitperiod}}}%
+        {{hash=e6cbc603f02de6e0f42c2a6cd8367b1a}{%
+           family={Oldfield},
+           family_i={O\bibinitperiod},
+           given={Sara},
+           given_i={S\bibinitperiod}}}%
+        {{hash=caebff6bdfdc390d919ed21768e2fcde}{%
+           family={Magin},
+           family_i={M\bibinitperiod},
+           given={Georgina},
+           given_i={G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{c53a8188595a7282caa4c062cac9f112}
+      \strng{fullhash}{a56e3e259ef3452e92a2dafee95259bf}
+      \field{sortinit}{B}
+      \field{sortinithash}{4ecbea03efd0532989d3836d1a048c32}
+      \field{labelyear}{2002}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Conservation biology}
+      \field{number}{4}
+      \field{title}{Habitat loss and extinction in the hotspots of biodiversity}
+      \field{volume}{16}
+      \field{year}{2002}
+      \field{pages}{909\bibrangedash 923}
+      \range{pages}{15}
+    \endentry
+    \entry{Ceballos2015}{article}{}
+      \name{author}{6}{}{%
+        {{hash=a4f4fbf0419b2ee65464b9f9db371a53}{%
+           family={Ceballos},
+           family_i={C\bibinitperiod},
+           given={Gerardo},
+           given_i={G\bibinitperiod}}}%
+        {{hash=782948555a04a76ac5cbb8fc83618fa9}{%
+           family={Ehrlich},
+           family_i={E\bibinitperiod},
+           given={Paul\bibnamedelima R},
+           given_i={P\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=0300a4537b53d0bdeff6f035ad26b2d8}{%
+           family={Barnosky},
+           family_i={B\bibinitperiod},
+           given={Anthony\bibnamedelima D},
+           given_i={A\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=34c43cbfd5cf5e7c2a65fa7a53d007d5}{%
+           family={Garcı́a},
+           family_i={G\bibinitperiod},
+           given={Andrés},
+           given_i={A\bibinitperiod}}}%
+        {{hash=43d8837e98ab1439838aee5b259364e1}{%
+           family={Pringle},
+           family_i={P\bibinitperiod},
+           given={Robert\bibnamedelima M},
+           given_i={R\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=dac364754d96001d0292245c2c23d06f}{%
+           family={Palmer},
+           family_i={P\bibinitperiod},
+           given={Todd\bibnamedelima M},
+           given_i={T\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Association for the Advancement of Science}%
+      }
+      \strng{namehash}{0c0eb783a5e6fad04a7493bb1411bdc7}
+      \strng{fullhash}{4713fc5a70a4518a005bdad1f97df333}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelyear}{2015}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Science advances}
+      \field{number}{5}
+      \field{title}{Accelerated modern human--induced species losses: Entering the sixth mass extinction}
+      \field{volume}{1}
+      \field{year}{2015}
+      \field{pages}{e1400253}
+      \range{pages}{-1}
+    \endentry
+    \entry{Collen2011}{article}{}
+      \name{author}{7}{}{%
+        {{hash=bafce2024fe121620a15913e7828045e}{%
+           family={Collen},
+           family_i={C\bibinitperiod},
+           given={Ben},
+           given_i={B\bibinitperiod}}}%
+        {{hash=78b5c40239ecbecbc44a77d3092c17b9}{%
+           family={Turvey},
+           family_i={T\bibinitperiod},
+           given={Samuel\bibnamedelima T},
+           given_i={S\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=14dc3742ede67771e6fa289c6a80c800}{%
+           family={Waterman},
+           family_i={W\bibinitperiod},
+           given={Carly},
+           given_i={C\bibinitperiod}}}%
+        {{hash=ef2359ccf2dc86549dfe0d70de888f9c}{%
+           family={Meredith},
+           family_i={M\bibinitperiod},
+           given={Helen\bibnamedelima MR},
+           given_i={H\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=c63e19756f05d0043ff2ca60afabc5e5}{%
+           family={Kuhn},
+           family_i={K\bibinitperiod},
+           given={Tyler\bibnamedelima S},
+           given_i={T\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=6f568bec51934705f243171828c70ab3}{%
+           family={Baillie},
+           family_i={B\bibinitperiod},
+           given={Jonathan\bibnamedelima EM},
+           given_i={J\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=8abcd95a1e25e8d884f4d6f22eda6c7b}{%
+           family={Isaac},
+           family_i={I\bibinitperiod},
+           given={Nick\bibnamedelima JB},
+           given_i={N\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {The Royal Society}%
+      }
+      \strng{namehash}{8ee4596d8d6a7c7a629424a1e01a70c6}
+      \strng{fullhash}{1e22242fe505bd08d94dd535820a0ac6}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labelyear}{2011}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Philosophical Transactions of the Royal Society of London B: Biological Sciences}
+      \field{number}{1578}
+      \field{title}{Investing in evolutionary history: implementing a phylogenetic approach for mammal conservation}
+      \field{volume}{366}
+      \field{year}{2011}
+      \field{pages}{2611\bibrangedash 2622}
+      \range{pages}{12}
+    \endentry
+    \entry{Felsenstein2004}{book}{}
+      \name{author}{2}{}{%
+        {{hash=a9a7aeb8d3c34e3da316b87101984cda}{%
+           family={Felsenstein},
+           family_i={F\bibinitperiod},
+           given={Joseph},
+           given_i={J\bibinitperiod}}}%
+        {{hash=1073258042a54337b251cedf0fefca6d}{%
+           family={Felenstein},
+           family_i={F\bibinitperiod},
+           given={Joseph},
+           given_i={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Sinauer associates Sunderland, MA}%
+      }
+      \strng{namehash}{5a05d57113597cc4d9d6cc53855f013b}
+      \strng{fullhash}{5a05d57113597cc4d9d6cc53855f013b}
+      \field{sortinit}{F}
+      \field{sortinithash}{c6a7d9913bbd7b20ea954441c0460b78}
+      \field{labelyear}{2004}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Inferring phylogenies}
+      \field{volume}{2}
+      \field{year}{2004}
+    \endentry
+    \entry{Harmon2007}{article}{}
+      \name{author}{5}{}{%
+        {{hash=93d25f8ae9ee8d21bc9f7a8cee4bcbf0}{%
+           family={Harmon},
+           family_i={H\bibinitperiod},
+           given={Luke\bibnamedelima J},
+           given_i={L\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=df9de2ccfbaa325a2ccb2b6d3381387d}{%
+           family={Weir},
+           family_i={W\bibinitperiod},
+           given={Jason\bibnamedelima T},
+           given_i={J\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=d624a0a92cff3c466a07d26eb5ffce8e}{%
+           family={Brock},
+           family_i={B\bibinitperiod},
+           given={Chad\bibnamedelima D},
+           given_i={C\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=cd94cd61d50a9a566dc045e60cd20eb0}{%
+           family={Glor},
+           family_i={G\bibinitperiod},
+           given={Richard\bibnamedelima E},
+           given_i={R\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=a33d3c9f5bbb7d033add91cd87af5e0c}{%
+           family={Challenger},
+           family_i={C\bibinitperiod},
+           given={Wendell},
+           given_i={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{a7f87de5b04aa8d445efe129e8b6a30d}
+      \strng{fullhash}{fd1229a313a0de15486466296df2a2b0}
+      \field{sortinit}{H}
+      \field{sortinithash}{82012198d5dfa657b8c4a168793268a6}
+      \field{labelyear}{2007}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Bioinformatics}
+      \field{number}{1}
+      \field{title}{GEIGER: investigating evolutionary radiations}
+      \field{volume}{24}
+      \field{year}{2007}
+      \field{pages}{129\bibrangedash 131}
+      \range{pages}{3}
+    \endentry
+    \entry{Isaac2012}{article}{}
+      \name{author}{4}{}{%
+        {{hash=8abcd95a1e25e8d884f4d6f22eda6c7b}{%
+           family={Isaac},
+           family_i={I\bibinitperiod},
+           given={Nick\bibnamedelima JB},
+           given_i={N\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=5e0ac7f38618139e1af6211af74a2843}{%
+           family={Redding},
+           family_i={R\bibinitperiod},
+           given={David\bibnamedelima W},
+           given_i={D\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=256164e02dcd0dba6200fa661b4db7ca}{%
+           family={Meredith},
+           family_i={M\bibinitperiod},
+           given={Helen\bibnamedelima M},
+           given_i={H\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=d81ef65227266d4ab332d82e9a9cf5fb}{%
+           family={Safi},
+           family_i={S\bibinitperiod},
+           given={Kamran},
+           given_i={K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Public Library of Science}%
+      }
+      \strng{namehash}{cc68f2f2bf400dc6761445467f0781fd}
+      \strng{fullhash}{354d560cc4887c6e08a11be078b90c49}
+      \field{sortinit}{I}
+      \field{sortinithash}{25e99d37ba90f7c4fb20baf4e310faf3}
+      \field{labelyear}{2012}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{PLoS one}
+      \field{number}{8}
+      \field{title}{Phylogenetically-informed priorities for amphibian conservation}
+      \field{volume}{7}
+      \field{year}{2012}
+      \field{pages}{e43912}
+      \range{pages}{-1}
+    \endentry
+    \entry{Isaac2007}{article}{}
+      \name{author}{5}{}{%
+        {{hash=8abcd95a1e25e8d884f4d6f22eda6c7b}{%
+           family={Isaac},
+           family_i={I\bibinitperiod},
+           given={Nick\bibnamedelima JB},
+           given_i={N\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=78b5c40239ecbecbc44a77d3092c17b9}{%
+           family={Turvey},
+           family_i={T\bibinitperiod},
+           given={Samuel\bibnamedelima T},
+           given_i={S\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=bafce2024fe121620a15913e7828045e}{%
+           family={Collen},
+           family_i={C\bibinitperiod},
+           given={Ben},
+           given_i={B\bibinitperiod}}}%
+        {{hash=14dc3742ede67771e6fa289c6a80c800}{%
+           family={Waterman},
+           family_i={W\bibinitperiod},
+           given={Carly},
+           given_i={C\bibinitperiod}}}%
+        {{hash=6f568bec51934705f243171828c70ab3}{%
+           family={Baillie},
+           family_i={B\bibinitperiod},
+           given={Jonathan\bibnamedelima EM},
+           given_i={J\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Public Library of Science}%
+      }
+      \strng{namehash}{cc68f2f2bf400dc6761445467f0781fd}
+      \strng{fullhash}{d4fc6b983ece88573c799673a1a360fa}
+      \field{sortinit}{I}
+      \field{sortinithash}{25e99d37ba90f7c4fb20baf4e310faf3}
+      \field{labelyear}{2007}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{PloS one}
+      \field{number}{3}
+      \field{title}{Mammals on the EDGE: conservation priorities based on threat and phylogeny}
+      \field{volume}{2}
+      \field{year}{2007}
+      \field{pages}{e296}
+      \range{pages}{-1}
+    \endentry
+    \entry{Jetz2014}{article}{}
+      \name{author}{6}{}{%
+        {{hash=20ac2735e7001c0b59816963e36a40ef}{%
+           family={Jetz},
+           family_i={J\bibinitperiod},
+           given={Walter},
+           given_i={W\bibinitperiod}}}%
+        {{hash=e31f5fbfe009cdf5d98200ed2de18a07}{%
+           family={Thomas},
+           family_i={T\bibinitperiod},
+           given={Gavin\bibnamedelima H},
+           given_i={G\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=7acf19bd8aeb012fc74be237b85b7460}{%
+           family={Joy},
+           family_i={J\bibinitperiod},
+           given={Jeffrey\bibnamedelima B},
+           given_i={J\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=5e0ac7f38618139e1af6211af74a2843}{%
+           family={Redding},
+           family_i={R\bibinitperiod},
+           given={David\bibnamedelima W},
+           given_i={D\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=af689f913ab88e0dabbc3df33cc01d2f}{%
+           family={Hartmann},
+           family_i={H\bibinitperiod},
+           given={Klaas},
+           given_i={K\bibinitperiod}}}%
+        {{hash=5bbab51218a86c2a12d09dec79e1cb0b}{%
+           family={Mooers},
+           family_i={M\bibinitperiod},
+           given={Arne\bibnamedelima O},
+           given_i={A\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{1a72b8c9ed3bf4279f3309eb0f88e2c4}
+      \strng{fullhash}{225b4b55445041191cf98c73fe487928}
+      \field{sortinit}{J}
+      \field{sortinithash}{ec3950a647c092421b9fcca6d819504a}
+      \field{labelyear}{2014}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Current Biology}
+      \field{number}{9}
+      \field{title}{Global distribution and conservation of evolutionary distinctness in birds}
+      \field{volume}{24}
+      \field{year}{2014}
+      \field{pages}{919\bibrangedash 930}
+      \range{pages}{12}
+    \endentry
+    \entry{Lips2006}{article}{}
+      \name{author}{10}{}{%
+        {{hash=2b8adc076df1ba0f56418afabbde565b}{%
+           family={Lips},
+           family_i={L\bibinitperiod},
+           given={Karen\bibnamedelima R},
+           given_i={K\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=3112b25d1db6fd1c33b791dc2eac6155}{%
+           family={Brem},
+           family_i={B\bibinitperiod},
+           given={Forrest},
+           given_i={F\bibinitperiod}}}%
+        {{hash=ad0faa9f96d626ebe7fc3289870e032f}{%
+           family={Brenes},
+           family_i={B\bibinitperiod},
+           given={Roberto},
+           given_i={R\bibinitperiod}}}%
+        {{hash=16a9b2ad60b57f5b1f6e04dbe0db0091}{%
+           family={Reeve},
+           family_i={R\bibinitperiod},
+           given={John\bibnamedelima D},
+           given_i={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=03cee8259fe5a6d9e187737393dbbba5}{%
+           family={Alford},
+           family_i={A\bibinitperiod},
+           given={Ross\bibnamedelima A},
+           given_i={R\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=d228c716ab94667043888d0b6b14b46a}{%
+           family={Voyles},
+           family_i={V\bibinitperiod},
+           given={Jamie},
+           given_i={J\bibinitperiod}}}%
+        {{hash=16bd43cd44d3683d6f157d3e25a01ce1}{%
+           family={Carey},
+           family_i={C\bibinitperiod},
+           given={Cynthia},
+           given_i={C\bibinitperiod}}}%
+        {{hash=8a4d92c816110433750b8581e87f6897}{%
+           family={Livo},
+           family_i={L\bibinitperiod},
+           given={Lauren},
+           given_i={L\bibinitperiod}}}%
+        {{hash=e5971b9953b9d574afa105a675dfba68}{%
+           family={Pessier},
+           family_i={P\bibinitperiod},
+           given={Allan\bibnamedelima P},
+           given_i={A\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=ef80e2cfa9f45ecb3f3cf0bd4519e87e}{%
+           family={Collins},
+           family_i={C\bibinitperiod},
+           given={James\bibnamedelima P},
+           given_i={J\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {National Acad Sciences}%
+      }
+      \strng{namehash}{b5f532b88941d888ac3fcede2c7428ff}
+      \strng{fullhash}{8b9c5ddcfdd304d10f938b4568648601}
+      \field{sortinit}{L}
+      \field{sortinithash}{872351f18d0f736066eda0bf18bfa4f7}
+      \field{labelyear}{2006}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the national academy of sciences of the United States of America}
+      \field{number}{9}
+      \field{title}{Emerging infectious disease and the loss of biodiversity in a Neotropical amphibian community}
+      \field{volume}{103}
+      \field{year}{2006}
+      \field{pages}{3165\bibrangedash 3170}
+      \range{pages}{6}
+    \endentry
+    \entry{Molnar2008}{article}{}
+      \name{author}{4}{}{%
+        {{hash=2f51a3f98a4cdc80ec0b5b2d3fd7e659}{%
+           family={Molnar},
+           family_i={M\bibinitperiod},
+           given={Jennifer\bibnamedelima L},
+           given_i={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=850153167872197173f9d8e1efbf5997}{%
+           family={Gamboa},
+           family_i={G\bibinitperiod},
+           given={Rebecca\bibnamedelima L},
+           given_i={R\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=e52364b2c0e663a4cf1e716ac50f201c}{%
+           family={Revenga},
+           family_i={R\bibinitperiod},
+           given={Carmen},
+           given_i={C\bibinitperiod}}}%
+        {{hash=3bac4d8e945925c619d676eb5fdab32b}{%
+           family={Spalding},
+           family_i={S\bibinitperiod},
+           given={Mark\bibnamedelima D},
+           given_i={M\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{b4df69be1c49f8d2c13639723cf5ef2b}
+      \strng{fullhash}{9920ab613abb12c48ba3718b95cf0afe}
+      \field{sortinit}{M}
+      \field{sortinithash}{2684bec41e9697b92699b46491061da2}
+      \field{labelyear}{2008}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Frontiers in Ecology and the Environment}
+      \field{number}{9}
+      \field{title}{Assessing the global threat of invasive species to marine biodiversity}
+      \field{volume}{6}
+      \field{year}{2008}
+      \field{pages}{485\bibrangedash 492}
+      \range{pages}{8}
+    \endentry
+    \entry{Orme2013}{article}{}
+      \name{author}{1}{}{%
+        {{hash=3a03aab835e6b681a3b7dc32dc35af90}{%
+           family={Orme},
+           family_i={O\bibinitperiod},
+           given={David},
+           given_i={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{3a03aab835e6b681a3b7dc32dc35af90}
+      \strng{fullhash}{3a03aab835e6b681a3b7dc32dc35af90}
+      \field{sortinit}{O}
+      \field{sortinithash}{7803d2715d5e795e70382b084ab8d00e}
+      \field{labelyear}{2013}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{R package version}
+      \field{number}{2}
+      \field{title}{The caper package: comparative analysis of phylogenetics and evolution in R}
+      \field{volume}{5}
+      \field{year}{2013}
+      \field{pages}{1\bibrangedash 36}
+      \range{pages}{36}
+    \endentry
+    \entry{Pounds2006}{article}{}
+      \true{moreauthor}
+      \name{author}{10}{}{%
+        {{hash=9ece98df7cc372c84d504806612a7e77}{%
+           family={Pounds},
+           family_i={P\bibinitperiod},
+           given={J\bibnamedelima Alan},
+           given_i={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=1b37d8bd2ddf10f11e20d846501fc52c}{%
+           family={Bustamante},
+           family_i={B\bibinitperiod},
+           given={Martı́n\bibnamedelima R},
+           given_i={M\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=3a48a4fa6e08064c4e2447e0e000ab79}{%
+           family={Coloma},
+           family_i={C\bibinitperiod},
+           given={Luis\bibnamedelima A},
+           given_i={L\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=d6bfa785f67ae4f557274c0cbd81ee16}{%
+           family={Consuegra},
+           family_i={C\bibinitperiod},
+           given={Jamie\bibnamedelima A},
+           given_i={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=c3aae6b57d4b9ba554e9765b9e2cb79f}{%
+           family={Fogden},
+           family_i={F\bibinitperiod},
+           given={Michael\bibnamedelima PL},
+           given_i={M\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=ff025f5e63509a6981d5481addd2c174}{%
+           family={Foster},
+           family_i={F\bibinitperiod},
+           given={Pru\bibnamedelima N},
+           given_i={P\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=b0f1da2115662150069883826fca4c72}{%
+           family={La\bibnamedelima Marca},
+           family_i={L\bibinitperiod\bibinitdelim M\bibinitperiod},
+           given={Enrique},
+           given_i={E\bibinitperiod}}}%
+        {{hash=ad2846f443e7512aab2b24d72b8f7388}{%
+           family={Masters},
+           family_i={M\bibinitperiod},
+           given={Karen\bibnamedelima L},
+           given_i={K\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=47a731dbcaaa0b17e6a6608fcc9c44df}{%
+           family={Merino-Viteri},
+           family_i={M\bibinithyphendelim V\bibinitperiod},
+           given={Andrés},
+           given_i={A\bibinitperiod}}}%
+        {{hash=9187f8937b4bca5ed8440a49b2f907ff}{%
+           family={Puschendorf},
+           family_i={P\bibinitperiod},
+           given={Robert},
+           given_i={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{ccc0d349196e1f7c7f2738041c06d112}
+      \strng{fullhash}{368219f9f36b01ac7f2b5c27389bc475}
+      \field{sortinit}{P}
+      \field{sortinithash}{c0a4896d0e424f9ca4d7f14f2b3428e7}
+      \field{labelyear}{2006}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature}
+      \field{number}{7073}
+      \field{title}{Widespread amphibian extinctions from epidemic disease driven by global warming}
+      \field{volume}{439}
+      \field{year}{2006}
+      \field{pages}{161\bibrangedash 167}
+      \range{pages}{7}
+    \endentry
+    \entry{Rodrigues2006}{article}{}
+      \name{author}{5}{}{%
+        {{hash=b6b8046f3e5fc07c85e6a00acd465eb9}{%
+           family={Rodrigues},
+           family_i={R\bibinitperiod},
+           given={Ana\bibnamedelima SL},
+           given_i={A\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=b529788aae1ff45f127460677b18c303}{%
+           family={Pilgrim},
+           family_i={P\bibinitperiod},
+           given={John\bibnamedelima D},
+           given_i={J\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=3e4d4301fcac09a0f44951a1d585beff}{%
+           family={Lamoreux},
+           family_i={L\bibinitperiod},
+           given={John\bibnamedelima F},
+           given_i={J\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=4539d354ecc875071164ba52f1c44812}{%
+           family={Hoffmann},
+           family_i={H\bibinitperiod},
+           given={Michael},
+           given_i={M\bibinitperiod}}}%
+        {{hash=b44faa83d3eeb119d0f3496471c929c3}{%
+           family={Brooks},
+           family_i={B\bibinitperiod},
+           given={Thomas\bibnamedelima M},
+           given_i={T\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{7b8bebad59b038a439849ab27754911c}
+      \strng{fullhash}{2aa3436300130f26902ad138519d97e8}
+      \field{sortinit}{R}
+      \field{sortinithash}{c7387613477035a752d935acfc3e3ea2}
+      \field{labelyear}{2006}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Trends in ecology \& evolution}
+      \field{number}{2}
+      \field{title}{The value of the IUCN Red List for conservation}
+      \field{volume}{21}
+      \field{year}{2006}
+      \field{pages}{71\bibrangedash 76}
+      \range{pages}{6}
+    \endentry
+    \entry{Thomas2004}{article}{}
+      \true{moreauthor}
+      \name{author}{10}{}{%
+        {{hash=3844995bf3b14a7de7e67c1974f9255a}{%
+           family={Thomas},
+           family_i={T\bibinitperiod},
+           given={Chris\bibnamedelima D},
+           given_i={C\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=cf17786e9c83c39426146bf15c8d93d4}{%
+           family={Cameron},
+           family_i={C\bibinitperiod},
+           given={Alison},
+           given_i={A\bibinitperiod}}}%
+        {{hash=7255452977e89e44418af1643bea77e4}{%
+           family={Green},
+           family_i={G\bibinitperiod},
+           given={Rhys\bibnamedelima E},
+           given_i={R\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=bd7a5f63cc47db4eb52a2f529ad311ea}{%
+           family={Bakkenes},
+           family_i={B\bibinitperiod},
+           given={Michel},
+           given_i={M\bibinitperiod}}}%
+        {{hash=7ea7d22da2a998b07a12fb39821444ca}{%
+           family={Beaumont},
+           family_i={B\bibinitperiod},
+           given={Linda\bibnamedelima J},
+           given_i={L\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=1ff8ff53ce31f7b268298c18d1b47564}{%
+           family={Collingham},
+           family_i={C\bibinitperiod},
+           given={Yvonne\bibnamedelima C},
+           given_i={Y\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=9c15a61c26cdd41bf5329ad69a376f07}{%
+           family={Erasmus},
+           family_i={E\bibinitperiod},
+           given={Barend\bibnamedelima FN},
+           given_i={B\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=3619a148575890539071eb4929de6869}{%
+           family={De\bibnamedelima Siqueira},
+           family_i={D\bibinitperiod\bibinitdelim S\bibinitperiod},
+           given={Marinez\bibnamedelima Ferreira},
+           given_i={M\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=61d2aa31b962a7ad248d5bbf268d4862}{%
+           family={Grainger},
+           family_i={G\bibinitperiod},
+           given={Alan},
+           given_i={A\bibinitperiod}}}%
+        {{hash=bcd98941c466ad7d1f4bee97f76b6fdb}{%
+           family={Hannah},
+           family_i={H\bibinitperiod},
+           given={Lee},
+           given_i={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{77dd2aeeef7bf34712e4a2e9b8becd14}
+      \strng{fullhash}{37c0a861db4b22f5849b8fafdda292e7}
+      \field{sortinit}{T}
+      \field{sortinithash}{423d138a005a533b47e6475e39378bf2}
+      \field{labelyear}{2004}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature}
+      \field{number}{6970}
+      \field{title}{Extinction risk from climate change}
+      \field{volume}{427}
+      \field{year}{2004}
+      \field{pages}{145\bibrangedash 148}
+      \range{pages}{4}
+    \endentry
+    \entry{Wake2008}{article}{}
+      \name{author}{2}{}{%
+        {{hash=581d75a6095dbc5136fde7a9a4e36655}{%
+           family={Wake},
+           family_i={W\bibinitperiod},
+           given={David\bibnamedelima B},
+           given_i={D\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=d9cb1b4e4fb5c77421a488218332388e}{%
+           family={Vredenburg},
+           family_i={V\bibinitperiod},
+           given={Vance\bibnamedelima T},
+           given_i={V\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {National Acad Sciences}%
+      }
+      \strng{namehash}{53ddc060fbd48aca7d00bf9c8235afae}
+      \strng{fullhash}{53ddc060fbd48aca7d00bf9c8235afae}
+      \field{sortinit}{W}
+      \field{sortinithash}{99e3ba1b3f78bb6f073e7fa7ac11636b}
+      \field{labelyear}{2008}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the National Academy of Sciences}
+      \field{number}{Supplement 1}
+      \field{title}{Are we in the midst of the sixth mass extinction? A view from the world of amphibians}
+      \field{volume}{105}
+      \field{year}{2008}
+      \field{pages}{11466\bibrangedash 11473}
+      \range{pages}{8}
+    \endentry
+    \entry{Weitzman1998}{article}{}
+      \name{author}{1}{}{%
+        {{hash=70fe95481f3859d1e9190dab27bf7d9e}{%
+           family={Weitzman},
+           family_i={W\bibinitperiod},
+           given={Martin\bibnamedelima L},
+           given_i={M\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{70fe95481f3859d1e9190dab27bf7d9e}
+      \strng{fullhash}{70fe95481f3859d1e9190dab27bf7d9e}
+      \field{sortinit}{W}
+      \field{sortinithash}{99e3ba1b3f78bb6f073e7fa7ac11636b}
+      \field{labelyear}{1998}
+      \field{datelabelsource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Econometrica}
+      \field{title}{The Noah's ark problem}
+      \field{year}{1998}
+      \field{pages}{1279\bibrangedash 1298}
+      \range{pages}{20}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+
