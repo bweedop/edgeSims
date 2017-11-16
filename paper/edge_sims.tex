@@ -277,7 +277,12 @@ Our analysis demonstrates that measures of the original phylogeny such as
 phylogentic diversity (PD), lambda, Colless' Index, skew, and kurtosis do not provide any 
 indication that imputation would negatively affect ED values (Appendix A). Additionally, just as imputed 
 ED values did not reflect true ED values, the rankings of species within the 
-focal clade were altered significantly (Fig. \ref{rankingError}). ED values 
+focal clade were altered significantly (Fig. \ref{rankingError}). Our model 
+suggests that with increases in the size of the imputed clade and overall number 
+of species, species within the clade are ranked farther from their true ranking 
+(Table 3). More specifically, our model suggests that by imputing a clade of 
+three species within a phylogeny of 128 species, the species within the clade 
+would be 60 rankings from their true rank on average. ED values 
 outside of the focal clade were not affected by imputation. While ED values 
 within the focal clades were affected exclusively by imputation, a notable 
 error rate in ranking crucial species correctly is present (Appendix B). 
@@ -293,17 +298,6 @@ error rate in ranking crucial species correctly is present (Appendix B).
   \label{imputationTrend}
 \end{figure}
 
-\begin{figure}[!ht]
-  \center
-  \includegraphics[width=.5\textwidth]{rankingError.png}
-  \caption{\textbf{Mean ranking error of species within the focal clade.} The 
-  gradient on the right demonstrates average number of posistions within the 
-  full ranking that focal clade species shifted from their true rank.
-  While controlling for the size of the full phylogeny and focal clade, species 
-  within the focal clade were, on average, ranked far from the true rank. }
-  \label{rankingError}
-\end{figure}
-
 \begin{table}[ht] 
 \centering
 \begin{tabular}{rrrrr}
@@ -311,8 +305,8 @@ error rate in ranking crucial species correctly is present (Appendix B).
   & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
    \hline
  (Intercept) & 0.1852 & 0.0533 & 3.47 & 0.0005 \\
-   Size of Focal Clade& -0.0034 & 0.0002 & -16.56 & 0.0000 \\
-   Size of Phylogeny& -0.0001 & 0.0001 & -0.41 & 0.6855 \\
+   Size of Focal Clade & -0.0034 & 0.0002 & -16.56 & 0.0000 \\
+   Size of Phylogeny & -0.0001 & 0.0001 & -0.41 & 0.6855 \\
    PD & 0.0001 & 0.0001 & 0.37 & 0.7108 \\
    Lambda & -0.0012 & 0.0524 & -0.02 & 0.9812 \\
    Colless' Index & 0.0016 & 0.0022 & 0.72 & 0.4687 \\
@@ -327,8 +321,38 @@ begins quite low. As the clade size increases, this correlation only tends
 toward zero. The total number of species in the full phylogeny along with 
 measures of the true phylogenetic diversity, lambda, Colless' Index, skew, and kurtosis
 show no significant effect. ($F_{47992, 7}$ = 39.57, $R^{2}$ = 0.006, p$<$0.0001).}
-\label{imputationModel}
 \end{table}
+
+\begin{figure}[!ht]
+  \center
+  \includegraphics[width=.5\textwidth]{rankingError.png}
+  \caption{\textbf{Mean ranking error of species within the focal clade.} The 
+  gradient on the right demonstrates average number of posistions within the 
+  full ranking that focal clade species shifted from their true rank.
+  While controlling for the size of the full phylogeny and focal clade, species 
+  within the focal clade were, on average, ranked far from the true rank. }
+  \label{rankingError}
+\end{figure}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{rrrrr}
+    \hline
+   & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
+    \hline
+  (Intercept) & -1.6344 & 0.0332 & -49.29 & 0.0001 \\
+    Size of Focal Clade & 0.0900 & 0.0010 & 91.22 & 0.0001 \\
+    Size of Phylogeny & 0.5179 & 0.0013 & 383.99 & 0.0001 \\
+     \hline
+     \hline
+  \end{tabular}
+  \caption*{\textbf{Table 3: Effect of Clade Size and Total Species on Ranking Error.} 
+  Model demonstrating the relationship between focal clade species ranking error 
+  and the size of imputed clade and overall phylogeny. Square-root 
+  transformations have been applied to both ranking error and size of phylogeny. 
+  Significant increases ranking error are seen when increasing sizes of both the
+  imputed clade and phylogeny ($F_{47997, 2}$ = 77890, $R^{2}$ = 0.7644, p$<$0.0001).}
+  \end{table}
 
 \clearpage
 \section*{Discussion}
