@@ -65,7 +65,12 @@ $^1$ Department of Biology \& Ecology Center, Utah State University,
 5305 Old Main Hill, Logan UT, 84322
 
 $^*$To whom correspondence should be addressed:
-\url{will.pearse@usu.edu} and \url{bodie.weedop@aggiemail.usu.edu}
+\url{will.pearse@usu.edu} \deleted{and
+  bodie.weedop@aggiemail.usu.edu}
+% I'm doing this because your email might not be around forever,
+% right? If you would prefer to put a Gmail address or something up
+% here that would be fine. Typically, I prefer to have only one
+% contact author, as it can make things a bit confusing otherwise.
 
 \textbf{Word-count}: 5680 (abstract, main text, acknowledgements, and references)
 
@@ -78,37 +83,78 @@ $^*$To whom correspondence should be addressed:
 \clearpage
 \section*{Introduction}
 Evidence from the fossil record and present-day studies argue we are
-in the midst of, or entering, a sixth mass extinction \autocite{Barnosky2011, Ceballos2015}, such that more species than ever are
-declining and/or in danger of extinction across a range of
+in the midst of, or entering, a sixth mass extinction
+\autocite{Barnosky2011, Ceballos2015}, such that more species than
+ever are declining and/or in danger of extinction across a range of
 environments \autocite{Wake2008,Thomas2004}. Habitat destruction
-\autocite{Brooks2002}, invasive species
-\autocite{Molnar2008}, climate change
-\autocite{Pounds2006}, and disease \autocite{Lips2006} are some of
-the leading causes of species declines globally. Conservation
-biologists seeks to overcome these declines and their detrimental
-effects on species populations. Even still, researchers and
-conservationists are confronted with ``Noah's Ark problem''
-\autocite{Weitzman1998}, or an unfortunate reality of insufficient,
-finite resources to confront the increasing amount species requiring
-conservation effort.
+\autocite{Brooks2002}, invasive species \autocite{Molnar2008}, climate
+change \autocite{Pounds2006}, and disease \autocite{Lips2006} are some
+of the leading causes of species declines globally. Conservation
+biologists seek\deleted{s} to \replaced{reverse}{overcome} these
+declines and their detrimental effects on species populations\added{,
+  but in reality they have limited resources with which to do
+  so.}. \added{This challenge, termed the} \deleted{Even still,
+  researchers and conservationists are confronted with }``Noah's Ark
+problem'' \autocite{Weitzman1998}, \added{is the basis for modern
+  conservation prioritisation and triage (XXX define
+  triage).}\deleted{or an unfortunate reality of insufficient, finite
+  resources to confront the increasing amount species requiring
+  conservation effort.}
 
 Conservation triage has provided an efficient decision making process
 for allocating finite resources to obtain the greatest return
-\autocite{Bottrill2008}. One of these triage strategies which have been
-introduced and used most widely is EDGE \autocite{Isaac2007}. This
-method prioritizes species according to two metrics: evolutionary
-distinctiveness (ED) and global endangerment (GE). ED measures
-relative contributions to phylogenetic diversity made by each species
-within a particular clade \autocite{Isaac2007}. Such contributions are
-assessed by quantifying the amount of branch length which is unique to
-each species within the overall phylogeny. GE values are assessed by
-assigning numerical values to each of the World Conservation Union
-(IUCN) Red List Categories. As species become increasingly threatened
-and are placed into more concerning categories (e.g. from Vulnerable
-to Endangered), the GE numerical value increases. Increases in either
-ED or GE place a particular species at a higher priority for
+\autocite{Bottrill2008}. \added{A sentence about how triage requires
+  decision-making, and so you need a metric to guide that decision
+  process.}
+% This is a good example of where you've got to lead the reader
+% through, step-by-step, each of the concepts you're introducing
+One of these triage strategies which have been introduced
+and used most widely is \added{the} EDGE \added{metric}
+\autocite[\added{Evolutionary Distinction and Globally
+  Endangered;}][]{Isaac2007}. This method prioritizes species
+according to two metrics: \replaced{E}{e}volutionary
+Evolutio{D}{d}istinctiveness (ED) and \replaced{G}{g}lobal
+\replaced{E}{e}ndangerment (GE). ED measures relative contributions to
+phylogenetic diversity made by each species within a particular clade
+\autocite{Isaac2007}. Such contributions are assessed by quantifying
+the amount of branch length which is unique to each species within the
+overall phylogeny. GE values are assessed by assigning numerical
+values to each of the World Conservation Union (IUCN) Red List
+Categories.
+% Might be nice to mention and/or cite some of the discussion around
+% how to assign these numerical values; e.g., Mooers et al. (2008)
+As species become increasingly threatened and are placed
+into more concerning categories (\replaced{}\emph{e.g.},}{e.g.} from
+% Always do e.g. in italics and with a comma after it
+Vulnerable to Endangered), the GE numerical value increases. Increases
+in either ED or GE place a particular species at a higher priority for
 conservation effort.
 
+% Here's an idea for a middle paragraph that would serve as a bridge
+% between this and the next: introduce some examples of the method
+% being applied in the real world. It could have a structure a bit
+% like this:
+% * Statement that EDGE lists have been calcualted for a number of
+% species (give examples)
+% * State that there is some discussion in the literature about what
+% the best kind of EDGE-like metric should be (cite HEDGE et al.).
+% * There is also discussion in the literature about whether we should
+% account for likelihood of success in conservation, relative cost of
+% conservation interventions, and complementarity when designing our
+% metrics. This gives you a nice place to cite the "other side" of the
+% debate.
+% * However, EDGE has formed the basis of a very successful
+% program. State a few nice facts about it.
+% * BUT the thing that's holding us back is missing data. Phylogenetic
+% data is often missing, *and so is imputed* - cite the taxa and the
+% studies that use imputation.
+% ... this nicely leads into the next paragraph, where you talk about
+% how imputation happens and why we need to understand it.
+
+% Some of the text in this paragraph will now be pulled into the one
+% above. You'll also find that you'll now be able to talk in a little
+% bit more detail about *how* imputation takes place, citing the Kuhn
+% polytomy paper and the Jetz paper, I suppose. Does that make sense?
 In the event of missing DNA or trait data, species are often difficult
 or not able to be placed onto a phylogeny. Even in the face of such
 uncertainty and missing data, it is understandable that conservation
@@ -125,121 +171,216 @@ the same as Critically Endangered and Endangered species to ensure
 consistency \autocite{Rodrigues2006}. The major area of uncertainty in
 phylogenetic prioritisation is phylogenetic data. In the past, missing
 species data and poorly resolved trees have been addressed using
-imputation \autocite{Collen2011, Isaac2012, Jetz2014}. However, to our knowledge, there has been no systematic
-investigation of the efficacy of such imputation, both in terms of the
-accuracy with which imputed ED values are estimated, and the effect on
-other known species’ scores. Indeed, it is unclear whether any
-significant information on ED is gained by imputing species which
-cannot be placed on the phylogeny. It is also not well understood how
-simply removing missing species, compared to performing imputation,
-would effect ED values. It may be that simply excluding missing
-species may be less intrusive than imputation. In searching for a
-solution for missing species, we may be negatively affecting correct
-ED values and disrupting EDGE rankings in the process. As the desire
-to use ED and phylogenies for conservation triage grows, the
-importance of such tests and a consensus on how to resolve cases of
-phylogenetic uncertainty becomes more urgent.
+imputation \autocite{Collen2011, Isaac2012, Jetz2014}. However, to our
+knowledge, there has been no systematic investigation of the efficacy
+of such imputation, both in terms of the accuracy with which imputed
+ED values are estimated, and the effect on other known species'
+scores. Indeed, it is unclear whether any significant information on
+ED is gained by imputing species which cannot be placed on the
+phylogeny. It is also not well understood how simply removing missing
+species, compared to performing imputation, would effect ED values. It
+may be that simply excluding missing species may be less intrusive
+than imputation. In searching for a solution for missing species, we
+may be negatively affecting correct ED values and disrupting EDGE
+rankings in the process. As the desire to use ED and phylogenies for
+conservation triage grows, the importance of such tests and a
+consensus on how to resolve cases of phylogenetic uncertainty becomes
+more urgent.
 
-Here, we assess and compare the impact that missing species versus
-phylogenetic imputation has upon ED values. In doing so, we hope to
-understand the effect that both methods have on ED values and offer a
-viable solution for dealing with missing data species. Missing species
-were simulated and removed from trees in two ways: randomly and in a
-phylogenetically biased manner. Additionally, we tested how ED values
-were affected by resolving and imputing polytomies of varying sizes on
-a phylogeny. We found that ED values are by removing missing
-species. Here is a reference to figure.
+% This is a bit short - you can give a bit more detail and "big up"
+% the paper a little. I've given some guides below, but you can fill
+% in from there I sense.
+\added{Here we assess the extent to which EDGE rankings based upon
+  imputed phylogenies can be used within applied conservation
+  biology. To do this, we use an imputation approach...} \deleted{Here, we
+assess and compare the impact that missing species versus phylogenetic
+imputation has upon ED values.} In doing so, we hope to understand the
+effect that both methods have on ED values and offer a viable solution
+for dealing with missing data species. Missing species were simulated
+and removed from trees in two ways: randomly and in a phylogenetically
+biased manner. Additionally, we tested how ED values were affected by
+resolving and imputing polytomies of varying sizes on a phylogeny. We
+found that ED values are by removing missing species. Here is a
+reference to figure.
 
 \section*{Methods}
-We attempted to demonstrate the effects of removing or imputing
-species which cannot be placed onto a phylogeny. While assessing the
-impact of dropping species and phylogenetic imputations, we were
-primarily focused on ED values. In testing the effects on these
-values, we remain focused upon ED as a single variable. We exclude GE
-because it would only add complexity while not providing any
-additional information to our particular investigation.
+\replaced{Here we use a simulation approach to test the effect of
+  removing and imputing species on a phylogeny on subsequent ED
+  (Evolutionary Distinctiveness) scores of species.}{We attempted to
+  demonstrate the effects of removing or imputing species which cannot
+  be placed onto a phylogeny.}
+% Don't attempt to do something, do it!
+\replaced{Since empirical studies do not (to our knowledge) impute GE
+  (Global Endangerment) scores for species, and our focus here is on
+  the importance of phylogenetic structure, we focus on the impact of
+  imputing ED values.}{While assessing the impact of dropping species
+  and phylogenetic imputations, we were primarily focused on ED
+  values. In testing the effects on these values, we remain focused
+  upon ED as a single variable.}
+% Then go on to explain that EDGE is ED + GE (...well, technically
+% times GE, but still...) and that any imputation that uses real GE
+% values as well with have pseudo-precision. This is an important
+% point, and we want to bring it up now because it will matter in the
+% discussion also.
+\deleted{We exclude GE because it would only add complexity while not
+  providing any additional information to our particular
+  investigation.}
+% State *WHY* it would do that. People won't just believe you, and
+% they need to know why.
 
-In each test, we simulated 100 phylogenetic trees and manipulated each
-tree’s tips or clade. All simulations, calculations, and analyses were
-performed using R (version 3.4.0). Original and manipulated trees were
-simulated under a pure-birth Yule model using the sim.bdtree function
-‘geiger’ R package \autocite{Harmon2007}. This particular model was
-chosen to maintain simplicity. Results from this simple model should
-be applicable to other more complex scenarios. Also, to reduce
-uncertainty, we used the same model throughout each of the
-simulations. In reality, we would be estimating the parameters of the
-model which the phylogeny is built upon. The function ed.calc within
-the R package ‘caper’ was used to calculate ED values for each tree
-\autocite{Orme2013}.
+\deleted{In each test, we simulated 100 phylogenetic trees and
+  manipulated each tree's tips or clade.} All simulations\deleted{,
+  calculations,} and analyses were performed using R
+\added{\autocite[version 3.4.0;][]{R2017}}. \added{For each
+  combination of parameter values in a simulation, we performed 100
+  replicate simulations.} Original and manipulated trees were
+simulated under a pure-birth Yule model using the
+\replaced{\texttt{sim.bdtree}}{sim.bdtree} function
+\replaced{\texttt{geiger}}{`geiger'} R package
+\autocite{Harmon2007}.
+% The next three sentences are too vague. Be explicit: this is the
+% simplest model possible (state what it represents/is), thus anything
+% that doesn't work on this shouldn't have a hope in hell of working
+% in a more complex biological simulation. We're setting up the best
+% possible case by imputing under the exact model that the data were
+% simulated under in the first place - in empirical studies, you would
+% have to estimate this model.
+This particular model was chosen to maintain simplicity. Results from
+this simple model should be applicable to other more complex
+scenarios. Also, to reduce uncertainty, we used the same model
+throughout each of the simulations. In reality, we would be estimating
+the parameters of the model which the phylogeny is built upon. The
+function \replaced{\texttt{ed.calc}}{ed.calc} within the R package
+\replaced{\texttt{caper}}{`caper'} was used to calculate ED values for
+each tree \autocite{Orme2013}.
 
-We assessed the impact that removing missing species has upon ED
-values using the correlation of all ED values for the tips remaining
-within both trees. To evaluate the effect that imputation has upon ED
-values, we calculated ED for all tips in both the original and
-manipulated trees while excluding the focal clade where imputation has
-occurred. These ED values were compared using a
-correlation. Additionally, we did the same calculations and comparison
-using only the original focal clade and its’ simulated replacement. If
-missing species have no effect upon ED values, we expect a high,
-positive correlation coefficient between the original tree and its’
-manipulated counterpart.
+% You should only be putting details in this section that you did for
+% every one of the methods. You didn't do this for every single
+% simulation type, so don't report it here. This should be worked into
+% the next section.
+\deleted{We assessed the impact that removing missing species has upon
+  ED values using the correlation of all ED values for the tips
+  remaining within both trees. To evaluate the effect that imputation
+  has upon ED values, we calculated ED for all tips in both the
+  original and manipulated trees while excluding the focal clade where
+  imputation has occurred. These ED values were compared using a
+  correlation. Additionally, we did the same calculations and
+  comparison using only the original focal clade and its' simulated
+  replacement. If missing species have no effect upon ED values, we
+  expect a high, positive correlation coefficient between the original
+  tree and its' manipulated counterpart.}
 
 \subsection*{Assessing the impact of missing species on EDGE-listing}
-If missing species has a negative effect on ED values, then the
-correlation between the ED of the species in the original tree and the
-same tree with a fraction of tips removed in some manner should be
-significantly different from 1. To investigate the degree of this
-effect, we removed tips from simulated trees (Number of taxa = 64,
-128, 256, 512, 1024, 2048, 4096) at random and by phylogenetic
-clusters. To assess the effect under varying amounts of uncertainty,
-fractions of tips dropped ranged from 0 to 0.2 of total tree tips.
+\added{Our first set of simulations assesses the impact that species
+  missing from a phylogeny have on estimated ED scores. If, when
+  species are missing from a tree, the ED scores of the remaining
+  species in the tree are XXX this implies XXX.}
+% Fill in the blank above to justify the rationale behind this section
+If missing species has a negative effect on ED values
+% What does "negative effect" mean? Be more precise.
+, then the correlation between the ED of the species in the original
+tree and the same tree with a fraction of tips removed in some manner
+should be significantly different from 1. \added{We performed
+  simulations on phylogenies of different sizes (number of taxa: XXX,
+  XXX), removing constant fractions of tips from the tree (0\%, 1\%,
+  2\%, ..., 19\%, 20\%).}
+% What did you do if the percentages were non-integers? Did you round
+% the numbers?...
+\deleted{To investigate the degree of this effect, we removed tips
+  from simulated trees (Number of taxa = 64, 128, 256, 512, 1024,
+  2048, 4096) at random and by phylogenetic clusters. To assess the
+  effect under varying amounts of uncertainty, fractions of tips
+  dropped ranged from 0 to 0.2 of total tree tips.}
 
+% A sentence saying why you did both random species loss and
+% phylogenetically-biased species loss. What biological process is
+% this supposed to simulate?...
 Missing species at random was simulated by selecting species at random
 without replacing, and removing those species from the tree. This
 randomization had no regard for phylogenetic structure. Missing
 species related by some character trait was tested by simulating
 character trait values for each tip. These simulations were all
-performed under a constant rate Brownian-motion model (par = 0.5,
-starting root value = 1). Tips were dropped if their character trait
-values place them into the upper quantile which had been selected to
-be dropped. More specifically, if the fraction to be dropped was 0.1,
-species within the 90th quantile of character trait values are
-dropped. This is equivalent to Felsenstein’s threshold model
-\autocite{Felsenstein2004}.
+performed under a constant rate Brownian-motion model
+(\replaced{$\sigma^2$=0.5}{par = 0.5}, starting root value = 1).
+% Do you need to repeat this with different sigma values? Also, this
+% parameter is sigma squared, right?
+% Re-write the next two sentences - be specific the first time you
+% state it.
+Tips were dropped if their character trait values place them into the
+upper quantile which had been selected to be dropped. More
+specifically, if the fraction to be dropped was 0.1, species within
+the 90th quantile of character trait values are dropped. This is
+equivalent to Felsenstein's threshold model \autocite{Felsenstein2004}
+% Was this paper really written by Felsenstein and his brother? His
+% brother is a computer scientist...
+\added{state why this model is a useful one---re-state the propoerty
+  it has, linking it back to why this is a useful set of simulations
+  to be doing}.
 
 \subsection*{Assessing the impact of phylogenetic imputations}
 We tested the impact of imputing missing species onto a clade of a
-particular size (sizes 3 through 32) which originated
-from a tree of a particular size (Number of taxa = 64, 128, 256, 512,
-1024). To simulate the effect that phylogenetic imputation has upon
-these simulated trees, we randomly chose clades within each tree and
-treated it as a polytomy to be resolved. The clade selected was
-removed from the original tree and a new separate tree of the same
-size was simulated under the pure-birth model used before and placed
-back where the original clade was removed. By doing this , we
-replicated the process of imputation of a clade which has been
-resolved. To ensure that this is representative of cases where
-imputation is used, 100 repetitions of this simulation were performed
-across different parameter settings.
+particular size (sizes \replaced{3, 4, 5, ..., 30, 31, 32}{3 through
+  32}) which originated from a tree of a particular size
+(\replaced{N}{n}umber of taxa = 64, 128, 256, 512, 1024).
+% Why do you keep capitalising words? I'm asking seriously - there's
+% probably a reason for it, I just don't know what it is
+To simulate the effect that phylogenetic imputation has upon these
+simulated trees, we randomly chose clades within each tree and treated
+it as a polytomy to be resolved.
+% That might be how we did it in the code, but it's not necessary to
+% write in the methods that we treated the clade as a polytomy
+The clade selected was removed from the original tree and a new
+separate tree of the same size was simulated under the pure-birth
+model used before and placed back where the original clade was
+removed. \added{Thus we have imputed each clade under the same model
+  used to generate it. In an empirical study, this would be done
+  by... and so our method is being generous because...} By doing this
+, we replicated the process of imputation of a clade which has been
+resolved. \deleted{To ensure that this is representative of cases
+  where imputation is used, 100 repetitions of this simulation were
+  performed across different parameter settings.}
+% That wasn't why we did it 100 times...
+
+\added{To assess whether clades, once imputed, had similar ED scores,
+  we ... We also looked at ranks, because... We statistically modelled
+  these as a function of ..., hypothesising that each would matter
+  because...}
 
 \section*{Results}
-\subsection*{Assessing the impact of missing species on EDGE-listing}
+% I like that you've matched the sub-headings of the methods onto the
+% results, but I've gotten rid of them in this case because the first
+% section is essentially two sentences and it feels odd to have a two
+% sentence section. I applaud the logic in keeping the structure,
+% though.
 
-ED values for remaining species were significantly affected by the
-fraction of species which were removed (Table 1). However, different
-effects are seen when dropping species at random and in clustered
-manner (Fig. \ref{randomVsClustered}). Dropping species at random has a reduced effect
-when compared to the effect which dropping species in a clustered
-manner has on remaining ED values (Fig. \ref{randomVsClustered}).
+%\subsection*{Assessing the impact of missing species on
+%    EDGE-listing}
+
+\replaced{While the random loss of species from a phylogeny does not
+  appear to affect the ED values of the remaining species,
+  phylogenetically-patterned loss does (Fig.\ \ref{randomVsClustered}
+  and Table \ref{XXX}). Under both random and phylogenetically
+  patterned loss, XXX increases with XXX, although the effect is much
+  more extreme (XXX times; Table \ref{XXX}) for XXX.}{ED values for
+  remaining species were significantly affected by the fraction of
+  species which were removed (Table 1). However, different effects are
+  seen when dropping species at random and in clustered manner
+  (Fig. \ref{randomVsClustered}). Dropping species at random has a
+  reduced effect when compared to the effect which dropping species in
+  a clustered manner has on remaining ED values
+  (Fig. \ref{randomVsClustered}).}
+% You've written this backwards, in that you state the result at the
+% end of the paragraph. You also are slipping into a very passive-y
+% description of the results here.
 
 \begin{figure}[!ht]
   \center
   \includegraphics[width=.5\textwidth]{randomVsCluster.png}
   \caption{\textbf{R-values plotted against the fraction of species 
-  dropped at random versus clustered manner.} The color of data points denote 
-  whether species were dropped at random (orange; n = 100) or in clustered 
-  manner (grey; n = 100). The regression lines are demonstrating the relationship 
-  when species are dropped at random (black) and in a clustered manner (red).}
+      dropped at random versus clustered manner.} The color of data points denote 
+    whether species were dropped at random (orange; n = 100) or in clustered 
+    manner (grey; n = 100). The regression lines are demonstrating the relationship 
+    when species are dropped at random (black) and in a clustered manner (red).}
   \label{randomVsClustered}
 \end{figure}
 
@@ -247,45 +388,69 @@ manner has on remaining ED values (Fig. \ref{randomVsClustered}).
   \centering
   \begin{tabular}{rrrrr}
     \hline
-   & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
+    & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
     \hline
-  (Intercept) & 0.9991 & 0.0003 & 3752.33 & 0.0000 \\
+    (Intercept) & 0.9991 & 0.0003 & 3752.33 & 0.0000 \\
     Fraction of Species Dropped & -0.3434 & 0.0021 & -164.89 & 0.0000 \\
     Random Treatment & -0.0004 & 0.0004 & -0.96 & 0.3360 \\
     Number of Species Overall & 0.0000 & 0.0000 & 0.13 & 0.8932 \\
     Fraction of Species Dropped:Random Treatment & 0.3129 & 0.0029 & 106.25 & 0.0000 \\
     Random Treatment:Number of Species Overall & 0.0000 & 0.0000 & 9.20 & 0.0000 \\
-     \hline
-     \hline
+    \hline
+    \hline
   \end{tabular}
   \caption*{\textbf{Table 1: ANCOVA model summary describing the effect of 
-  dropping species on remaining species ED Values.} The fraction of species 
-  dropped significantly affects the the remaining ED values. Dropping the 
-  fraction at random had a reduced compared to dropping species in a clustered 
-  manner ($F_{29688, 5}$ = 12090, $R^{2}$ = 0.6706, p$<$0.0001).}
-  \end{table}
+      dropping species on remaining species ED Values.} The fraction of species 
+    dropped significantly affects the the remaining ED values. Dropping the 
+    fraction at random had a reduced compared to dropping species in a clustered 
+    manner ($F_{29688, 5}$ = 12090, $R^{2}$ = 0.6706, p$<$0.0001).}
+\end{table}
 
-\subsection*{Assessing the impact of phylogenetic imputations}
+% \subsection*{Assessing the impact of phylogenetic
+% imputations}
 
-ED values for the full tree while excluding the focal clade remain at
-1 and unaffected. However, ED values for the imputed clades are
-significantly affected by the use of imputation. As the size of the
-focal clade increases, the informative value of the ED values within the clade 
-decreases (Fig. \ref{imputationTrend}). However, even when imputing smaller 
-clades, ED values did not regularly reflect the true ED values (Table 2). 
-Our analysis demonstrates that measures of the original phylogeny such as 
-phylogentic diversity (PD), lambda, Colless' Index, skew, and kurtosis do not provide any 
-indication that imputation would negatively affect ED values (Appendix A). Additionally, just as imputed 
-ED values did not reflect true ED values, the rankings of species within the 
-focal clade were altered significantly (Fig. \ref{rankingError}). Our model 
-suggests that with increases in the size of the imputed clade and overall number 
-of species, species within the clade are ranked farther from their true ranking 
-(Table 3). More specifically, our model suggests that by imputing a clade of 
-three species within a phylogeny of 128 species, the species within the clade 
-would be 60 rankings from their true rank on average. ED values 
-outside of the focal clade were not affected by imputation. While ED values 
-within the focal clades were affected exclusively by imputation, a notable 
-error rate in ranking crucial species correctly is present (Appendix B). 
+\added{We find no support for a correlation between the imputed and
+  true ED values for a species within an imputed clade (Fig.\
+  \ref{imputationTrend}, table XXX). We do find evidence that, when
+  imputing larger clades, the variation in the correlation is lesser
+  (quantile regression), but this could be due to XXX.} \deleted{ED
+  values for the full tree while excluding the focal clade remain at
+  1 and unaffected. However, ED values for the imputed clades are
+  significantly affected by the use of imputation. As the size of
+  the focal clade increases, the informative value of the ED values
+  within the clade decreases (Fig. \ref{imputationTrend}). However,
+  even when imputing smaller clades, ED values did not regularly
+  reflect the true ED values (Table 2).} \replaced{We found}{Our
+  analysis demonstrates} that measures of the
+\replaced{true}{original} phylogeny such as phylogentic diversity
+(PD), lambda, Colless' Index, skew, and kurtosis do not provide any
+indication that imputation would negatively affect ED values
+(Appendix A). \deleted{Additionally, j}Just as imputed ED values did
+not reflect true ED values, the rankings of species within the focal
+clade were altered significantly \added{under imputation}
+(Fig. \ref{rankingError}; Table XXX). Our model suggests that with
+increases in the size of the imputed clade and overall number of
+species, species within the clade are ranked farther from their true
+ranking (Table 3). \replaced{For example}{More specifically}, our
+% I replaced this because, technically, your example isn't really
+% more specific, rather it's an example, if that makes sense?
+model suggests that by imputing a clade of three species within a
+phylogeny of 128 species, the species within the clade would be 60
+rankings from their true rank on average.
+% You've got to back this up with a reference to the appendix (maybe
+% that's what your next sentence does). If you're going to make
+% reference to this, highlight that this is interesting in the context
+% of your first set of results: this is a phylogenetically biased
+% thing that you've done, and so imputation has corrected for the
+% concern above (that phylogenetically biased loss of species is
+% affected ED rankings in the remaining species). It has, however,
+% given you some rankings for some species that were wrong. Make
+% sense?
+ED values outside of the focal clade were not affected by imputation.
+% I don't understand what the sentence below means
+While ED values within the focal clades were affected exclusively by
+imputation, a notable error rate in ranking crucial species correctly
+is present (Appendix B).
 
 \begin{figure}[!ht]
   \center
