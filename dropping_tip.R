@@ -9,27 +9,24 @@ drop_random_tips<-function(spp, dropped_fraction)
   
   #Calculate ED values for the original tree.
   ed<-ed.calc(tree)$spp
-  ed<-ed[order(ed$ED, decreasing = TRUE),]
-  rownames(ed)<-1:nrow(ed)
+  ed<-setNames(ed[,2], ed[,1])
   
   #Use the original tree for the tree which will have a determined fraction of random tips dropped from it. 
   imputed_tree<-tree
   for (i in seq_len(spp*dropped_fraction))
   {
     spp_to_be_dropped<-sample(imputed_tree$tip.label, 1) 
-    delete_row<-as.numeric(which(ed$species == spp_to_be_dropped))
-    ed<-ed[-delete_row,]
+    ed <- ed[!names(ed) %in% spp_to_be_dropped]
     imputed_tree<-drop.tip(imputed_tree, spp_to_be_dropped)
   }
   
   #Calculate ED values for the manipulated tree.
   imputed_ed<-ed.calc(imputed_tree)$spp
-  imputed_ed<-imputed_ed[order(imputed_ed$ED, decreasing = TRUE),]
-  rownames(imputed_ed)<-1:nrow(imputed_ed)
+  imputed_ed<-setNames(imputed_ed[,2], imputed_ed[,1])
   
   #Calculate the correlation between the ED values of the original tree and the manipulated tree.
-  ed_corr<-cor(ed[2], imputed_ed[2])
-  return(ed_corr)
+  ed_corr<-cor(ed, imputed_ed)
+  return(c(ed, imputed_ed, ed_corr))
 }
 
 
@@ -40,48 +37,44 @@ drop_clustered_tips<-function(spp, dropped_fraction)
   
   #Calculate ED values for the original tree.
   ed<-ed.calc(tree)$spp
-  ordered_ed<-ed[order(ed$ED, decreasing = TRUE),]
-  rownames(ordered_ed)<-1:nrow(ordered_ed)
+  ed <- setNames(ed[,2], ed[,1])
   
   #Use the original tree for the tree which will have a determined fraction of clustered tips dropped from it.
   imputed_tree<-tree
   
   #Simulate continuous trait data on the original tree using a constant rate Brownian-motion model.
-  brown_evol<-sim.char(tree, 0.05, 1, model = "BM")[,,1]
+  brown_evol<-sim.char(imputed_tree, 0.05, 1, model = "BM")[,,1]
   #Assessing which spp fall into the percentile which is to be dropped and the dropping them from the tree.
   quantile <- quantile(brown_evol, 1-dropped_fraction)
   to.drop <- which(brown_evol >= quantile)
   if (dropped_fraction != 0){
-    ed<-ed[-to.drop,]
     imputed_tree <- drop.tip(tree, to.drop)
   }else{
 
   }
-  
+  ed <- ed[!names(ed) %in% names(to.drop)]
   #Calculate the ED values for the manipulated tree.
   imputed_ed<-ed.calc(imputed_tree)$spp
-  ordered_imputed_ed<-imputed_ed[order(imputed_ed$ED, decreasing = TRUE),]
-  rownames(ordered_imputed_ed)<-1:nrow(ordered_imputed_ed)
+  imputed_ed<-setNames(imputed_ed[,2], imputed_ed[,1])
   
   #Calculate the correlation between the original ED values and the manipulated trees' ED values.
-  ed_corr<-cor(ed[2], imputed_ed[2])
-  return(ed_corr)
+  ed_corr<-cor(ed, imputed_ed)
+  return(c(ed, imputed_ed, ed_corr))
 }
 
-data_wrapper<-function(n.spp = c(64, 128, 256, 512, 1024, 2048, 4096), fraction.dropped = c(0,0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1,0.11,0.12,0.13,0.14,0.15, 0.16, 0.17, 0.18, 0.19, 0.20), reps = 100)
+data_wrapper<-function(n.spp = c(64, 128, 256, 512, 1024, 2048, 4096), fraction.dropped = c(seq(0.01, 0.99, 0.01)), reps = 100)
 {
   #Wrapper that can run either of the methods (random or clustered) and then returns the data and graphs for the
   # amount of repititions.
   data <- expand.grid(n.spp = n.spp, fraction.dropped = fraction.dropped, reps = 0:reps, clustered.corr= NA, random.corr = NA)
   for(i in seq_len(nrow(data))){
         random.temp.vec <- drop_random_tips(data$n.spp[i], data$fraction.dropped[i])
-	clustered.temp.vec <- drop_clustered_tips(data$n.spp[i], data$fraction.dropped[i])
+	      clustered.temp.vec <- drop_clustered_tips(data$n.spp[i], data$fraction.dropped[i])
         
         data$clustered.corr[i] <- clustered.temp.vec
-	data$random.corr[i] <- random.temp.vec
+	      data$random.corr[i] <- random.temp.vec
     }
   write.table(data, "dropCorrelations.txt")
-  
 }
 
 
