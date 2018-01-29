@@ -467,27 +467,17 @@ missing species, nor imputing missing species, has on ED values. Our results
 support the finding that missing species do affect ED scores but the effect is
 relatively insignificant compared to percentages of species missing (Table 1). 
 
-% Should I put some sort of 'For example, this % gives this r values' here? I am
-% doing this later in the discussion but something tells me that I should be
-% doing it here... -Bodie
-
 We realize that we have provided just two ways in which species could be missing
 from a phylogeny and there are more that could occur. Missing species could be
 biased by some phylogenetic pattern other than Brownian motion evolution.
 Nevertheless, our investigation shows that missing species cause ED values of
-species remaining in the phylogeny to deviate from the true value.
-% I would frame this in exactly the same way as you should frame the
-% Yule model thing. Say, yes, we realise this is a simple model, but
-% it shows an effect, and so this is something to think about. I would
-% speculate about the kind of model that would be interesting to look
-% at further: perhaps one where species radiate in situ and stay in
-% place. Thus you could be missing an entire clade and it would be in
-% the same place. Maybe find some literature about how species tend to
-% be missing from conservation prioritisation or phylogenies and then
-% cite that. Just a few sentence of waffle, informed by the
-% literature.
-
-% I'll need to find and read some this literature... -Bodie 
+species remaining in the phylogeny to deviate from the true value. This effect
+should be considered when debating whether under other, more complex models of
+evolution a different effect might be seen. There could be cases where species
+could be missing from the phylogeny with the result that an entire clade is
+unsampled. This would be a case of species radiating in situ and have persisted
+in one, restricted area. A situation such as this is seen with corals in the
+Indian Ocean region \autocite{Arrigoni2012}.
 
 In the past, we have included missing species into the EDGE framework using
 different methods. Collen et al. assigned the mean ED score of presumed
@@ -517,12 +507,11 @@ information about those species. While being uninformative, these ED values
 would also lead to mispriortizing species based on our results. In the event
 that a clade of 25 species in a phylogeny of 850 species, our results show those
 imputed species would be, on average, 250 ranks from their true rank (Fig.
-\ref{imputationTrend}; Table 4). 
-
-Analyzing the performance of imputation of a clade less than five species was
-not performed because we can't report a correlation reliably with so little data
-\autocite{Crawley2012}. Even still, we cannot see how the trend in our results
-suddenly changed such that, when imputing only one species, it improved.
+\ref{imputationTrend}; Table 4). Analyzing the performance of imputation of a
+clade less than five species was not performed because we can't report a
+correlation reliably with so little data \autocite{Crawley2012}. Even still, we
+cannot see how the trend in our results would suddenly change such that, when
+imputing only one species, it improves.  
 % * Invoke Arne's 'the clade should have an average ED' argument to
 %   support this. In smaller clades (i.e., two species, and you don't
 %   know where that species goes) then you should just be sampling from
@@ -531,56 +520,48 @@ suddenly changed such that, when imputing only one species, it improved.
 %   already. This is a more complicated argument, so have a bash at it
 %   and then we can talk.
 
+% I would like to go over this a bit more -Bodie
+
 \subsection*{Guidelines for the use of imputation}
 We suggest there is a straightforward synthesis of these results that should be
 useful in applied conservation biology. Both random and
 phylogenetically-patterned loss of species affect ED values throughout the tree.
-However, we found that ED values of non-missing species remain relatively
-constant under imputation. Therefore, imputation could be used to avoid missing
-species biasing ED values of non-missing species. We have shown that imputing
-missing species would not provide accurate ED values for missing species.
-However, it would provide a method of avoiding the loss of species affecting ED
-values throughout the remainder of the tree. Basing conservation priorities upon
-the ED values of imputed species would lead to inaccurate prioritization.
-Nevertheless, imputation may be useful to stop missing species from biasing
-species easily placed on the phylogeny.
-% Make sure you reference the *result* that you have found - that the
-% correlation of the non-imputed species is high. You could even
-% explicitly compare it with the correlation when there's no
-% imputation: if the correlation is better, good news! It's given us
-% something. If it's not... well, we can worry about that if you find
-% it :D
+However, we found that ED values of non-imputed species remain constant under
+imputation. Therefore, imputation could be used to avoid missing species biasing
+ED values of non-missing species. We have shown that imputing missing species
+would not provide accurate ED values for missing species. However, it would
+provide a method of avoiding the loss of species affecting ED values throughout
+the remainder of the tree. Basing conservation priorities upon the ED values of
+imputed species would lead to inaccurate prioritization. Nevertheless,
+imputation may be useful to stop missing species from biasing species easily
+placed on the phylogeny. 
 
 Given these results, we now present guidelines for how missing species should be
-dealt with and when imputation might be appropriate when calculating EDGE. In
-the event of missing species, researchers should be investigating the amount of
-species that are missing and consider whether imputation is necessary. For some
-context, in our analysis we found that if 30\% of species are missing at random
-or in a phylogenetic-biased manner from the phylogeny, respectively, ~80\% and
-~89\%. Therefore if species are missing, we should verify that the amount of
-missing species does not exceed a percentage which we have found to provide poor
-ED values for remaining species. While below an acceptable percentage of missing
-species, EDGE should be carried out without attempting to impute the missing
-species.
-% This could be a very good idea; are you saying to see if the
-% fraction you're missing is greater than the error that would be
-% added in? Check what I'm saying about the r2, but it sounds like you
-% could have found a very nice rule of thumb. I would even consider
-% using the phrase "rule of thumb", as it will drive home to the
-% reader that you're giving a guide to thought.
-However, if a larger proportion of species are missing, imputation may
-be used but with some caution. ED values for species easily placed on
-the phylogeny are relatively unaffected and can be trusted when
-setting conservation priorities. Nevertheless, ED values and ranks of
-species which have been imputed should either be ignored or used
-cautiously within EDGE.
-% Bring in something quantitative here as well - reference the average
-% error in ranking, and use that to give another 'rule of thumb' as to
-% how variable the ranking could be for a species with no data. Does
-% that make sense?
-By following these guidelines we avoid biasing species which are
-easily placed on the phylogeny even in the event that imputation is
-used.
+dealt with and when imputation might be appropriate when calculating EDGE. Our
+aim is to provide a rule of thumb for the use of imputation and how imputed
+species should be handled. In the event of missing species, researchers should
+be investigating the exact amount of species that are missing and consider
+whether imputation is necessary. Our analyses show that even with a large
+proportion of species missing, ED values of remaining species are highly
+correlated. For some context, in our analysis we found that 30\% of species
+missing at random or in a phylogenetic-biased manner from the phylogeny leads to
+a correlation coefficient of 0.8 and 0.89, respectively. Therefore if species
+are missing, we should verify that the amount of missing species does not exceed
+a percentage which we have found to provide poor ED values for remaining
+species. While below an acceptable percentage of missing species, EDGE should be
+carried out without attempting to impute the missing species. However, if a
+larger proportion of species are missing, imputation may be used but with some
+caution. ED values for species easily placed on the phylogeny are relatively
+unaffected and can be trusted when setting conservation priorities.
+Nevertheless, ED values and ranks of species which have been imputed should
+either be ignored or used cautiously within EDGE. Our results demonstrate that
+an individual species within an imputed clade of 25 species on a phylogeny of
+1024 species is, on average, ranking \pm ~318 positions from its true rank.
+While imputation does not affect ED values of known species, includes missing
+species in the phylogeny, it does not help understand the true ranking of an
+imputed species. By following these guidelines we avoid biasing species which
+are easily placed on the phylogeny and confounding the rankings for the sake of
+including missing species.
 
 \section*{Acknowledgments}
 
