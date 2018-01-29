@@ -176,9 +176,9 @@ replacing one particular clade all under the same model of evolution. In doing
 so, we hope to understand the effect that imputation has on ED values and offer
 some discussion of whether it is a viable solution for dealing with missing data
 species. We found that ED values throughout the tree are affected by excluding
-missing species from the phylogeny \ref{randomVsClustered}. Also, we found no
+missing species from the phylogeny (Fig. \ref{randomVsClustered}). Also, we found no
 correlation between imputed and true ED values for a species within an imputed
-clade (\ref{imputationTrend}; Table 2). 
+clade (Fig. \ref{imputationTrend}; Table 2). 
 
 \section*{Methods}
 Here we use a simulation approach to test the effect of removing and imputing
@@ -210,7 +210,7 @@ selecting species at random without replacing, and removing those species from
 the tree. This randomization had no regard for phylogenetic structure. Missing
 species related by some character trait was tested by simulating character trait
 values for each tip. These simulations were all performed under a constant rate
-Brownian-motion model (\sigma$^2$=0.5, starting root value = 1). Tips were
+Brownian-motion model ($\sigma^2$=0.5, starting root value = 1). Tips were
 dropped if their character trait values exceeded a relative threshold and placed
 them into the upper quantile for the set of trait values. More specifically, if
 the fraction to be dropped was 10\%, species within the 90th quantile of
@@ -263,7 +263,7 @@ amount of species depending on the amount of species imputed.
 \section*{Results}
 Under both random and phylogenetically-patterned loss, ED values of remaining
 species are affected by the total number of species removed (Table 1;
-\ref{randomVsClustered}. In either case, a similar effect on the correlation
+Fig. \ref{randomVsClustered}). In either case, a similar effect on the correlation
 between remaining ED values before and after species are removed is seen.   
 
 \begin{figure}[!ht]
@@ -305,12 +305,12 @@ p$<$0.0001).}
 \end{table}
 
 We find no support for a correlation between the imputed and true ED values for
-a species within an imputed clade (\ref{imputationTrend}, table 2). We found
+a species within an imputed clade (Fig. \ref{imputationTrend}, table 2). We found
 that measures of the true phylogeny such as phylogentic diversity (PD), lambda,
 Colless' Index, skew, and kurtosis do not provide any indication that imputation
 would negatively affect ED values (Appendix A). We do find evidence that, when
 imputing larger clades, the variation in the correlation is lesser
-(\ref{quantReg}), but the correlation between true and imputed ED values are
+(Fig. \ref{quantReg}), but the correlation between true and imputed ED values are
 converging to zero correlation (Table 3). Just as imputed ED values did not reflect true ED
 values, the rankings of species within the focal clade were altered
 significantly under imputation (Fig. \ref{rankingError}; Table 4). Our model
@@ -371,7 +371,7 @@ p$<$0.0001).}
 
 \begin{table}[ht]
   \centering
-  \begin{tabular}{rrrrr}
+  \begin{tabular}{rrrrrr}
     \hline
   & \tau = 0.10 & \tau = 0.25 & \tau = 0.50 & \tau = 0.75 & \tau = 0.90 \\
     \hline
@@ -499,8 +499,8 @@ estimates of phylogenetic signal used in downstream analyses
 \autocite{Rabosky2014}. 
 
 When considering the analysis of ED, our results show that imputation does not
-recover true ED values nor ED rank of missing species \ref{imputationTrend;
-rankingError}. As the size of the imputed clade increases, ED values of imputed
+recover true ED values nor ED rank of missing species (Fig. \ref{imputationTrend};
+ Fig. \ref{rankingError}). As the size of the imputed clade increases, ED values of imputed
 species do not correlate with their true values (Table 2). Even though we are
 including missing species into calculating ED, we are not obtaining accurate
 information about those species. While being uninformative, these ED values
@@ -556,7 +556,8 @@ unaffected and can be trusted when setting conservation priorities.
 Nevertheless, ED values and ranks of species which have been imputed should
 either be ignored or used cautiously within EDGE. Our results demonstrate that
 an individual species within an imputed clade of 25 species on a phylogeny of
-1024 species is, on average, ranking \pm ~318 positions from its true rank.
+1024 species is, on average, ranking $\pm$ ~318 positions from its true rank (Fig. 
+\ref{rankingError}).
 While imputation does not affect ED values of known species, includes missing
 species in the phylogeny, it does not help understand the true ranking of an
 imputed species. By following these guidelines we avoid biasing species which
