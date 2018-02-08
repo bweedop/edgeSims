@@ -81,15 +81,15 @@ provided a successful foundation and has been applied to set conservation
 priorities for a number of taxa (\emph{e.g.} mammals, birds, corals, and
 sharks). However, uncertainty has been an issue in each application of EDGE and
 remains an issue today. Phylogenetic uncertainty is one source of uncertainty
-yet to be properly addressed. The goal of this study was to investigate and
-model the effect phylogenetic uncertainty (\emph{e.g.} missing species) and
-current methods to compensate for such uncertainty has on EDGE scores. We
-evaluate the effect that missing species has on EDGE scores and see that the
-removal of missing species has little effect on species remaining in the
-phylogeny. Further, we analyze how imputing missing species affects EDGE scores
-and whether it is a defensible method of including missing species. We show that
-imputation alters the EDGE scores and rankings for species within clades where
-imputation is being applied.
+yet to be properly addressed. To assess the efficacy of imputation, we
+investigate and model the effect phylogenetic uncertainty (\emph{e.g.} missing
+species) and current methods to compensate for such uncertainty has on EDGE
+scores. We evaluate the effect that missing species has on EDGE scores and see
+that the removal of missing species has little effect on species remaining in
+the phylogeny. Further, we analyze how imputing missing species affects EDGE
+scores and whether it is a defensible method of including missing species. We
+show that imputation alters the EDGE scores and rankings for species within
+clades where imputation is being applied.
 
 \textbf{Keywords}: 
 
@@ -101,30 +101,31 @@ midst of, or entering, a sixth mass extinction \autocite{Barnosky2011,
 Ceballos2015}, such that more species than ever are declining and/or in danger
 of extinction across a range of environments \autocite{Wake2008,Thomas2004}.
 Habitat destruction \autocite{Brooks2002}, invasive species
-\autocite{Molnar2008}, climate change \autocite{Pounds2006}, and disease 
+\autocite{Molnar2008}, climate change \autocite{Pounds2006}, and disease
 \autocite{Lips2006} are some of the leading causes of species declines globally.
-Conservation biologists seek to reverse these declines and their detrimental
-effects on species populations, but in reality they have limited resources with
-which to do so. This challenge, termed the ``Noah's Ark problem''
-\autocite{Weitzman1998}, has driven conservation biologists to prioritize, or
-triage, the resource allocation \autocite{Bottrill2008}.
+Conservation biologists seek to reduce these detrimental effects on species
+populations, but in reality they have limited resources with which to do so.
+This challenge, termed the ``Noah's Ark problem'' \autocite{Weitzman1998}, has
+driven conservation biologists to prioritize, or triage, their resource allocation
+\autocite{Bottrill2008}.
 
 Conservation triage, like all sound decision-making, requires some metric that
-quantifies the urgency for conservation a set of species. By using such a
+quantifies the urgency for conservation of a set of species. By using such a
 metric, researchers are able to avoid biasing the allocation of time and
 resources for conservation, and can make their conservation goals more explicit.
-One such triage strategies which has been widely used is the EDGE
-metric\autocite[Evolutionary Distinction and Globally Endangered;][]{Isaac2007}.
-This method prioritizes species according to two criteria: Evolutionary
+One such triage strategies which has been widely used is the EDGE metric
+\autocite[Evolutionary Distinction and Globally Endangered;][]{Isaac2007}. This
+method prioritizes species according to two criteria: Evolutionary
 Distinctiveness (ED) and Global Endangerment (GE). ED measures relative
 contributions to phylogenetic diversity made by each species within a particular
 clade \autocite{Isaac2007}, assigning each branch length equally to all its
-subtending species. GE values are assessed by assigning numerical values to each
-of the World Conservation Union (IUCN) Red List Categories. As species become
-increasingly threatened and are placed into more concerning categories
+subtending species. GE values are quantified by assigning numerical values to
+each of the World Conservation Union (IUCN) Red List Categories. As species
+become increasingly threatened and are placed into more concerning categories
 (\emph{e.g.}, from Vulnerable to Endangered), the GE numerical value increases.
-Thus a species' EDGE score is intended to equally reflect a species'
-evolutionary distinctiveness and conservation status \autocite{Pearse2015}.
+Thus a species' EDGE score is intended, even if it does not always in practice,
+\autocite[see]{Pearse2015} to equally reflect a species' evolutionary
+distinctiveness and conservation status.
 
 The EDGE approach was never intended to be a purely academic metric, and is now
 the basis of the global EDGE of Existence Program
@@ -142,7 +143,7 @@ contribution of each species to overall phylogenetic diversity
 \autocite{Faith2008,Jensen2016}. Thus the development of EDGE-like metrics has
 matched progress with other fields of conservation biology, where the likelihood
 of success in conservation \autocite{Wilson2007, Mcbride2007}, relative cost of
-certain interventions\autocite{Naidoo2006}, and complementarity of
+certain interventions \autocite{Naidoo2006}, and complementarity of
 interventions \autocite{Pressey1993, Myers2000} have also been considered.
 Critically, EDGE has formed the basis of a successful program that
 quantitatively prioritizes conservation, providing actionable insights into how
@@ -154,20 +155,20 @@ EDGE-like approach has had to deal with the uncertainty presented by missing
 species data.
 
 IUCN has given guidance that any available contextual data should be used to
-assign some threat status to species which are Data Deficient species
-\autocite{Iucn2001, Iucn2008}. A number of studies have been done showing how to
-follow this guidance and assign threat categories to Data Deficient species and
-reduce the uncertainty in GE \autocite{Good2006, Butchart2010, Morais2013}. The
-problem, however, is arguably more complex for species whose phylogenetic
-position is unknown. Species of conservation concern are almost by definition
-rare, and so we frequently lack sufficient DNA (or even morphological) data to
-place them with certainty on a phylogeny. In the face of such essentially
-unavoidable uncertainty, conservation biologists have worked hard to overcome
-data limitations. In most empirical EDGE lists, taxonomic information, rather
-than sequence data alone, is used to locate species in the tree of life
-\autocite{Isaac2007, Isaac2012, Collen2011, Jetz2014, Curnick2015, Stein2018,
-Gumbs2017}. By using taxonomic information alone, researchers are able to
-produce fully resolved phylogenies using model-based imputation
+assign some threat status to species which are classified as Data Deficient
+species \autocite{Iucn2001, Iucn2008}. A number of studies have been done
+showing how to follow this guidance and assign threat categories to Data
+Deficient species and reduce the uncertainty in GE \autocite{Good2006,
+Butchart2010, Morais2013}. The problem, however, is arguably more complex for
+species whose phylogenetic position is unknown. Species of conservation concern
+are almost by definition rare, and so we frequently lack sufficient DNA (or even
+morphological) data to place them with certainty on a phylogeny. In the face of
+such essentially unavoidable uncertainty, conservation biologists have worked
+hard to overcome data limitations. In most empirical EDGE lists taxonomic
+information, rather than sequence data alone, is used to locate species in the
+tree of life \autocite{Isaac2007, Isaac2012, Collen2011, Jetz2014, Curnick2015,
+Stein2018, Gumbs2017}. By using taxonomic information, researchers are
+able to produce fully resolved phylogenies using model-based imputation
 \autocite{Kuhn2011, Thomas2013}. Yet, to our knowledge, there has yet to be a
 systematic study of the effect of such imputation on species' EDGE scores,
 unlike in other aspects of comparative biology \autocite{Rabosky2014}. Indeed,
@@ -200,7 +201,7 @@ Since empirical studies do not (to our knowledge) impute GE (Global
 Endangerment) scores for species, instead relying on the IUCN's proposal to
 assign Data Deficient species as threatened or otherwise based upon any
 available evidence, we focus solely on phylogenetic imputation. EDGE is the
-product of both ED and GE, thus perfectly accurate GE values could still lead to
+product of both ED and GE \autocite[see]{Isaac2007}, thus perfectly accurate GE values could still lead to
 a biased EDGE score if the ED scores were imperfectly calculated.
 
 All simulations and analyses were performed using R \autocite[version
@@ -247,14 +248,13 @@ tree.
 
 \begin{figure}[!ht]
   \center
-  \includegraphics[width=.5\textwidth]{missingSpecies.png}
+  \includegraphics[width=.75\textwidth]{missingSpecies.png}
   \caption{\textbf{Example of simulated phylogenies and ED values used to
-  compare species ED values.} The simulated tree on the right (A) is the true
-  tree prior to removal of missing species. On the left (B), is the same tree
-  after missing species have been removed. Each of the ED values for species can
-  be seen to the right of each tip. We correlate the remaining ED values to
-  compare the ED values. In this example, one species is missing and been
-  removed and the correlation coefficient $r$ = 0.976.}
+  compare species ED values.} The simulated tree on the left is the true tree
+  prior to removal of missing species. On the right, is the same tree after
+  missing species have been removed. We correlate the remaining ED values to
+  compare the ED values. Dashed lines can be seen for the species which would
+  have ED scores compared.}
   \label{missingSpecies}
 \end{figure}
 
@@ -267,7 +267,7 @@ same pure-birth model used to generate the phylogeny, and placed the newly
 simulated clade back where the original clade was removed. Thus we imputed each
 clade under the model used to generate it: in an empirical study this model
 would, itself, have to be inferred but we do not address this additional source
-of error here. To see if phylogenetic structure or distribution is ED values
+of error here (fig. \ref{imputeConcept}). To see if phylogenetic structure or distribution is ED values
 could explain variation in the effect of removal and subsequent imputation, we
 also recorded, before species were removed from the tree, lambda (using the
 \texttt{yule} function in the R package \texttt{ape} \autocite{Paradis2017}),
@@ -290,6 +290,18 @@ conservation actions are targeted. We statistically modeled both these metrics
 as a function of the number of total species and number of species within an
 imputed clade, since we might expect larger clades and/or larger phylogenies to
 be imputed more erroneously.
+
+\begin{figure}[!ht]
+  \center
+  \includegraphics[width=.75\textwidth]{imputeConcept.png}
+  \caption{\textbf{Example of simulating phylogenies, loss of information and
+  imputation of structure.} The simulated tree on the left is the true tree
+  prior to loss of information. To the right is each step in the process of
+  simulating the imputation of species within the clade highlighted with the
+  dashed line. To compare true and imputed ED values, we correlate ED values on
+  the full phylogeny and imputed clade.}
+  \label{imputeConcept}
+\end{figure}
 
 \section*{Results}
 Under both random and phylogenetically-patterned loss, species' ED scores are
@@ -529,12 +541,12 @@ possible clade (two species), imputation is essentially sampling a terminal
 branch length from an exponential distribution \autocite{Kuhn2011}; such a
 process should still lead to a great degree of uncertainty. It is, perhaps,
 unsurprising that imputed ED values do not correlate with their true values (see
-table XXX), but we were surprised at the degree of ranking error. Indeed, large
-phylogenies showed \emph{greater} ranking error; we na\"{i}vely would have
-expected the opposite. We would have expected our upper bound on the age of the
-imputed clade, which we would have expected to be relatively younger in larger
-phylogenies, to have somewhat controlled the range of the ranks of our imputed
-species. ED is known to be driven mostly by terminal branch length
+fig.\ref{quantReg}), but we were surprised at the degree of ranking error.
+Indeed, large phylogenies showed \emph{greater} ranking error; we na\"{i}vely
+would have expected the opposite. We would have expected our upper bound on the
+age of the imputed clade, which we would have expected to be relatively younger
+in larger phylogenies, to have somewhat controlled the range of the ranks of our
+imputed species. ED is known to be driven mostly by terminal branch length
 \autocite{Isaac2007,Steel2007}; our results therefore emphasize this.
 
 Imputation is not the only way to incorporate missing species into EDGE-like
