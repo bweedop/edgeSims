@@ -1,6 +1,9 @@
 library(caper)
 library(geiger)
-
+library(pez)
+library(phytools)
+library(moments)
+library(apTreeshape)
 
 drop_random_tips<-function(spp, dropped_fraction)
 {
@@ -8,8 +11,17 @@ drop_random_tips<-function(spp, dropped_fraction)
   tree<-sim.bdtree(n = spp)
   
   #Calculate ED values for the original tree.
-  ed<-ed.calc(tree)$spp
-  ed<-setNames(ed[,2], ed[,1])
+  ed <-ed.calc(tree)$spp
+  ed <-setNames(ed[,2], ed[,1])
+
+  original.lambda <- yule(tree)$lambda
+  gammatree <-ltt(tree, plot = FALSE, gamma = FALSE)
+  original.gamma <- gammatest(gammatree)$gamma
+  colless.tree <- as.treeshape(tree, model = "yule")
+  original.colless <- colless(colless.tree)
+  original.kurtosis <- kurtosis(original.ed)
+  original.skew <- skewness(original.ed)
+  original.branches <- sum(tree$edge.length)
   
   #Use the original tree for the tree which will have a determined fraction of random tips dropped from it. 
   imputed_tree<-tree
@@ -26,7 +38,8 @@ drop_random_tips<-function(spp, dropped_fraction)
   
   #Calculate the correlation between the ED values of the original tree and the manipulated tree.
   ed_corr<-cor(ed, imputed_ed)
-  return(c(ed, imputed_ed, ed_corr))
+  return(c(ed_corr, original.gamma, original.lambda, original.colless, 
+            original.kurtosis, original.skew, original.sd, original.branches))
 }
 
 
@@ -38,6 +51,15 @@ drop_clustered_tips<-function(spp, dropped_fraction)
   #Calculate ED values for the original tree.
   ed<-ed.calc(tree)$spp
   ed <- setNames(ed[,2], ed[,1])
+
+  original.lambda <- yule(tree)$lambda
+  gammatree <-ltt(tree, plot = FALSE, gamma = FALSE)
+  original.gamma <- gammatest(gammatree)$gamma
+  colless.tree <- as.treeshape(tree, model = "yule")
+  original.colless <- colless(colless.tree)
+  original.kurtosis <- kurtosis(original.ed)
+  original.skew <- skewness(original.ed)
+  original.branches <- sum(tree$edge.length)
   
   #Use the original tree for the tree which will have a determined fraction of clustered tips dropped from it.
   imputed_tree<-tree
@@ -59,7 +81,8 @@ drop_clustered_tips<-function(spp, dropped_fraction)
   
   #Calculate the correlation between the original ED values and the manipulated trees' ED values.
   ed_corr<-cor(ed, imputed_ed)
-  return(c(ed, imputed_ed, ed_corr))
+  return(c((ed_corr, original.gamma, original.lambda, original.colless, 
+            original.kurtosis, original.skew, original.sd, original.branches))
 }
 
 data_wrapper<-function(n.spp = c(64, 128, 256, 512, 1024, 2048, 4096), fraction.dropped = c(seq(0.01, 0.99, 0.01)), reps = 100)
@@ -76,18 +99,3 @@ data_wrapper<-function(n.spp = c(64, 128, 256, 512, 1024, 2048, 4096), fraction.
     }
   write.table(data, "dropCorrelations.txt")
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
