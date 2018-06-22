@@ -1,7 +1,9 @@
- \documentclass[12pt,english]{article}
+\documentclass[10pt,english]{article}
 \usepackage[utf8]{inputenc}
 \markright{Weedop et al.\hfill The Effect of Phylogenetic Uncertainty and Imputation on EDGE Scores\hfill}
 \usepackage{geometry}
+\usepackage[labelfont=bf]{caption}
+\usepackage{makecell}
 \geometry{verbose,letterpaper,tmargin=2.54cm,bmargin=2.54cm,lmargin=2.54cm,rmargin=2.54cm}
 %\geometry{verbose,letterpaper,tmargin=.1cm,bmargin=.1cm,lmargin=.1cm,rmargin=.1cm}
 \usepackage{graphicx}
@@ -59,7 +61,7 @@
 
 \textbf{Running head}: The Effect of Phylogenetic Uncertainty and Imputation on EDGE Scores
 
-\textbf{Authors:} K.\ Bodie Weedop$^{1}$, Arne \O. Mooers$^2$, Caroline M.\ Tucker$^3$, and William D.\ Pearse$^{1}$\
+\textbf{Authors:} K.\ Bodie Weedop$^{1}$, Arne \O. Mooers$^2$, Caroline M.\ Tucker$^3$, and William D.\ Pearse$^{1*}$\
 
 $^1$ Department of Biology \& Ecology Center, Utah State University,
 5305 Old Main Hill, Logan UT, 84322
@@ -128,14 +130,14 @@ each branch length equally to all the subtending species \autocite{Isaac2007},
 Global Endangerment (GE), assigns numerical values to each of the World
 Conservation Union (IUCN) Red List Categories. As species become increasingly
 threatened and are placed into categories of increasing concern (\emph{e.g.}
-from Vulnerable to Endangered), the GE numerical value increases. Species' EDGE
+from Vulnerable to Endangered), the GE numerical value increases. A species' EDGE
 score is intended to equally reflect a species' evolutionary distinctiveness and
 conservation status \autocite[even if it does not always in practice; see][]{Pearse2015}.
 
 Though originally used to prioritize global mammals, the EDGE metric has
 subsequently been applied to a variety of taxonomic groups, including amphibians
 \autocite{Isaac2012}, birds \autocite{Jetz2014}, corals \autocite{Curnick2015},
-squamate reptiles \autocite{Tonini2016}, and sharks \autocite{Stein2018}.
+squamate reptiles \autocite{Tonini2016}, sharks \autocite{Stein2018}, and all tetrapods \autocite{Gumbs2018}.
 Additional related metrics have also been developed, each emphasizing subtly
 different things, such as the expected contribution of each species to future
 phylogenetic diversity \autocite[HEDGE, I-HEDGE;][]{Steel2007,Jensen2016}, our
@@ -154,8 +156,8 @@ about species' attributes. Nonetheless, almost every application of an EDGE-type
 approach has to deal with the uncertainty resulting from missing data.
 
 Missing data can affect confidence in EDGE scores in several ways. First, the
-IUCN identifies some species as Data Deficient \autocite{Iucn2001, Iucn2008}.
-which will affect the GE component of a species' EDGE score. Fortunately, the
+IUCN identifies some species as Data Deficient \autocite{Iucn2001, Iucn2008},
+which affects the GE component of a species' EDGE score. Fortunately, the
 IUCN provides guidance for using any available contextual data to assign some
 threat status to such species. A number of studies illustrate how to assign
 threat categories to Data Deficient species, which in turn should reduce the
@@ -168,9 +170,9 @@ sufficient DNA (or even morphological) data to be placed with certainty on a
 phylogeny. For most empirical EDGE lists, taxonomic information rather than
 sequence data alone is used to place species in the tree of life
 \autocite[see][]{Isaac2007, Collen2011, Isaac2012, Jetz2014, Curnick2015,
-Stein2018, Gumbs2017}. Yet, to our knowledge, there has yet to be a systematic
+Stein2018, Gumbs2018}. Yet, to our knowledge, there has yet to be a systematic
 study of the effect of such imputation on species' EDGE scores, unlike in other
-aspects of comparative biology \autocite{Kuhn2011, Thomas2013, Rabosky2014}.
+aspects of comparative biology \autocite{Kuhn2011, Thomas2013, Rabosky2015}.
 Thus we do not know the fidelity of EDGE scores between imputed and non-imputed
 phylogenies or the magnitude of error phylogenetic imputation introduces. As the
 desire to use EDGE-type measures and phylogenies for conservation triage grows,
@@ -215,7 +217,7 @@ acknowledge that more complex and/or biologically realistic models of
 diversification could potentially improve the performance of imputation.
 However, we suggest that imputation under a simple model that is identical to
 that used to simulate the data is a low, and fair, benchmark for a method to
-meet. We used \texttt{ed.calc} \texttt{caper} to calculate ED values
+meet. We used \texttt{caper::ed.calc} to calculate ED values
 \autocite{Orme2013}. All our analysis code is available online
 (\url{https://github.com/bweedop/edgeSims}) and in the supplementary materials.
 
@@ -242,20 +244,18 @@ results in closely related species being removed more often than expected by cha
 To quantify the effect of these manipulations, we calculated the ED values of
 species that are not removed from a tree both before and after removal.
 We then correlated these ED scores: if missing species do not affect ED
-values, we would expect a strong, positive correlation between the ED scores
-calculated before and after species were removed from the phylogeny. Note that
+values of the remaining species, we would expect a strong, positive correlation between the ED scores
+of the remaining species calculated before and after species were removed from the phylogeny. We emphasize that
 species removed from the phylogeny are omitted from this comparison. We outline
 our approach in figure \ref{missingSpecies}.
 
 \begin{figure}[!ht]
   \center
   \includegraphics[width=.75\textwidth]{missingSpecies.png}
-  \caption{\textbf{Example of simulated phylogenies and ED values used to
-  compare species ED values.} The simulated tree on the left is the true tree
+  \caption{\textbf{Conceptual overview of the missing-species simulations in this study.} The simulated tree on the left is the true tree
   prior to removal of missing species. On the right is the same tree after
   missing species have been removed. Species that are removed are shown in red.
-  We correlate the remaining ED values to
-  compare the ED values. Dashed lines can be seen for the species which would
+  To compare the ED values of the remaining species, we correlate their ED values before (left) and after (right) removal of the missing species. Dashed lines can be seen for the species which would
   have ED scores compared.}
   \label{missingSpecies}
 \end{figure}
@@ -272,24 +272,23 @@ original phylogeny. We then placed the newly simulated clade in the full
 phylogeny, in the same location as the removed clade. If a newly simulated clade
 was so old that it was not possible to graft it into place, we discarded that
 clade and simulated another. In an empirical study the model of evolution under
-which the clade would be simulated would have to be estimated, which is an
+which the phylogeny had evolved would have to be estimated, which is an
 additional source of error not considered here. We simulated each combination of
 clade and total phylogeny sizes 100 times. An overview of our approach is given
-in \ref{imputeConcept}. 
+in figure \ref{imputeConcept}. 
 
 To assess whether clades, once imputed, had similar ED scores, we correlated the
 imputed ED scores with the true ED scores. We also calculated the sum of the
 absolute change in ranked ED for each species, which is particularly relevant
-for EDGE-listing as it is often the top 100, 200, etc., species on which
-conservation actions are targeted. We modeled both of these metrics (the change
+for EDGE-listing as conservation actions are often focused around the top 100, 200, etc., species. We modeled both of these metrics (the change
 in ranking and the correlation) as a function of a number of potential
 explanatory variables. Specifically, we included in our models: the estimated
 speciation rate of the original phylogeny \autocite[using
 \texttt{ape::yule};][]{Paradis2004}, the sum of all phylogenetic branch-lengths
 in the original phylogeny \autocite[Faith's PD;][]{Faith1992}, the sum of all
 phylogenetic branch-lengths in the original focal clade \autocite[Faith's
-PD;][]{Faith1992}, the value of gamma in the original phylogeny \autocite[using
-\texttt{phytools::gammatest};][]{Pybus2000, Revell2012}, colless' index of the
+PD;][]{Faith1992}, the value of $\gamma$ in the original phylogeny \autocite[using
+\texttt{phytools::gammatest};][]{Pybus2000, Revell2012}, Colless' index of the
 original phylogeny
 \autocite[using\texttt{apTreeshape::as.treeshape};][]{Colless1982,
 Bortolussi2009}, the kurtosis of species' ED values in the original phylogeny
@@ -302,36 +301,30 @@ of many of these explanatory variables are known for Yule trees, in each
 simulation they are expected to vary somewhat by chance.
 
 Recently, there has been interest in assigning missing species the
-mean ED score within a clade \autocite[see][]{Gumbs2017}. To test the
-efficacy of such methods, , we assigned the average ED of the selected
+mean ED score within a clade \autocite[see][]{Gumbs2018}. To test the
+efficacy of such methods, we assigned the average ED of the selected
 clade to each of its' species and calculated (as above) the mean
 change in absolute ranking under this scheme. Note that we could not
-correlate ED scores, as we could with the imputation method described
-above, since to calculate a correlation requires variation in species'
-scores.
+correlate ED scores (as we do above), since such a correlation would require variation in species'
+scores and under this approach a single score (the mean ED) is assigned to imputed species.
 
 \begin{figure}[!ht]
   \center
   \includegraphics[width=.75\textwidth]{imputeConcept.png}
-  \caption{\textbf{Conceptual overview of the simulations conducted in this
-  study.} In (a), the simulated tree on the left is the ‘true tree' prior to
-  removal of missing species. On the right is the same tree after the removal of
-  missing species. We calculated ED values for both the true tree and the
-  incomplete tree, and calculated the correlation between ED values for species
-  common between these trees (indicated with dashed lines) to measure the impact
-  of missing species on known species' scores. In (b), the simulated tree on the
+  \caption{\textbf{Conceptual overview of the imputation simulations conducted in this
+  study.} The simulated tree on the
   left is the ‘true tree'. We selected a clade to treat as ‘missing'
-  (highlighted with a dashed line) by replacing it with a polytomy (middle
+  (highlighted with a dashed line and in blue) by replacing it with a polytomy (middle
   panel), and then imputed the ‘missing' species following the procedure
-  described in the Methods to produce the imputed clade (dashed line) in the
+  described in the Methods to produce the imputed clade in the
   right panel. To compare true and imputed ED values within the imputed clade,
-  we correlated ED values calculated on the true clade with those for the
-  imputed clade. }
+  we correlated ED values calculated for the true clade (left) with those for the
+  imputed clade (right).}
   \label{imputeConcept}
 \end{figure}
 
 \section*{Results}
-With increasing numbers of missing species, species' ED scores become less accurate (Table 1;
+With increasing numbers of missing species, species' ED scores become less accurate (table 1;
 figure \ref{randomVsClustered}). ED values were less robust to
 phylogenetically-biased missing species, as compared to those that are randomly
 missing from the tree. The effect of missing species is not necessarily severe;
@@ -342,51 +335,70 @@ random missing species, respectively.
 \begin{figure}[!ht]
   \center
   \includegraphics[width=.5\textwidth]{randomVsCluster.png}
-  \caption{\textbf{Correlation coefficient values plotted against the fraction
-  of species dropped, either at random or in a clustered manner.} The color of
-  data points denote whether species were missing from the phylogeny at randomly
-  (orange; n = 100) or in clustered manner (grey; n = 100). Lines show the
-  relationship between correlation coefficients when species are dropped at
-  random (red), or in a clustered manner (black). Correlations are calculated
-  for the the ED values before and after species are dropped from the phylogeny.
-  }
+  \caption{\textbf{The effect of missing data on the calculation of
+      the remaining species' ED values.} The correlation coefficient
+    of species' ED values in full (simulated) phylogenies, comparing
+    values before and after the random loss of (other) species from
+    the tree. The color of data points denote whether the species were
+    removed from the phylogeny completely at random (orange) or in a
+    phylogenetically biased fashion (see text; grey). Lines show
+    regressions for random (red) or phylogenetically baised (black)
+    species loss; see table \ref{missing_regression} for model
+    coefficients. This plot shows that the accuracy of estimation of
+    ED values is inversely proportional to the number of species
+    missing from the phylogeny, and that phylogenetically-biased
+    species loss has a greater impact on accuracy.}
   \label{randomVsClustered}
 \end{figure}
 
 \begin{table}[ht]
   \centering
-  \begin{tabular}{rrrrr}
+  \begin{tabular}{lrrrr}
     \hline
-      & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
-      \hline
-      (Intercept) & 1.0315 & 0.0013 & 821.39 & $<$0.0001 \\
-      Fraction of Species Dropped & -0.4696 & 0.0020 & -233.16 & $<$0.0001 \\
-      Random Treatment & 0.0630 & 0.0018 & 35.47 & $<$0.0001 \\
-      Number of Species Overall & 0.0000 & 0.0000 & 7.89 & $<$0.0001 \\
-      Fraction of Species Dropped:Random Treatment & -0.2774 & 0.0028 & -97.45 & $<$0.0001 \\
-      Random Treatment:Number of Species Overall & 0.0000 & 0.0000 & -4.38 & $<$0.0001 \\
-      \hline
-    \hline
+    & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ \hline
+    Reference---Phylogenetically biased\\
+    Intercept & 1.0315 & 0.0013 & 821.39 & $<$0.0001 \\
+    Fraction of species removed & -0.4696 & 0.0020 & -233.16 & $<$0.0001 \\
+    Number of species overall & $2.500 \times 10^{-6}$ & $2.984 \times 10^{-7}$ & 8.38 & $<$0.0001 \\
+    Contrast---Random\\
+    Intercept & 0.0630 & 0.0018 & 35.47 & $<$0.0001 \\
+    Fraction of species removed & -0.2774 & 0.0028 & -97.45 & $<$0.0001 \\
+    Number of species overall & $5.013 \times 10^{-6}$ & $4.219 \times 10^{-7}$ & 11.88 & $<$0.0001 \\ \hline
   \end{tabular}
-\caption*{\textbf{Table 1: ANCOVA model summary describing the effect of
-dropping species on remaining species ED Values.} The fraction of species
-missing significantly affects the remaining ED values. Species missing at
-random and in a clustered manner both have negative effects on the ED values of
-species remaining on the tree ($F_{139696, 5}$ = 40350, $R^{2}$ = 0.5908,
-p$<$0.0001).}
+  \caption{\textbf{Statistical model of the effect of missing data on
+      the calculation of the remaining species' ED values.} Results of
+    a multiple regression fit to the data shown in figure
+    \ref{randomVsClustered}, regressing the correlation coefficient of
+    (remaining) species' ED scores before and after other species were
+    removed from the phylogeny ($F_{139696,5} = 40,350$, $r^{2} =
+    0.5908$, $p <
+    0.0001$). The first three rows refer to the overall intercept,
+    effect of the fraction of species removed from the phylogeny, and
+    the overall size of the phylogeny when species were removed in a
+    phylogenetically biased fashion. The last three rows are
+    contrasts, reporting the difference (contrast) of each parameter
+    when species were removed at random from the phylogeny. whether
+    random loss of species has a statistically different effect. The
+    correlation of ED scores appears affected by and interaction
+    between number of species removed from the tree and whether those
+    species were removed at random or in a phylogenetically-biased
+    fashion. The overall size of the phylogeny has little discernable
+    effect, and its statistical significance is likely driven by the
+    large number of simulations we performed ($139,700$).}
+\label{missing_regression}
 \end{table}
 
-When clades were imputed on the tree, we found no average positive correlation
+When clades were imputed on the tree, we found a weak (if any) average positive correlation
 between the imputed ED and true ED values for species within the imputed clades
-(figure \ref{imputationTrend}, table 2). The mean correlation was 0.
+($0.1974$ in a statistical model with an $r^2$ of $0.5\%$; figure \ref{imputationTrend}, table 2).
 We also found no explanatory variables that explained significant variation in
 this relationship (table 2; see also Supplementary Materials). However, we did
 find evidence that, when imputing larger clades, the variation in the
 correlation between true and imputed ED scores decreases, although it remains
 centered around 0 (see Supplementary Materials). When considering rankings
-rather than raw scores, we similarly found large effects of imputation for the
-imputed species (figure \ref{rankingError} and table 4). This ranking error
-increased with the size of the imputed clade and phylogeny (table 4), and can
+rather than raw scores, we similarly found that imputation can introduce error
+into the estimation of species' ED values (figure \ref{rankingError} and table \ref{impute_rank}). This ranking error
+increased with the size of the imputed clade and phylogeny (table \ref{impute_rank}), and can
 affect ranking error within the top 100 and 250 species (see Supplementary
 Materials). To give an example of the magnitude of the effect, within a
 phylogeny of 1024 species, the members of an imputed clade of 30 species are, on
@@ -397,13 +409,14 @@ ED value of clade for a missing species (see Supplementary Materials).
 \begin{figure}[!ht]
   \center
   \includegraphics[width=.5\textwidth]{edModel.png}
-  \caption{\textbf{Correlation coefficient-values plotted against the number of
-  species in the focal clade.} Each data point represents the correlation
-  between ED values within the focal clades where imputation has occurred,
-  comparing ED values for the true position of species with those calculated via
-  the imputed tree. The regression line (red) and trend even closer to zero
-  demonstrates the decrease in informative value of the imputed ED values. This
-  is reinforced by the visual narrowing of r-values around zero.}
+  \caption{\textbf{The correlation between species' imputed and true
+      ED scores plotted as a function of the number of species imputed
+      (focal clade size).} Each data point represents the correlation
+    between ED values within the focal clades where imputation has
+    occurred, comparing species' true ED values with their imputed ED
+    values. This plot, and the statistical analysis of it in table
+    \ref{impute_reg}, show limited support for an association between
+    true and imputed ED values.}
   \label{imputationTrend}
 \end{figure}
 
@@ -413,33 +426,38 @@ ED value of clade for a missing species (see Supplementary Materials).
   \hline
   & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
    \hline
-   (Intercept) & 0.1974 & 0.0501 & 3.94 & 0.0001 \\
-   Size of Focal Clade & -0.0036 & 0.0005 & -7.60 & 0.0000 \\
+   Intercept & 0.1974 & 0.0501 & 3.94 & 0.0001 \\
+   Size of Focal Clade & -0.0036 & 0.0005 & -7.60 & $<0.0001$ \\
    Size of Phylogeny & 0.0001 & 0.0001 & 0.60 & 0.5497 \\
    PD & -0.0001 & 0.0001 & -0.64 & 0.5241 \\
    Estimated speciation rate & -0.0199 & 0.0493 & -0.40 & 0.6865 \\
    Colless' Index & -0.0000 & 0.0000 & -0.08 & 0.9380 \\
    Skew & 0.0022 & 0.0083 & 0.27 & 0.7885 \\
    Kurtosis & -0.0001 & 0.0008 & -0.16 & 0.8736 \\
-   Depth of Imputed Clade & 0.0006 & 0.0005 & 1.27 & 0.2045 \\
-   \hline
-   \hline
+   Depth of Imputed Clade & 0.0006 & 0.0005 & 1.27 & 0.2045 \\ \hline
 \end{tabular}
-\caption*{\textbf{Table 2: Effect of Clade Size on Imputed ED Values.} The
-correlation between the true and imputed values is quite low, as shown by the
-intercept, and declines further as the imputed clade size increases, this
-correlation further decreases. The remaining variables are not significant
-($F_{44791, 8}$ = 29.1, $R^{2}$ = 0.005, p$<$0.0001).}
+\caption{\textbf{Statistical model of the potential drivers of the
+    correlation between imputed and true ED values.} Results of a
+  multiple regression fitted to the data shown in figure
+  \ref{imputationTrend}, showing a relatively poor correlation between
+  imputed and true ED scores ($F_{44791,8} = 29.1$, $r^{2} =
+  0.005$, $p <
+  0.0001$). Given the extremely low predictive power of this
+  statistical model we are reticient to make strong claims about
+  drivers of the correlation between imputed and observed ED.}
+\label{impute_reg}
 \end{table}
 
 \begin{figure}[!ht]
   \center
   \includegraphics[width=.5\textwidth]{rankingError.png}
-  \caption{\textbf{Mean ranking error of species within the focal clade.} The 
-  gradient on the right demonstrates average number of positions within the 
-  full ranking that focal clade species shifted from their true rank.
-  While controlling for the size of the full phylogeny and focal clade, species 
-  within the focal clade were, on average, ranked far from the true rank. }
+  \caption{\textbf{Mean ranking error of imputed species.} An
+    interpolated heat-map of the mean ranking error of imputed species
+    as a function of the total number of species in the phylogeny
+    (vertical axis) and number of species in the focal (imputed) clade
+    (horizontal axis). Table \ref{impute_rank} gives statistical
+    support for the trend of increased error in larger phylogenies and
+    imputed clades.}
   \label{rankingError}
 \end{figure}
 
@@ -447,22 +465,24 @@ correlation further decreases. The remaining variables are not significant
   \centering
   \begin{tabular}{rrrrr}
     \hline
-   & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\
-    \hline
-  (Intercept) & -1.6344 & 0.0332 & -49.29 & 0.0001 \\
-    Size of Focal Clade & 0.0900 & 0.0010 & 91.22 & 0.0001 \\
-    Size of Phylogeny & 0.5179 & 0.0013 & 383.99 & 0.0001 \\
-     \hline
-     \hline
+   & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ \hline
+    Intercept & -1.6344 & 0.0332 & -49.29 & 0.0001 \\
+    Size of focal (imputed) clade & 0.0900 & 0.0010 & 91.22 & $<$0.0001 \\
+    Size of phylogeny & 0.5179 & 0.0013 & 383.99 & $<$0.0001 \\ \hline
   \end{tabular}
-  \caption*{\textbf{Table 4: Effect of Clade Size and Total Phylogeny Size on
-  Ranking Error.} Model demonstrating the relationship between focal clade
-  species ranking error and the size of imputed clade and overall phylogeny.
-  Square-root transformations have been applied to both ranking error and size
-  of phylogeny. Significant increases in ranking error are seen when the sizes
-  of both the imputed clade and the full phylogeny increase ($F_{47997, 2}$ =
-  77890, $R^{2}$ = 0.7644, p$<$0.0001).}
-  \end{table}
+  \caption{\textbf{Statistical mode of the effect of clade and
+      phylogeny size on ranking error.} Model of the raw data
+    underlying figure \ref{rankingError}, regressing the ranking error
+    of imputed species against the number of species in the imputed
+    clade and the entire phylogeny ($F_{47997,2} = 77890$, $r^2 =
+    0.7644$, $p <
+    0.0001$). As can be seen in figure \ref{rankingError}, the average
+    ranking error is positively correlated with the size of the clade
+    being imputed and the entire phylogeny.  Square-root
+    transformations have been applied to both ranking error and size
+    of phylogeny.}
+  \label{impute_rank}
+\end{table}
 
 \clearpage
 \section*{Discussion}
@@ -472,7 +492,10 @@ widespread adoption of phylogenetic prioritization methods such as EDGE is
 phylogenetic uncertainty \autocite{Collen2015}. There is a tension between the
 need to make decisions to preserve biodiversity---including evolutionary history
 ---now, and the reality that we do not have complete information about the
-phylogenetic placement of many species of conservation concern. The intention of
+phylogenetic placement of many species of conservation concern.
+\textcite{Isaac2018}, in a review of EDGE-like metrics, framed this as an urgent
+wish not to ``\emph{fiddle while Rome burns}'' tempered by a fear of ``\emph{saving
+the wrong city}''. The intention of
 our study is to provide concrete information about the impact of such
 phylogenetic uncertainty on conservation prioritization. To address this
 uncertainty, we answered two key questions: (1) the extent to which species that
@@ -489,7 +512,7 @@ Our results are derived solely from simulations under a simple model of
 diversification---the Yule model. We do acknowledge that, in reality, lineages
 evolve in more complex ways than are captured by such a simple model. However,
 such complexities are unlikely to make imputation easier, and as they would have
-to be modelled and quantified, they would likely make imputation more difficult.
+to be modelled and quantified in empirical studies, they would likely make imputation more difficult and uncertain.
 We suggest that focusing on the simplest model of diversification makes our
 results more generalizable. Further, we focus here solely on the results from a
 single imputation in each simulation, despite, empirically, biologists reporting
@@ -515,11 +538,11 @@ scores.
 
 We did find that missing species are more problematic when those species are
 non-randomly distributed across the phylogeny. Our simulations do not examine
-extreme phylogenetic patterning, such as if an entire clade were missing; this
+extreme phylogenetic patterning, such as if an entire clade were missing. This
 is notable because clades that are geographically restricted to
 difficult-to-reach regions are both difficult to sequence and not uncommon
 \autocite[as is seen with 27 coral species in the Indian
-Ocean;][]{Arrigoni2012}. Thus these results are likely conservative. We also do
+Ocean;][]{Arrigoni2012}. We also do
 not attempt to comprehensively simulate all of the different ways in which
 species could be missing from a phylogeny. We simply demonstrate that, compared
 to a scenario in which species are missing at random,
@@ -527,9 +550,9 @@ phylogenetically patterned missing species can have a greater effect on the ED
 scores of species for which we have data.
 
 \subsection*{Imputation does not reconstruct the ED value of species with great precision}
-Our results show that imputation does not accurately recover the true ED values
-or the true ED rank of missing species (figure \ref{imputationTrend}; figure
-\ref{rankingError}). Thus we argue that, even though imputation allows missing
+Our results show that neither imputation (figures \ref{imputationTrend} and
+\ref{rankingError}), nor clade-averages of ED (see Supplementary Materials), accurately recover the true ED values
+or the true ED rank of missing species . Thus we argue that, even though imputation allows missing
 species to be incorporated into EDGE lists, their associated EDGE scores may not
 accurately reflect their true scores. We acknowledge these are averages and may
 change depending on particular phylogeny, but we can find no statistically
@@ -541,8 +564,7 @@ think why smaller clades would necessarily be more reliable (and this would be a
 reversal of the trend in figure \ref{imputationTrend}). Indeed, in the smallest
 possible clade (two species), imputation is essentially sampling a terminal
 branch length from an exponential distribution \autocite{Kuhn2011}; such a
-process should still lead to a great degree of uncertainty. Further, smaller
-sample sizes should not lead to a more accurate estimate. It is, perhaps,
+process should still lead to a great degree of uncertainty. It is, perhaps,
 unsurprising that imputed ED values do not correlate with their true values (see
 figure \ref{imputationTrend}), but we were surprised at the degree of ranking error.
 Indeed, larger phylogenies showed \emph{greater} ranking error; we na\"{i}vely
@@ -554,13 +576,13 @@ imputed species. ED is known to be driven mostly by terminal branch length
 this.
 
 Imputation is not the only way to incorporate missing species into EDGE-like
-frameworks \autocite{Gumbs2017, Collen2011}, but it is likely the most common.
+frameworks \autocite[see][]{Collen2011,Gumbs2018}, but it is likely the most common.
 $3,330$ of the birds \autocite[\textasciitilde30\%;][]{Jetz2014}, 250 of the mammals
 \autocite[\textasciitilde 5.6\%;][]{Collen2011}, and 610 of the sharks
 \autocite[\textasciitilde49\%;][]{Stein2018} in recent EDGE lists were imputed.
 It is well-known that phylogenetic imputation can cause biases in other
 statistical methods, such as the estimation of evolutionary phylogenetic signal
-\autocite{Rabosky2014}. We emphasize that we are not suggesting that imputation
+\autocite{Rabosky2015}. We emphasize that we are not suggesting that imputation
 \emph{biases} ED scores: we are, instead, suggesting that it is less precise
 than has previously been acknowledged.
 
@@ -574,19 +596,19 @@ status.
 
 Our results suggest that incomplete phylogenies can be used to estimate ED
 scores with remarkably high degrees of accuracy. Instead of using imputation to
-account for the relatively minor impact of missing species, we suggest
-conservation biologists should focus on accounting for phylogenetic uncertainty
-in the species for which they have data. While we have not explored this
+account for the relatively minor impact of missing species, we suggest that
+conservation biologists concerned without accounting for phylogenetic uncertainty
+should focus on the species for which they have data. While we have not explored this
 uncertainty here, evolutionary biologists commonly work with distributions of
 trees generated from genetic data \autocite[reviewed in][]{Huelsenbeck2001,
 Bollback2005}, since the precise topology and dating of a phylogeny is almost
 always uncertain. This uncertainty has, indeed, already been shown to affect
-EDGE scores and rankings \autocite{Pearse2015}. We suggest conservation
-biologists should focus on averaging across known phylogenetic uncertainty as a
-priority. There is, of course, nothing stopping biologists from also using
-taxonomy to impute the positions of missing species within the phylogeny: being
-thorough is a virtue, but it is important to focus on the major sources of
-potential error first.
+EDGE scores and rankings \autocite{Pearse2015}.
+If biologists are concerned about the impact of missing species on known species'
+ED(GE) scores we see no harm in being precautionary and using imputation. It is
+important, however, to focus on the major sources of potential error first,
+and so we would encourage biologists to incorporate uncertainty in species
+with phylogenetic data as a first priority.
 
 Our results suggest that prioritizing species whose phylogenetic structure has
 been imputed should be done with extreme care, if it at all. In the case that an
@@ -601,10 +623,12 @@ distributions' ED values represent a range within which we can be 95\% certain
 the true ED scores lie (if the model assumptions are met). Thus we suggest that
 conservation action should only be initiated for a species if there is a 95\%
 (or 80\%, or whatever confidence is deemed appropriate) probability that it is
-above that threshold. Thus a species whose ranking is estimated to have a 95\%
-probability of being between the \nth{30} and \nth{300} highest-ranked species
+above that threshold. For example, a species whose ranking is estimated to have a 20\%
+probability of being between the \nth{30} and \nth{100} highest-ranked species
 could not, with confidence, be called a top-100 species. Our results suggest
 that, on average, very few imputed species will meet such a criterion.
+Regardless, the calculations of such probabilities is trivial with the data
+users of imputation have in-hand already.
 
 Ultimately, we are currently fighting a losing battle to preserve the tree of
 life. Our results are good news: they suggest that we can start right away using
@@ -616,7 +640,7 @@ we should consider focusing our efforts on those species whose ED scores we can
 know with greater certainty: those for which we have data.
 
 \section*{Acknowledgments}
-We are grateful to E.\ Simpson, M.\ Sneddon, J.\ Stachewicz, and XXX
+We are grateful to E.\ Simpson, M.\ Sneddon, J.\ Stachewicz, J.\ Rosindell, and XXX
 anonymous reviewers for providing constructive feedback on this
 manuscript.
 
