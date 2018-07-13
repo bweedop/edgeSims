@@ -298,7 +298,7 @@ phylogenetic branch-lengths in the original focal clade \autocite[Faith's
 PD;][]{Faith1992}, the value of $\gamma$ in the original phylogeny
 \autocite[using \texttt{phytools::gammatest};][]{Pybus2000, Revell2012},
 Colless' index of the original phylogeny
-\autocite[using\texttt{apTreeshape::as.treeshape};][]{Colless1982,
+\autocite[using \texttt{apTreeshape::as.treeshape};][]{Colless1982,
 Bortolussi2009}, the kurtosis of species' ED values in the original phylogeny
 \autocite[using \texttt{moments::kurtosis};][]{Komsta2015}, the skew of species'
 ED values in the original phylogeny \autocite[using
@@ -390,24 +390,28 @@ phylogenetically-biased and random missing species, respectively.
 \label{missing_regression}
 \end{table}
 
-When clades were imputed on the tree, we found a weak (if any) average positive
-correlation between the imputed ED and true ED values for species within the
-imputed clades ($0.1974$ in a statistical model with an $r^2$ of $0.5\%$; figure
-\ref{imputationTrend}, table 2). We also found no explanatory variables that
-explained significant variation in this relationship (table 2; see also
-Supplementary Materials). However, we did find evidence that, when imputing
-larger clades, the variation in the correlation between true and imputed ED
-scores decreases, although it remains centered around 0 (see Supplementary
-Materials). When considering rankings rather than raw scores, we similarly found
-that imputation can introduce error into the estimation of species' ED values
-(figure \ref{rankingError} and table \ref{impute_rank}). This ranking error
-increased with the size of the imputed clade and phylogeny (table
-\ref{impute_rank}), and can affect ranking error within the top 100 and 250
-species (see Supplementary Materials). To give an example of the magnitude of
-the effect, within a phylogeny of 1024 species, the members of an imputed clade
-of 30 species are, on average, $\pm$ 315 rankings from their true rankings.
-Importantly, we found similar effects in ranking error when using the average ED
-value of clade for a missing species (see Supplementary Materials).
+When clades were imputed on the tree, we found a weak (if any) average
+positive correlation between the imputed ED and true ED values for
+species within the imputed clades (overall mean correlation of
+$0.197$ in a statistical model with an $r^2$ of
+$0.5\%$; figure \ref{imputationTrend}, table 2). We also found no
+explanatory variables that explained significant variation in this
+relationship (table 2; see also Supplementary Materials). However, we
+did find evidence that, when imputing larger clades, the variation in
+the correlation between true and imputed ED scores decreases, although
+we emphasise the effect is weak (see table 2). When
+considering rankings rather than raw scores, we similarly found that
+imputation can introduce error into the estimation of species' ED
+values (figure \ref{rankingError} and table \ref{impute_rank}). This
+ranking error increased with the size of the imputed clade and
+phylogeny (table \ref{impute_rank}), and can affect ranking error
+within the top 100 and 250 species (see Supplementary Materials). To
+give an example of the magnitude of the effect, within a phylogeny of
+1024 species, the members of an imputed clade of 30 species are, on
+average,
+$\pm$ 315 rankings from their true rankings. We found
+similar effects in ranking error when using the average ED value of
+clade for a missing species (see Supplementary Materials).
 
 \begin{figure}[!ht]
   \center
@@ -495,19 +499,17 @@ widespread adoption of phylogenetic prioritization methods such as EDGE is
 phylogenetic uncertainty \autocite{Collen2015}. There is a tension between the
 need to make decisions to preserve biodiversity---including evolutionary history
 ---now, and the reality that we do not have complete information about the
-phylogenetic placement of many species of conservation concern.
-\textcite{Isaac2018}, in a review of EDGE-like metrics, framed this as an urgent
-wish not to ``\emph{fiddle while Rome burns}'' tempered by a fear of
-``\emph{saving the wrong city}''. The intention of our study is to provide
+phylogenetic placement of many species of conservation concern \autocite{Isaac2018}.
+The intention of our study is to provide
 concrete information about the impact of such phylogenetic uncertainty on
-conservation prioritization. To address this uncertainty, we answered two key
-questions: (1) the extent to which species that are missing from the tree of
+conservation prioritization. To address this uncertainty, we addressed two key
+issues: (1) the extent to which species that are missing from the tree of
 life impact the ED scores of species for which we do have data, and (2) the
 extent to which phylogenetic imputation can accurately estimate ED scores for
-taxa with no phylogenetic data. For the first question (1), we found that while
+taxa with no phylogenetic data. First, we found that while
 missing species do impact the ED scores of other species, the effects are not
 always severe, particularly if species are missing at random from the tree of
-life. For the second question (2), we found limited evidence that phylogenetic
+life. Second, we found limited evidence that phylogenetic
 imputation can reconstruct species' ED scores and rankings.
 
 Our results are derived solely from simulations under a simple model of
@@ -524,7 +526,7 @@ Thus our results show that the variation within these pseuo-posterior
 distributions is likely very large. It is well-known that such imputation
 methods are not biased \autocite[indeed, this was originally shown
 by][]{Kuhn2011}: here we emphasize that the uncertainty they introduce is
-sufficiently large that they may be less informative than previously been
+sufficiently large such that they may be less informative than previously has been
 thought.
 
 \subsection*{ED scores are relatively robust to missing species}
@@ -537,7 +539,7 @@ incomplete phylogenies produced similar results as later, more complete trees
 our analysis suggests that, on average (and we emphasize that there is a good
 amount of variation about that average; see figure \ref{randomVsClustered}), a
 phylogeny missing 20\% of species at random will still have ED scores that are
-strongly correlated (rho = 0.94) with the true ED scores.
+strongly correlated (with a mean correlation coefficient of 0.94) with the true ED scores.
 
 We did find that missing species are more problematic when those species are
 non-randomly distributed across the phylogeny. Our simulations do not examine
@@ -551,10 +553,10 @@ simply demonstrate that, compared to a scenario in which species are missing at
 random, phylogenetically patterned missing species can have a greater effect on
 the ED scores of species for which we have data.
 
-\subsection*{Imputation does not reconstruct the ED value of species with great precision}
+\subsection*{Imputation does not reconstruct the ED values of missing species with great precision}
 Our results show that neither imputation (figures \ref{imputationTrend} and
 \ref{rankingError}), nor clade-averages of ED (see Supplementary Materials),
-accurately recover the true ED values or the true ED rank of missing species .
+accurately recover the true ED values or the true ED rank of missing species.
 Thus we argue that, even though imputation allows missing species to be
 incorporated into EDGE lists, their associated EDGE scores may not accurately
 reflect their true scores. We acknowledge these are averages and may change
@@ -563,8 +565,8 @@ predictors of that variation.
 
 While we did not assess clades with fewer than five species (we do not consider
 correlations or averages to be reliable with so few data-points), we cannot
-think why smaller clades would necessarily be more reliable (and this would be a
-reversal of the trend in figure \ref{imputationTrend}). Indeed, in the smallest
+think why smaller clades would necessarily be more reliable (and this would
+require a large deviation from the trend in figure \ref{imputationTrend}). Indeed, in the smallest
 possible clade (two species), imputation is essentially sampling a terminal
 branch length from an exponential distribution \autocite{Kuhn2011}; such a
 process should still lead to a great degree of uncertainty. It is, perhaps,
@@ -575,7 +577,7 @@ would have expected the opposite. We would have expected our upper bound on the
 age of the imputed clade, which we would have expected to be relatively younger
 in larger phylogenies, to have somewhat controlled the range of the ranks of our
 imputed species. ED is known to be driven mostly by terminal branch length
-\autocite{Redding2008, Isaac2007, Steel2007}; our results therefore emphasize
+\autocite{Isaac2007, Steel2007, Redding2008}; our results therefore emphasize
 this.
 
 Imputation is not the only way to incorporate missing species into EDGE-like
@@ -609,13 +611,13 @@ always uncertain. This uncertainty has, indeed, already been shown to affect
 EDGE scores and rankings \autocite{Pearse2015}.
 If biologists are concerned about the impact of missing species on known species'
 ED(GE) scores we see no harm in being precautionary and using imputation. It is
-important, however, to focus on the major sources of potential error first,
+important, however, to focus on known sources of potential error,
 and so we would encourage biologists to incorporate uncertainty in species
-with phylogenetic data as a first priority.
+with phylogenetic data as a priority.
 
 Our results suggest that prioritizing species whose phylogenetic structure has
-been imputed should be done with extreme care, if it at all. In the case that an
-imputed species is imputed to be below a threshold set for conservation (most
+been imputed should be done with extreme care, if at all. In the case that an
+species is imputed to be below a threshold set for conservation (most
 EDGE studies focus on the ‘top 100' species or something similar), then the path
 forward is clear: that species should not have conservation funds allocated to
 it at this time. The case where a species, on average, passes a threshold is
@@ -627,15 +629,15 @@ the true ED scores lie (if the model assumptions are met). Thus we suggest that
 conservation action should only be initiated for a species if there is a 95\%
 (or 80\%, or whatever confidence is deemed appropriate) probability that it is
 above that threshold. For example, a species whose ranking is estimated to have a 20\%
-probability of being between the \nth{30} and \nth{100} highest-ranked species
+probability of being between the \nth{1} and \nth{100} highest-ranked species
 could not, with confidence, be called a top-100 species. Our results suggest
 that, on average, very few imputed species will meet such a criterion.
 Regardless, the calculations of such probabilities is trivial with the data
-users of imputation have in-hand already.
+users of imputation have in hand already.
 
 Ultimately, we are currently fighting a losing battle to preserve the tree of
 life. Our results are good news: they suggest that we can start right away using
-the phylogenies we already have in-hand. The effect of missing species is mild
+the phylogenies we already have. The effect of missing species is mild
 enough that we often do not need costly and time-consuming imputation, and
 imputation rarely gives us sufficiently precise estimates of species' ED scores
 anyway. We suggest that, given we do not have the resources to save everything,
