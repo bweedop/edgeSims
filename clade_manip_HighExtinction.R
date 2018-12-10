@@ -167,13 +167,13 @@ get.ed <- function(spp, size)
             average.ed.comparison, remainingspp.ranking.error))
 }
 
-wrapper <- function(n.spp=floor(2^seq(7,10,0.2)), clade.size=seq(5, 32), reps = 100)
+wrapper <- function(n.spp=floor(2^seq(8,10,0.2)), clade.size=seq(6, 32, 2), reps = 5)
 {
     data <- expand.grid(n.spp = n.spp, clade.size = clade.size, reps=1:reps)
     sim.wrap <- function(x)
         return(get.ed(data$n.spp[x], data$clade.size[x]))
     
-    output <- do.call(rbind, mcMap(sim.wrap, seq_len(nrow(data)), mc.cores=12))
+    output <- do.call(rbind, mcMap(sim.wrap, seq_len(nrow(data)), mc.cores=4))
     data <- cbind(data, output)
     names(data)[-1:-3] <- c("full.ed", "focal.ed", "original.gamma", "imputed.gamma", "original.lambda", "imputed.lambda", 
                             "original.colless", "imputed.colless", "original.kurtosis", "imputed.kurtosis", "original.skew", 

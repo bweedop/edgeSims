@@ -167,7 +167,7 @@ get.ed <- function(spp, size)
             average.ed.comparison, remainingspp.ranking.error))
 }
 
-wrapper <- function(n.spp=floor(2^seq(7,10,0.2)), clade.size=seq(5, 32), reps = 100)
+wrapper <- function(n.spp=floor(2^seq(8,10,0.2)), clade.size=seq(6, 32, 2), reps = 5)
 {
     data <- expand.grid(n.spp = n.spp, clade.size = clade.size, reps=1:reps)
     sim.wrap <- function(x)
