@@ -105,19 +105,20 @@ get.ed <- function(spp, size)
 
   dropped.tree <- drop.tip(tree, sample(random.clade$tip.label, length(random.clade$tip.label)-1))
   
-  r<-NULL
+  r <- NULL
   while(is.null(r)){
     try({
-      donor.clade <- sim.bdtree(b = 1, d = 0.5, n = spp, stop = "taxa", extinct=FALSE)
+      donor.clade <- sim.bdtree(b = 1, d = 0.5, n = size, stop = "taxa", extinct=FALSE)
       donor.clade <- drop.extinct(donor.clade)
       donor.clade$tip.label <- random.clade$tip.label
       for (i in dropped.tree$tip.label){
         if(any(random.clade$tip.label==i)){
-          tip <-i
+          tip <- i
         }
       }
-      r<-bind.replace(dropped.tree, donor.clade, tip)
-      dropped.tree<-r})
+      r <- bind.replace(dropped.tree, donor.clade, tip)
+      dropped.tree <- r
+      })
   }
 
   #calculating for imputed.tree

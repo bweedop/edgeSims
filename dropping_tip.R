@@ -11,16 +11,16 @@ drop_random_tips<-function(spp, dropped_fraction)
   tree<-sim.bdtree(n = spp)
   
   #Calculate ED values for the original tree.
-  ed <-ed.calc(tree)$spp
-  ed <-setNames(ed[,2], ed[,1])
+  ed <- ed.calc(tree)$spp
+  ed <- setNames(ed[,2], ed[,1])
 
   original.lambda <- yule(tree)$lambda
   gammatree <-ltt(tree, plot = FALSE, gamma = FALSE)
   original.gamma <- gammatest(gammatree)$gamma
   colless.tree <- as.treeshape(tree, model = "yule")
   original.colless <- colless(colless.tree)
-  original.kurtosis <- kurtosis(original.ed)
-  original.skew <- skewness(original.ed)
+  original.kurtosis <- kurtosis(ed)
+  original.skew <- skewness(ed)
   original.branches <- sum(tree$edge.length)
   
   #Use the original tree for the tree which will have a determined fraction of random tips dropped from it. 
@@ -46,10 +46,10 @@ drop_random_tips<-function(spp, dropped_fraction)
 drop_clustered_tips<-function(spp, dropped_fraction)
 {
   #Simulate phylogeny.
-  tree<-sim.bdtree(n = spp)
+  tree <- sim.bdtree(n = spp)
   
   #Calculate ED values for the original tree.
-  ed<-ed.calc(tree)$spp
+  ed <- ed.calc(tree)$spp
   ed <- setNames(ed[,2], ed[,1])
 
   original.lambda <- yule(tree)$lambda
@@ -57,15 +57,15 @@ drop_clustered_tips<-function(spp, dropped_fraction)
   original.gamma <- gammatest(gammatree)$gamma
   colless.tree <- as.treeshape(tree, model = "yule")
   original.colless <- colless(colless.tree)
-  original.kurtosis <- kurtosis(original.ed)
-  original.skew <- skewness(original.ed)
+  original.kurtosis <- kurtosis(ed)
+  original.skew <- skewness(ed)
   original.branches <- sum(tree$edge.length)
   
   #Use the original tree for the tree which will have a determined fraction of clustered tips dropped from it.
-  imputed_tree<-tree
+  imputed_tree <- tree
   
   #Simulate continuous trait data on the original tree using a constant rate Brownian-motion model.
-  brown_evol<-sim.char(imputed_tree, 0.05, 1, model = "BM")[,,1]
+  brown_evol <- sim.char(imputed_tree, 0.05, 1, model = "BM")[,,1]
   #Assessing which spp fall into the percentile which is to be dropped and the dropping them from the tree.
   quantile <- quantile(brown_evol, 1-dropped_fraction)
   to.drop <- which(brown_evol >= quantile)
@@ -76,12 +76,12 @@ drop_clustered_tips<-function(spp, dropped_fraction)
   }
   ed <- ed[!names(ed) %in% names(to.drop)]
   #Calculate the ED values for the manipulated tree.
-  imputed_ed<-ed.calc(imputed_tree)$spp
-  imputed_ed<-setNames(imputed_ed[,2], imputed_ed[,1])
+  imputed_ed <- ed.calc(imputed_tree)$spp
+  imputed_ed <- setNames(imputed_ed[,2], imputed_ed[,1])
   
   #Calculate the correlation between the original ED values and the manipulated trees' ED values.
-  ed_corr<-cor(ed, imputed_ed)
-  return(c((ed_corr, original.gamma, original.lambda, original.colless, 
+  ed_corr <- cor(ed, imputed_ed)
+  return(c(ed_corr, original.gamma, original.lambda, original.colless, 
             original.kurtosis, original.skew, original.sd, original.branches))
 }
 

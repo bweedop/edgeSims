@@ -108,7 +108,7 @@ get.ed <- function(spp, size)
   r<-NULL
   while(is.null(r)){
     try({
-      donor.clade <- sim.bdtree(b = 1, d = 0.95, n = spp, stop = "taxa", extinct=FALSE)
+      donor.clade <- sim.bdtree(b = 1, d = 0.95, n = size, stop = "taxa", extinct=FALSE)
       donor.clade <- drop.extinct(donor.clade)
       donor.clade$tip.label <- random.clade$tip.label
       for (i in dropped.tree$tip.label){
