@@ -106,28 +106,22 @@ Ark problem” \autocite{Weitzman1998}, has driven conservation biologists to
 identify different ways by which to prioritize, or triage, their resource
 allocation \autocite{Bottrill2008}.
 
-Conservation triage, like all sound decision-making, requires
-\replaced{a method}{an index with which}
-% R2 was concerned you said triage required an index (as was the
-% editor); they're wrong, but reference this here
-to quantify the relative urgency or importance for conservation among
-a set of options. This allows scientists and policy-makers to use data
-to quantify need and inform conservation decision-making and
-management activities. One triage strategy uses the EDGE metric to
-identify and prioritize species that are Evolutionarily Distinct and
-Globally Endangered \autocite{Isaac2007}.  Evolutionary
-Distinctiveness (ED) measures the relative contributions made by each
-species within a particular clade to phylogenetic diversity, assigning
-each branch length equally to all the subtending species
-\autocite{Redding2003, Isaac2007}. Global Endangerment (GE), assigns
-numerical values to each of the International Union for Conservation
-of Nature (IUCN) Red List Categories. As species become increasingly
-threatened and are placed into categories of increasing concern
-(\emph{e.g.} from Vulnerable to Endangered), the GE numerical value
-increases. A species’ EDGE score is an aggregate value intended to
-equally reflect a species’ evolutionary distinctiveness and
-conservation status \autocite[even if it does not always in practice;
-see][]{Pearse2015}.
+Conservation triage, like all sound decision-making, requires a method to
+quantify the relative urgency or importance for conservation among a set of
+options. This allows scientists and policy-makers to use data to quantify need
+and inform conservation decision-making and management activities. One triage
+strategy uses the EDGE metric to identify and prioritize species that are
+Evolutionarily Distinct and Globally Endangered \autocite{Isaac2007}.
+Evolutionary Distinctiveness (ED) measures the relative contributions made by
+each species within a particular clade to phylogenetic diversity, assigning each
+branch length equally to all the subtending species \autocite{Redding2003,
+Isaac2007}. Global Endangerment (GE), assigns numerical values to each of the
+International Union for Conservation of Nature (IUCN) Red List Categories. As
+species become increasingly threatened and are placed into categories of
+increasing concern (\emph{e.g.} from Vulnerable to Endangered), the GE numerical
+value increases. A species’ EDGE score is an aggregate value intended to equally
+reflect a species’ evolutionary distinctiveness and conservation status
+\autocite[even if it does not always in practice; see][]{Pearse2015}.
 
 Usage of the EDGE metric has expanded greatly. First used to prioritize global
 mammals \autocite{Isaac2007}, EDGE scores are now available for a variety of
@@ -150,12 +144,12 @@ application of EDGE highlights the potential for phylogenetic conservation
 prioritization metrics to provide actionable insights while quantitatively
 measuring the evolutionary history a species represents. Nonetheless, almost
 every application of an EDGE-type approach must address uncertainty resulting
-from missing data. \added{Addressing, and hopefully improving, our ability to
+from missing data. Addressing, and hopefully improving, our ability to
 handle uncertainty should be a continual effort to increase the support for such
 approaches. However, in an effort to dilneate between science and policy, it is
 important to note that the implications of missing data on policy making will
 vary depending upon the demands and goals of a particular person or
-organization.}
+organization.
 
 Missing data can affect EDGE scores in several ways. First, the IUCN identifies
 some species as Data Deficient \autocite{Iucn2001, Iucn2008}, which affects the
@@ -181,20 +175,21 @@ scores for imputed species might be. As interest in using EDGE-type measures
 and phylogenies for conservation triage grows, the need for consensus on how to
 resolve cases of phylogenetic uncertainty becomes increasingly urgent. 
 
-Here we attempt to quantify the effect of one sort of phylogenetic uncertainty---the effect of missing species on EDGE rankings---and assess the degree to
-which subsequent imputation affects the accuracy of EDGE scores. We do so by
-simulating phylogenies and then removing species either at random, or with bias,
-across those phylogenies. By contrasting the ED scores of the species before and
-after the loss of other species from the phylogenies, we measure the impact of
-missing species on ED scores. We then assess the extent to which phylogenetic
-imputation can accurately estimate the EDGE scores of missing species in
-simulated data. We also examine the extent to which such imputation affects the
-scores of species for which we have data. In doing so, we hope to provide clear
-guidance as to the applicability of phylogenetic imputation as a solution for
-species missing phylogenetic data. From our results, we argue that species’ ED
-values are remarkably robust to missing species, and that phylogenetic
-imputation does not reliably reconstruct the true ranking of those missing
-species.
+Here we attempt to quantify the effect of one sort of phylogenetic
+uncertainty---the effect of missing species on EDGE rankings---and assess the
+degree to which subsequent imputation affects the accuracy of EDGE scores. We do
+so by simulating phylogenies and then removing species either at random, or with
+bias, across those phylogenies. By contrasting the ED scores of the species
+before and after the loss of other species from the phylogenies, we measure the
+impact of missing species on ED scores. We then assess the extent to which
+phylogenetic imputation can accurately estimate the EDGE scores of missing
+species in simulated data. We also examine the extent to which such imputation
+affects the scores of species for which we have data. In doing so, we hope to
+provide clear guidance as to the applicability of phylogenetic imputation as a
+solution for species missing phylogenetic data. From our results, we argue that
+species’ ED values are remarkably robust to missing species, and that
+phylogenetic imputation does not reliably reconstruct the true ranking of those
+missing species.
 
 \section*{Methods}
 
@@ -264,8 +259,8 @@ was so old that it was not possible to graft it into place, we discarded that
 clade and simulated another. In an empirical study the model of evolution under
 which the phylogeny had evolved would have to be estimated, which is an
 additional source of error not considered here. We simulated each combination of
-clade and total phylogeny sizes 100 times \added{when using a pure-birth Yule
-model and 5 times when simulating under models with past extinction}. An
+clade and total phylogeny sizes 100 times when using a pure-birth Yule
+model and 5 times when simulating under models with past extinction. An
 overview of our approach is given in figure \ref{imputeConcept}. 
 
 To assess whether clades, once imputed, had similar ED scores to their true
@@ -305,18 +300,16 @@ not correlate ED scores (as we do above), since such a correlation would require
 variation in species' scores and under this approach a single score (the mean
 ED) is assigned to all imputed species.
 
-\added{We present, in the supplementary materials, two additional sets
-  of analyses intended to examine the impact that past extinction
-  rates may have played on our analyses. These simulations incorporate
-  conditions of past extinction at low and high rates using
-  'gieger::sim.bdtree' \autocite[setting parameters for low extinction
-  at \texttt{b=1} and \texttt{d=0.5} and high extinction \texttt{b=1}
-  and \texttt{d=0.95};][]{Pennell2014}. These models represent large
-  departures from our main simulations (which have \texttt{b=1} and
-  \texttt{=0}), and so we performed only 5 replicates per set of
-  parameter combinations as our only aim was to detect any major
-  differences in our results stemming from these changes. Otherwise,
-  these simulations were identical to those present in the main text.}
+We present, in the supplementary materials, two additional sets of analyses
+intended to examine the impact that past extinction rates may have played on our
+analyses. These simulations incorporate conditions of past extinction at low and
+high rates using 'gieger::sim.bdtree' \autocite[setting parameters for low
+extinction at \texttt{b=1} and \texttt{d=0.5} and high extinction \texttt{b=1}
+and \texttt{d=0.95};][]{Pennell2014}. These models represent large departures
+from our main simulations (which have \texttt{b=1} and \texttt{d=0}), and so we
+performed only 5 replicates per set of parameter combinations as our only aim
+was to detect any major differences in our results stemming from these changes.
+Otherwise, these simulations were identical to those present in the main text.
 
 
 \section*{Results}
@@ -351,11 +344,10 @@ To give an example of the magnitude of the effect, within a phylogeny of 1024
 species, the members of an imputed clade of 30 species are, on average, $\pm$
 315 rankings from their true rankings. We found similar effects in ranking error
 when using the average ED value of clade for a missing species (see Appendix S3
-in Supporting Information).
-\added{As we show in the supplementary materials, the simulation (and
-  subsequent imputation) of phylogenies under models incorporating
-  extinction rates (\emph{i.e.}, not Yule models) had qualitatively
-  identical results. We do not, therefore, discuss them in detail here.}
+in Supporting Information). As we show in the supplementary materials, the
+simulation (and subsequent imputation) of phylogenies under models incorporating
+extinction rates (\emph{i.e.}, not Yule models) had qualitatively identical
+results. We do not, therefore, discuss them in detail here.
 
 \section*{Discussion}
 Phylogenies are playing an increasing role in conservation prioritization,
@@ -377,53 +369,24 @@ species, particularly if species are missing at random from the tree of life.
 Second, we found that phylogenetic imputation generally fails to accurately
 reconstruct species' ED scores and rankings.
 
+In this study, we have examined imputation under three separate models of
+diversification: pure-birth Yule models (presented in the main text), and models
+with relatively high and low rates of extinction (both in the supplementary
+materials). We acknowledge that lineages evolve in more complex ways, although
+we suggest that focusing on these fundamental models of diversification makes
+our results more broadly applicable. We suggest that a method should perform
+well under basic conditions, and as such these results form an appropriate
+benchmark, particularly given we can see no reason to suppose that more complex
+models should increase model performance. Further, we focus here solely on the
+results from a single imputation in each simulation, despite, empirically,
+biologists reporting average ED scores calculated across pseudo-posterior
+distributions of many imputed phylogenies \autocite{Kuhn2011}. Thus our results
+show that the variation within these pseudo-posterior distributions is likely
+very large. It is well-known that such imputation methods are not biased
+\autocite[indeed, this was originally shown by][]{Kuhn2011}: here we emphasize
+that the uncertainty they introduce is sufficiently large such that they may be
+less informative than previously has been thought.
 
-\added{In this study, we have examined imputation under three separate
-  models of diversification: pure-birth Yule models (presented in the
-  main text), and models with relatively high and low rates of
-  extinction (both in the supplementary materials).} We acknowledge
-that lineages evolve in more complex ways\added{, although we suggest
-  that focusing on these fundamental models of diversification makes
-  our results more broadly applicable. We suggest that a method should
-  perform well under basic conditions, and as such these results form
-  an appropriate benchmark, particularly given we can see no reason to
-  suppose that more complex models should increase model performance.}
-\deleted{ Our results are derived solely from simulations under a
-  simple model of diversification---the Yule model. We acknowledge
-  that lineages evolve in more complex ways. However, such
-  complexities are unlikely to make imputation easier, and they would
-  have to be modelled and quantified in empirical studies. We suggest
-  that focusing on the simplest model, of diversification makes our
-  results more generalizable.}  Further, we focus here solely on the
-results from a single imputation in each simulation, despite,
-empirically, biologists reporting average ED scores calculated across
-pseudo-posterior distributions of many imputed phylogenies
-\autocite{Kuhn2011}. Thus our results show that the variation within
-these pseudo-posterior distributions is likely very large. It is
-well-known that such imputation methods are not biased
-\autocite[indeed, this was originally shown by][]{Kuhn2011}: here we
-emphasize that the uncertainty they introduce is sufficiently large
-such that they may be less informative than previously has been
-thought.
-
-% Bodie: I've cut this because, to be honest with you, I don't think
-% we need to write this. It was a stupid reviewer comment, and I think
-% it weakens our paper to put this in here. I think it's pretty
-% obvious to anyone with half a brain why empirical data wouldn't help
-% here: whether EDGE imputation works in birds is not our question
-% here, our question is whether it works full stop. We're also sort of
-% lying in it: we didn't look at empirical data to spare people's
-% embarrassment, because we know it doesn't work. Let's just avoid the
-% issue, I think.
-\iffalse
-\added{We acknowledge that empirical data would indeed push our argument further
-and certainly be useful. Using empirical data to verify the patterns that we see
-in our results would only strengthen our conclusions. Even still, we anticipate
-that our results will improve upon the understanding of the robustness of ED
-estimates and how phylogenetic uncertainty affects EDGE-type metrics.
-Additionally, we hope that our results will lead to further discussion and
-empirical testing of our conclusions.} 
-\fi
 \subsection*{ED scores are relatively robust to missing species}
 Missing species and poor phylogenetic resolution have been identified as causes
 of uncertainty when calculating ED \autocite{Isaac2007}, but we were unable to
@@ -444,18 +407,16 @@ is notable because clades that are geographically restricted to
 difficult-to-reach regions are both difficult to sequence and not uncommon
 \autocite[as is seen with 27 coral species in the Indian
 Ocean;][]{Arrigoni2012}. We also do not attempt to comprehensively simulate all
-of the different ways in which species could be missing from a phylogeny.
-\added{We emphasize that we have not demonstrated, and do not argue,
-  that missing species cannot affect ED scores.}
-We simply demonstrate
-that, compared to a scenario in which species are missing at random,
-phylogenetically patterned missing species can have a greater effect on the ED
-scores of species for which we have data\added{, and that (in our opinion)
-  ED scores are remarkably robust to missing species.
-  Other patterns and scenarios for species to be missing could
-  easily lead to systematic biases of ED scores, and so very effort
-  should be made to gather accurate phylogenetic information for all
-  species within a clade before prioritisation is carried out.}
+of the different ways in which species could be missing from a phylogeny. We
+emphasize that we have not demonstrated, and do not argue, that missing species
+cannot affect ED scores. We simply demonstrate that, compared to a scenario in
+which species are missing at random, phylogenetically patterned missing species
+can have a greater effect on the ED scores of species for which we have data,
+and that (in our opinion) ED scores are remarkably robust to missing species.
+Other patterns and scenarios for species to be missing could easily lead to
+systematic biases of ED scores, and so very effort should be made to gather
+accurate phylogenetic information for all species within a clade before
+prioritisation is carried out.
 
 \subsection*{Imputation does not reconstruct the ED values of missing species with great precision}
 Our results show that neither imputation (figures \ref{imputationTrend} and
@@ -503,9 +464,9 @@ on ED scores, because EDGE scores are a product of both ED and IUCN status
 (‘GE'). However, the goal of EDGE-like measures is to incorporate phylogeny, and
 if imputed EDGE scores are driven by their GE component because of uncertainty
 introduced by imputation, this essentially creates another metric of IUCN
-status. \added{With this in mind, we hope to provide clear guidelines, along
+status. With this in mind, we hope to provide clear guidelines, along
 with the benefits and drawbacks, when using imputation in EDGE-based approaches
-to scientists and policy makers.}
+to scientists and policy makers.
 
 Our results further suggest that incomplete phylogenies can be used to estimate
 ED scores with remarkably high degrees of accuracy. Instead of using imputation
@@ -518,10 +479,11 @@ Bollback2005}, since the precise topology and dating of a phylogeny is almost
 always uncertain. This uncertainty has, indeed, already been shown to affect
 EDGE scores and rankings \autocite{Pearse2015}. If biologists are concerned
 about the impact of missing species on known species' ED(GE) scores we see no
-harm in being precautionary and using imputation. It is important, however, to
-focus on known sources of potential error, and so we would encourage biologists
-to incorporate uncertainty in species with phylogenetic data as a priority.
-% Something about known unknowns an unknown unknowns in here?
+harm in being precautionary and using imputation. \added{We say this given that
+we cannot say that our suggestion accounts universally to some unknown
+phylogenetic patterns.} It is important, however, to focus on known sources of
+potential error, and so we would encourage biologists to incorporate uncertainty
+in species with phylogenetic data as a priority.
 
 Our results suggest that prioritizing species whose phylogenetic structure has
 been imputed should be done with extreme care, if at all. In the case that an
@@ -544,16 +506,23 @@ Regardless, the calculations of such probabilities is trivial with the data
 users of imputation have in hand already.
 
 \added{In light of the suggestions and caveats that we have outlined, we
-acknowledge that each particular user of EDGE-type metrics will need to consider
-how uncertainty and how using imputation affects their end goal. For instance,
-our suggestion of focusing on species for which they have do data, without
-accounting for phylogenetic uncertainty, could help conservationists move
-swiftly to set priorities and act now. However, this strategy is not to say that
-we should always neglect species for which we do not have data. Those looking to
-improve upon EDGE-type metrics might want to find better strategies of
-imputing species. However, these same users should consider our findings when
-developing methods to maintain accuracy and precision for species which they do
-have data.}
+acknowledge that each particular user of any method of triage in conservation
+will need to weigh the benefits and drawbacks. A clear benefit to users is a
+researched method to set priorities informed by multiple sources of crucial
+data. While resources within the scope of conservation are limited and possibly
+insufficient, triage methods can assist users in directing those limited
+resources in a more effective manner. With a range of triage methods at hand,
+priorities can be set to direct efforts and resources to species which are at
+risk of extinction and represent a sizeable segment of evolutionary history,
+functional trait diversity or how likely a species is to succeed given the
+effort. However, there are obvious drawbacks as well. Triage methods take time
+to understand, develop and research. If aspects of conservation triage methods
+are not well understood, priorities could be disoriented and set such that
+resources are misdirected. However, our study addresses one such aspect within
+EDGE-type methods. With our results, we offer an explanation of how uncertainty
+and using imputation might affect triaging methods such as EDGE. Our conclusions
+and their implications should be considered carefully by each particular user of
+EDGE and other, similar triage methods.}
 
 Ultimately, we are currently fighting a losing battle to preserve the tree of
 life. Our results are good news: they suggest that we can start right away using
