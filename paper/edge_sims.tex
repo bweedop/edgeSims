@@ -544,7 +544,7 @@ on this manuscript.
 \section*{Data Accessibility Statement}
 All simulation and analysis code, along with underlying data, generated for this
 study are in the supplementary materials and online at:
-url{https://github.com/bweedop/edgeSims}
+\url{https://github.com/bweedop/edgeSims}
 
 \section*{Tables}
 
@@ -575,9 +575,10 @@ url{https://github.com/bweedop/edgeSims}
       rows refer to the overall intercept, effect of the fraction of species
       removed from the phylogeny, and the overall size of the phylogeny when
       species were removed in a phylogenetically biased fashion. The last three
-      rows are contrasts, reporting the difference (contrast) of each parameter
+      rows are contrasts, \added{reporting whether there is a difference in each coefficient when the simulations were conducted with random, or phylogenetically biased, species loss.}
+      \deleted{reporting the difference (contrast) of each parameter
       when species were removed at random from the phylogeny. whether random
-      loss of species has a statistically different effect. The correlation of
+      loss of species has a statistically different effect.} The correlation of
       ED scores appears affected by an interaction between the number of species
       removed from the tree and whether those species were removed at random or
       in a phylogenetically-biased fashion. The overall size of the phylogeny
@@ -609,7 +610,7 @@ url{https://github.com/bweedop/edgeSims}
       ($F_{44791,8} = 29.1$, $r^{2} = 0.005$, $p < 0.0001$). Given the extremely
       low predictive power of this statistical model we are reticent to make
       strong claims about drivers of the correlation between imputed and
-      observed ED.}
+      observed ED. \added{Each coefficient refers to a measured variable in our simulations, as described in the text.}}
   \label{impute_reg}
 \end{table}
 
@@ -629,8 +630,8 @@ url{https://github.com/bweedop/edgeSims}
       phylogeny ($F_{47997,2} = 77890$, $r^2 = 0.7644$, $p < 0.0001$). As can be
       seen in figure \ref{rankingError}, the average ranking error is positively
       correlated with the size of the clade being imputed and the entire
-      phylogeny. Square-root transformations have been applied to both ranking
-      error and size of phylogeny.}
+      phylogeny. Square-root transformations \replaced{were}{have been} applied to both ranking
+      error and size of phylogeny\added{ prior to fitting this model}.}
   \label{impute_rank}
 \end{table}
 
@@ -704,7 +705,7 @@ url{https://github.com/bweedop/edgeSims}
     (vertical axis) and number of species in the focal (imputed) clade
     (horizontal axis). Table \ref{impute_rank} gives statistical
     support for the trend of increased error in larger phylogenies and
-    imputed clades.}
+    imputed clades.\added{ This figure shows a tendency for an increase in error in larger phylogenies and imputed clades.}}
   \label{rankingError}
 \end{figure}
 
