@@ -187,7 +187,7 @@ species in simulated data. We also examine the extent to which such imputation
 affects the scores of species for which we have data. In doing so, we hope to
 provide clear guidance as to the applicability of phylogenetic imputation as a
 solution for species missing phylogenetic data. From our results, we argue that
-species’ ED values are remarkably robust to missing species, and that
+species' ED values are remarkably robust to missing species, and that
 phylogenetic imputation does not reliably reconstruct the true ranking of those
 missing species.
 
@@ -275,16 +275,16 @@ differ in rank by a max of the size of the subclade). We modeled both of these
 metrics (the change in ranking and the correlation) as a function of a number of
 potential explanatory variables. Specifically, we included in our models: the
 estimated speciation rate of the original phylogeny \autocite[using
-'ape::yule';][]{Paradis2004}, the sum of all phylogenetic branch-lengths
+`ape::yule';][]{Paradis2004}, the sum of all phylogenetic branch-lengths
 in the original phylogeny \autocite[Faith's PD;][]{Faith1992}, the sum of all
 phylogenetic branch-lengths in the original focal clade \autocite[Faith's
 PD;][]{Faith1992}, the value of $\gamma$ in the original phylogeny
-\autocite[using 'phytools::gammatest';][]{Pybus2000, Revell2012},
+\autocite[using `phytools::gammatest';][]{Pybus2000, Revell2012},
 Colless' index of the original phylogeny \autocite[using
-'apTreeshape::as.treeshape';][]{Colless1982, Bortolussi2009}, the
+`apTreeshape::as.treeshape';][]{Colless1982, Bortolussi2009}, the
 kurtosis of species' ED values in the original phylogeny \autocite[using
-'moments::kurtosis';][]{Komsta2015}, the skew of species' ED values in
-the original phylogeny \autocite[using 'moments::skew';][]{Komsta2015},
+`moments::kurtosis';][]{Komsta2015}, the skew of species' ED values in
+the original phylogeny \autocite[using `moments::skew';][]{Komsta2015},
 the total number of species in the original phylogeny, the total number of
 species within the imputed clade, and the depth (age) of the imputed clade in
 the phylogeny. Although the expectations of many of these explanatory variables
@@ -303,13 +303,13 @@ ED) is assigned to all imputed species.
 We present, in the supplementary materials, two additional sets of analyses
 intended to examine the impact that past extinction rates may have played on our
 analyses. These simulations incorporate conditions of past extinction at low and
-high rates using 'gieger::sim.bdtree' \autocite[setting parameters for low
+high rates using `gieger::sim.bdtree' \autocite[setting parameters for low
 extinction at \texttt{b=1} and \texttt{d=0.5} and high extinction \texttt{b=1}
 and \texttt{d=0.95};][]{Pennell2014}. These models represent large departures
 from our main simulations (which have \texttt{b=1} and \texttt{d=0}), and so we
 performed only 5 replicates per set of parameter combinations as our only aim
 was to detect any major differences in our results stemming from these changes.
-Otherwise, these simulations were identical to those present in the main text.
+Otherwise, these simulations were identical to those we present in the main text.
 
 
 \section*{Results}
@@ -387,6 +387,21 @@ very large. It is well-known that such imputation methods are not biased
 that the uncertainty they introduce is sufficiently large such that they may be
 less informative than previously has been thought.
 
+\added{Conservation prioritization and triage have been controversial:
+  to some triage represents an unacceptable defeat by accepting that
+  some species will go extinct \autocite{Jachowski2009,Parr2009},
+  while to others it is either efficient resource allocation or a grim
+  necessity \autocite{Bottrill2008}. The debate over the implications
+  of triage, both philosophically and practically, is an important
+  one, but this study does not address it. Conservation biology has
+  been described as a crisis discipline where it is often necessary to
+  act with imperfect information and, ultimately, tolerate and manage
+  uncertainty \autocite{Soule1985}. Our intention here is merely to
+  shine a light on how phylogenetic uncertainty and imputation can
+  impact species ED(GE) scores. While we feel, personally, that EDGE
+  and related approaches are worthwhile for conservation biologists,
+  every user of any triage method must weigh the potential benefits
+  and drawbacks associated with that method for themselves.}
 \subsection*{ED scores are relatively robust to missing species}
 Missing species and poor phylogenetic resolution have been identified as causes
 of uncertainty when calculating ED \autocite{Isaac2007}, but we were unable to
@@ -470,18 +485,21 @@ to scientists and policy makers.
 
 Our results further suggest that incomplete phylogenies can be used to estimate
 ED scores with remarkably high degrees of accuracy. Instead of using imputation
-to account for the relatively minor impact of missing species, we suggest that
-conservation biologists should, without accounting for phylogenetic uncertainty,
-focus on the species for which they have data. While we have not explored this
+to account\added{ solely} for the relatively minor impact of missing species, we suggest that
+conservation biologists should\deleted{, without accounting for phylogenetic uncertainty,}
+\replaced{address}{focus} \deleted{on} the \added{phylogenetic uncertainty of }species for which they have data. While we have not explored this
 uncertainty here, evolutionary biologists commonly work with distributions of
 trees generated from genetic data \autocite[reviewed in][]{Huelsenbeck2001,
 Bollback2005}, since the precise topology and dating of a phylogeny is almost
 always uncertain. This uncertainty has, indeed, already been shown to affect
 EDGE scores and rankings \autocite{Pearse2015}. If biologists are concerned
 about the impact of missing species on known species' ED(GE) scores we see no
-harm in being precautionary and using imputation. \added{We say this given that
-we cannot say that our suggestion accounts universally to some unknown
-phylogenetic patterns.} It is important, however, to focus on known sources of
+harm in being precautionary and using imputation.
+% Bodie: I've removed this because I don't quite understand what you mean. Perhaps rephrase?
+% \added{We say this given that
+%we cannot say that our suggestion accounts universally to some unknown
+%phylogenetic patterns.}
+It is important, however, to focus on known sources of
 potential error, and so we would encourage biologists to incorporate uncertainty
 in species with phylogenetic data as a priority.
 
@@ -504,25 +522,6 @@ species could not, with confidence, be called a top-100 species. Our results
 suggest that, on average, very few imputed species will meet such a criterion.
 Regardless, the calculations of such probabilities is trivial with the data
 users of imputation have in hand already.
-
-\added{In light of the suggestions and caveats that we have outlined, we
-acknowledge that each particular user of any method of triage in conservation
-will need to weigh the benefits and drawbacks. A clear benefit to users is a
-researched method to set priorities informed by multiple sources of crucial
-data. While resources within the scope of conservation are limited and possibly
-insufficient, triage methods can assist users in directing those limited
-resources in a more effective manner. With a range of triage methods at hand,
-priorities can be set to direct efforts and resources to species which are at
-risk of extinction and represent a sizeable segment of evolutionary history,
-functional trait diversity or how likely a species is to succeed given the
-effort. However, there are obvious drawbacks as well. Triage methods take time
-to understand, develop and research. If aspects of conservation triage methods
-are not well understood, priorities could be disoriented and set such that
-resources are misdirected. However, our study addresses one such aspect within
-EDGE-type methods. With our results, we offer an explanation of how uncertainty
-and using imputation might affect triaging methods such as EDGE. Our conclusions
-and their implications should be considered carefully by each particular user of
-EDGE and other, similar triage methods.}
 
 Ultimately, we are currently fighting a losing battle to preserve the tree of
 life. Our results are good news: they suggest that we can start right away using
